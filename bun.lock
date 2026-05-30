@@ -38,7 +38,7 @@
         "react-leaflet-markercluster": "^5.0.0-rc.0",
         "recharts": "^3.8.0",
         "resend": "^6.9.4",
-        "saasignal": "^0.9.32",
+        "saasignal": "^0.9.35",
         "shiki": "^3.22.0",
         "sonner": "^2.0.7",
         "tailwind-merge": "^3.4.0",
@@ -2123,7 +2123,7 @@
 
     "rxjs": ["rxjs@7.8.2", "", { "dependencies": { "tslib": "^2.1.0" } }, "sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA=="],
 
-    "saasignal": ["saasignal@0.9.32", "", { "bin": { "saasignal": "dist/cli.js" } }, "sha512-jIrJMJ24V7WnRs+mlOT1dflzPgu2ZH/ThS4ZHOs0vt4XQrev3B0RwIJGZin2HHZP6B0QNmFfA/CpUJ2aMVLFwA=="],
+    "saasignal": ["saasignal@0.9.35", "", { "bin": { "saasignal": "dist/cli.js" } }, "sha512-gTKd5oLQgSDsbHj1RDxRNixfIAoxCo6TsxdoFOEdgYrCmM8H54GyDAi/z2VvM+1gp7zdRKyOCoDhLKw5AdRsUg=="],
 
     "safe-array-concat": ["safe-array-concat@1.1.3", "", { "dependencies": { "call-bind": "^1.0.8", "call-bound": "^1.0.2", "get-intrinsic": "^1.2.6", "has-symbols": "^1.1.0", "isarray": "^2.0.5" } }, "sha512-AURm5f0jYEOydBj7VQlVvDrjeFgthDdEF5H1dP+6mNpoXOMo1quQqJ4wvJDyRZ9+pO3kGWoOdmV08cSv2aJV6Q=="],
 

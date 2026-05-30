@@ -60,7 +60,7 @@
     "react-leaflet-markercluster": "^5.0.0-rc.0",
     "recharts": "^3.8.0",
     "resend": "^6.9.4",
-    "saasignal": "^0.9.32",
+    "saasignal": "^0.9.35",
     "shiki": "^3.22.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0"
