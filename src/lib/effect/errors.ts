@@ -63,6 +63,40 @@ export class RateLimitedError extends Data.TaggedError("RateLimitedError")<{
   readonly retryAfterMs: number;
 }> {}
 
+// ── Restaurant domain ──────────────────────────────────────────────────────
+
+export class ItemUnavailableError extends Data.TaggedError(
+  "ItemUnavailableError",
+)<{
+  readonly itemId: string | number;
+  readonly reason: "sold-out" | "branch-override" | "scheduled";
+}> {}
+
+export class ModifierConstraintViolationError extends Data.TaggedError(
+  "ModifierConstraintViolationError",
+)<{
+  readonly groupSlug: string;
+  readonly violation: "below-min" | "above-max" | "unknown-option";
+  readonly message: string;
+}> {}
+
+export class BranchClosedError extends Data.TaggedError("BranchClosedError")<{
+  readonly locationId: string | number;
+  readonly reason?: string;
+}> {}
+
+export class TableInactiveError extends Data.TaggedError("TableInactiveError")<{
+  readonly tableId: string | number;
+  readonly shortId?: string;
+}> {}
+
+export class PaymentProviderNotAllowedError extends Data.TaggedError(
+  "PaymentProviderNotAllowedError",
+)<{
+  readonly provider: string;
+  readonly fulfillmentMode: string;
+}> {}
+
 // ── Infrastructure ──────────────────────────────────────────────────────────
 
 export class PayloadOperationError extends Data.TaggedError(
@@ -84,4 +118,9 @@ export type HttpError =
   | InvalidDiscountError
   | ExternalServiceError
   | RateLimitedError
+  | ItemUnavailableError
+  | ModifierConstraintViolationError
+  | BranchClosedError
+  | TableInactiveError
+  | PaymentProviderNotAllowedError
   | PayloadOperationError;

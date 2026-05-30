@@ -77,6 +77,53 @@ function errorToResponse(error: HttpError): Response {
         },
       );
 
+    case "ItemUnavailableError":
+      return NextResponse.json(
+        {
+          error: "Item unavailable",
+          itemId: error.itemId,
+          reason: error.reason,
+        },
+        { status: 409 },
+      );
+
+    case "ModifierConstraintViolationError":
+      return NextResponse.json(
+        {
+          error: error.message,
+          groupSlug: error.groupSlug,
+          violation: error.violation,
+        },
+        { status: 400 },
+      );
+
+    case "BranchClosedError":
+      return NextResponse.json(
+        {
+          error: "Branch is currently closed",
+          locationId: error.locationId,
+          reason: error.reason,
+        },
+        { status: 409 },
+      );
+
+    case "TableInactiveError":
+      return NextResponse.json(
+        {
+          error: "This table is not in service",
+          tableId: error.tableId,
+        },
+        { status: 410 },
+      );
+
+    case "PaymentProviderNotAllowedError":
+      return NextResponse.json(
+        {
+          error: `${error.provider} is not available for ${error.fulfillmentMode} orders`,
+        },
+        { status: 400 },
+      );
+
     case "PayloadOperationError":
       console.error("Payload operation failed:", error.message, error.cause);
       return NextResponse.json(
