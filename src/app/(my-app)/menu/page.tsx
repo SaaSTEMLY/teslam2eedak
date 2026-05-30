@@ -293,7 +293,7 @@ function DeactivatedTableView({ shortId }: { shortId: string }) {
           This table is no longer in service.
         </h1>
         <p className="text-muted-foreground">
-          Order for pickup instead — we'll have it ready in minutes.
+          Order for pickup instead — we&rsquo;ll have it ready in minutes.
         </p>
         <Link
           href="/menu?mode=pickup"
