@@ -128,81 +128,92 @@ export function Header({
         className="header-scroll fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl shadow-lg border-b border-border/50 transition-all"
         suppressHydrationWarning
       >
-        <div className="mx-auto max-w-7xl h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
-          {/* Logo */}
+        {/* 3-column grid: logo left, nav+CTA truly centered, utilities
+            right. Grid (vs flex+absolute) means the centered cluster
+            stays geometrically centered regardless of how wide the
+            left or right clusters become — and the columns can never
+            overlap each other at narrow widths. */}
+        <div className="mx-auto max-w-7xl h-full px-4 sm:px-6 lg:px-8 grid grid-cols-[auto_1fr_auto] items-center gap-3 lg:gap-6">
+          {/* LEFT: brand */}
           <Link
             href="/"
-            className="text-xl font-extrabold tracking-tight text-foreground hover:text-primary transition-colors"
+            className="text-xl font-extrabold tracking-tight text-foreground hover:text-primary transition-colors whitespace-nowrap"
           >
             <span className="text-primary">K</span>offee{" "}
             <span className="text-primary">K</span>ulture
           </Link>
 
-          {/* Desktop Navigation - centered on the page */}
-          <nav
-            className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2"
-            aria-label="Main navigation"
-          >
-            {navLinks.map((link) => {
-              const isActive = isLinkActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors group ${
-                    isActive
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {link.label}
-                  <span
-                    className={`absolute inset-x-3 -bottom-px h-px bg-primary scale-x-0 transition-transform duration-300 origin-left ${!isActive ? "group-hover:scale-x-100" : ""}`}
-                  />
-                </Link>
-              );
-            })}
-          </nav>
+          {/* CENTER: nav links + Order CTA, only on desktop. The
+              wrapper is centered inside its grid column, so when the
+              left/right columns are narrower, the nav stays visually
+              centered on the page. */}
+          <div className="hidden lg:flex items-center justify-center gap-2">
+            <nav
+              className="flex items-center gap-1"
+              aria-label="Main navigation"
+            >
+              {navLinks.map((link) => {
+                const isActive = isLinkActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`relative px-3 py-2 text-sm font-medium transition-colors group ${
+                      isActive
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute inset-x-3 -bottom-px h-px bg-primary scale-x-0 transition-transform duration-300 origin-left ${!isActive ? "group-hover:scale-x-100" : ""}`}
+                    />
+                  </Link>
+                );
+              })}
+            </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-1">
-            {searchMessages && (
-              <SearchTrigger translations={searchMessages} locale={locale} />
-            )}
-            <LanguagePicker initialLocale={locale} />
-
-            <ColorSchemeSelectorModal label={messages.chooseColorScheme} />
-
-            <AnimatedDarkModeToggle
-              initialMode={darkMode}
-              className="inline-flex items-center justify-center size-9 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-pointer"
-            />
-
-            <CartButton locale={locale} />
-
-            {/* Always-visible primary CTA on desktop — one click from any
-                page to the menu, which is the single most common
-                destination for KK guests visiting the website. */}
+            {/* Primary CTA sits with the nav so it reads as part of
+                the brand voice (not as a utility icon). Hidden when
+                already on /menu — pressing it would be a no-op. */}
             {pathname !== "/menu" ? (
               <Button
                 size="sm"
-                className="ml-2 rounded-full px-4 font-semibold"
+                className="ms-2 rounded-full px-5 font-semibold"
                 asChild
               >
                 <Link href="/menu">{messages.orderNowCta}</Link>
               </Button>
             ) : null}
+          </div>
 
+          {/* Spacer when the center column is hidden (below lg) so the
+              grid still has 3 cells and the right cluster aligns to
+              the right edge. */}
+          <div className="lg:hidden" aria-hidden />
+
+          {/* RIGHT: utility cluster + user. Always icon-only on
+              desktop so the visual weight stays with the centered
+              CTA, not the utilities. */}
+          <div className="hidden lg:flex items-center gap-1 justify-self-end">
+            {searchMessages && (
+              <SearchTrigger translations={searchMessages} locale={locale} />
+            )}
+            <LanguagePicker initialLocale={locale} />
+            <ColorSchemeSelectorModal label={messages.chooseColorScheme} />
+            <AnimatedDarkModeToggle
+              initialMode={darkMode}
+              className="inline-flex items-center justify-center size-9 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-pointer"
+            />
+            <CartButton locale={locale} />
             {isSignedIn ? (
-              <UserButton size="sm" className="ml-2 cursor-pointer!" />
+              <UserButton size="sm" className="ms-1 cursor-pointer!" />
             ) : (
-              // Subtle icon-only login for staff/admin so the primary
-              // Order CTA stays visually dominant for guests.
               <Button
                 variant="ghost"
                 size="icon"
-                className="ml-1 text-muted-foreground hover:text-foreground"
+                className="ms-1 text-muted-foreground hover:text-foreground"
                 asChild
                 aria-label={messages.login}
               >
