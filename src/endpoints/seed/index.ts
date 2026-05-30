@@ -3,6 +3,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { blogSeedData } from "./blogs";
 import { productSeedData } from "./products";
+import { locationSeed, tableSeeds } from "./locations";
+import { modifierGroupSeeds } from "./modifier-groups";
+import { menuItemSeeds } from "./menu-items";
+import { buildMenuItemPayload } from "./build-menu-item";
 import {
   syncProductToSaaSignal,
   initializeAnalyticsCounters,
@@ -267,6 +271,160 @@ export const seed = async ({
     }
     payload.logger.info(`Cleared ${existing.docs.length} ${collection}`);
   }
+
+  // ── Restaurant collections (locations, tables, modifier-groups) ──
+  // Seed BEFORE products so menu items can reference modifier-group ids.
+
+  const locationDoc = await payload.create({
+    collection: "locations",
+    req,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    locale: "en" as any,
+    data: {
+      restaurantId: "kk-main",
+      name: locationSeed.name.en,
+      slug: locationSeed.slug,
+      status: locationSeed.status,
+      address: {
+        street: locationSeed.address.street.en,
+        city: locationSeed.address.city.en,
+        country: locationSeed.address.country,
+        latitude: locationSeed.address.latitude,
+        longitude: locationSeed.address.longitude,
+      },
+      phone: locationSeed.phone,
+      hours: locationSeed.hours.map((h) => ({ ...h })),
+      vatPercent: locationSeed.vatPercent,
+      serviceChargePercent: locationSeed.serviceChargePercent,
+      allowedPaymentProviders: [...locationSeed.allowedPaymentProviders],
+      averageOrderPrepMinutes: locationSeed.averageOrderPrepMinutes,
+    },
+  });
+  for (const locale of otherLocales) {
+    await payload.update({
+      collection: "locations",
+      id: locationDoc.id,
+      req,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      locale: locale as any,
+      data: {
+        name: locationSeed.name[locale] ?? locationSeed.name.en,
+        address: {
+          street:
+            locationSeed.address.street[locale === "ar" ? "ar" : "en"],
+          city: locationSeed.address.city[locale === "ar" ? "ar" : "en"],
+          country: locationSeed.address.country,
+        },
+      },
+    });
+  }
+  payload.logger.info(`Seeded location "${locationSeed.name.en}"`);
+
+  for (const t of tableSeeds) {
+    await payload.create({
+      collection: "tables",
+      req,
+      data: {
+        restaurantId: "kk-main",
+        location: locationDoc.id,
+        label: t.label,
+        capacity: t.capacity ?? undefined,
+        shortId: t.shortId,
+        status: t.status,
+      },
+    });
+  }
+  payload.logger.info(`Seeded ${tableSeeds.length} tables`);
+
+  const modifierGroupIdBySlug = new Map<string, string | number>();
+  for (const g of modifierGroupSeeds) {
+    const created = await payload.create({
+      collection: "modifier-groups",
+      req,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      locale: "en" as any,
+      data: {
+        restaurantId: "kk-main",
+        name: g.name.en,
+        slug: g.slug,
+        minSelectable: g.minSelectable,
+        maxSelectable: g.maxSelectable,
+        options: g.options.map((o) => ({
+          label: o.label.en,
+          value: o.value,
+          priceDelta: o.priceDelta,
+          isDefault: o.isDefault === true,
+          allergens: o.allergens ? [...o.allergens] : [],
+          sortOrder: o.sortOrder ?? 0,
+        })),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any,
+    });
+    modifierGroupIdBySlug.set(g.slug, created.id);
+    for (const locale of otherLocales) {
+      await payload.update({
+        collection: "modifier-groups",
+        id: created.id,
+        req,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        locale: locale as any,
+        data: {
+          name: g.name[locale] ?? g.name.en,
+          options: g.options.map((o) => ({
+            label: o.label[locale] ?? o.label.en,
+            value: o.value,
+            priceDelta: o.priceDelta,
+            isDefault: o.isDefault === true,
+            allergens: o.allergens ? [...o.allergens] : [],
+            sortOrder: o.sortOrder ?? 0,
+          })),
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
+      });
+    }
+  }
+  payload.logger.info(
+    `Seeded ${modifierGroupSeeds.length} modifier groups`,
+  );
+
+  // ── KK menu items (additional products) ──
+
+  for (const item of menuItemSeeds) {
+    const payloadEn = buildMenuItemPayload({
+      item,
+      modifierGroupIdBySlug,
+      locale: "en",
+    });
+    const created = await payload.create({
+      collection: "products",
+      req,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      locale: "en" as any,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      data: payloadEn as any,
+    });
+    for (const locale of otherLocales) {
+      const payloadLoc = buildMenuItemPayload({
+        item,
+        modifierGroupIdBySlug,
+        locale,
+      });
+      await payload.update({
+        collection: "products",
+        id: created.id,
+        req,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        locale: locale as any,
+        data: {
+          name: payloadLoc.name,
+          description: payloadLoc.description,
+          menuSection: payloadLoc.menuSection,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
+      });
+    }
+  }
+  payload.logger.info(`Seeded ${menuItemSeeds.length} KK menu items`);
 
   // ── Product Images ──
 
