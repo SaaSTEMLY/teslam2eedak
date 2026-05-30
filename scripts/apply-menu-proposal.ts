@@ -77,7 +77,7 @@ async function main() {
     `SELECT id, slug FROM products WHERE _status = 'published'`,
   );
   const toDelete = (
-    existing.rows as ReadonlyArray<{ id: number; slug: string }>
+    existing.rows as unknown as ReadonlyArray<{ id: number; slug: string }>
   ).filter((r) => !KEEP_SLUGS.has(r.slug));
   console.log(
     `[apply] clearing ${toDelete.length} existing products (keeping: ${[...KEEP_SLUGS].join(", ")})`,
