@@ -12,6 +12,35 @@ import {
 
 import { AllergenFilter } from "./allergen-filter";
 import { MenuListView } from "./menu-list-view";
+import { ItemSheet, type ItemSheetItem, type ItemAddPayload } from "./item-sheet";
+
+export interface MenuItemForClient {
+  id: string | number;
+  name: string;
+  description: string;
+  section: string;
+  basePriceQirsh: number;
+  allergens: ReadonlyArray<string>;
+  sizes: ReadonlyArray<{
+    label: string;
+    value: string;
+    priceQirsh: number;
+    isDefault?: boolean;
+  }>;
+  modifierGroups: ReadonlyArray<{
+    slug: string;
+    label: string;
+    minSelectable: number;
+    maxSelectable: number;
+    options: ReadonlyArray<{
+      value: string;
+      label: string;
+      priceDelta: number;
+      isDefault?: boolean;
+    }>;
+  }>;
+  available: boolean;
+}
 
 interface MenuClientProps {
   fulfillmentMode: FulfillmentMode;
@@ -25,16 +54,7 @@ interface MenuClientProps {
   } | null;
   sections: ReadonlyArray<{
     title: string;
-    items: ReadonlyArray<{
-      id: string | number;
-      name: string;
-      description: string;
-      section: string;
-      basePriceQirsh: number;
-      allergens: ReadonlyArray<string>;
-      sizes: ReadonlyArray<{ label: string; value: string; priceQirsh: number }>;
-      available: boolean;
-    }>;
+    items: ReadonlyArray<MenuItemForClient>;
   }>;
 }
 
@@ -42,6 +62,19 @@ export function MenuClient(props: MenuClientProps) {
   const [activePreferences, setActivePreferences] = useState<
     ReadonlyArray<DietaryPreference>
   >([]);
+  const [selectedItemId, setSelectedItemId] = useState<
+    string | number | null
+  >(null);
+
+  const itemsById = useMemo(() => {
+    const map = new Map<string | number, MenuItemForClient>();
+    for (const s of props.sections) {
+      for (const it of s.items) {
+        map.set(it.id, it);
+      }
+    }
+    return map;
+  }, [props.sections]);
 
   const filteredSections = useMemo(() => {
     return props.sections.map((section) => ({
@@ -52,9 +85,34 @@ export function MenuClient(props: MenuClientProps) {
           allergens: it.allergens as ReadonlyArray<AllergenTag>,
         })),
         activePreferences,
-      ),
+      ).map(({ item, dimmed }) => ({
+        item: {
+          id: item.id,
+          name: item.name,
+          description: item.description,
+          section: item.section,
+          basePriceQirsh: item.basePriceQirsh,
+          allergens: item.allergens,
+          sizes: item.sizes,
+          available: item.available,
+        },
+        dimmed,
+      })),
     }));
   }, [props.sections, activePreferences]);
+
+  const selectedItem: ItemSheetItem | null = selectedItemId
+    ? (itemsById.get(selectedItemId) ?? null)
+    : null;
+
+  const handleAdd = (payload: ItemAddPayload) => {
+    // Cart wiring lands in chunk 5; for now stash the payload on window so
+    // the next chunk's cart store can pick it up during dev.
+    if (typeof window !== "undefined") {
+      const w = window as Window & { __kkPendingAdds?: ItemAddPayload[] };
+      w.__kkPendingAdds = [...(w.__kkPendingAdds ?? []), payload];
+    }
+  };
 
   const headerLabel =
     props.fulfillmentMode === "dine-in" && props.table
@@ -104,7 +162,17 @@ export function MenuClient(props: MenuClientProps) {
         </div>
       </header>
 
-      <MenuListView sections={filteredSections} />
+      <MenuListView
+        sections={filteredSections}
+        onItemSelect={(id) => setSelectedItemId(id)}
+      />
+
+      <ItemSheet
+        item={selectedItem}
+        open={selectedItemId !== null}
+        onClose={() => setSelectedItemId(null)}
+        onAdd={handleAdd}
+      />
     </main>
   );
 }

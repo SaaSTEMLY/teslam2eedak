@@ -48,7 +48,24 @@ interface MenuViewItem {
   section: string;
   basePriceQirsh: number;
   allergens: ReadonlyArray<string>;
-  sizes: ReadonlyArray<{ label: string; value: string; priceQirsh: number }>;
+  sizes: ReadonlyArray<{
+    label: string;
+    value: string;
+    priceQirsh: number;
+    isDefault?: boolean;
+  }>;
+  modifierGroups: ReadonlyArray<{
+    slug: string;
+    label: string;
+    minSelectable: number;
+    maxSelectable: number;
+    options: ReadonlyArray<{
+      value: string;
+      label: string;
+      priceDelta: number;
+      isDefault?: boolean;
+    }>;
+  }>;
   available: boolean;
 }
 
@@ -138,10 +155,42 @@ async function resolveLocation(
   };
 }
 
+interface ModifierGroupDoc {
+  id: string | number;
+  slug: string;
+  name?: string;
+  minSelectable?: number;
+  maxSelectable?: number;
+  options?: ReadonlyArray<{
+    label?: string;
+    value?: string;
+    priceDelta?: number;
+    isDefault?: boolean | null;
+    sortOrder?: number | null;
+  }>;
+}
+
+async function fetchModifierGroups(
+  payload: Awaited<ReturnType<typeof getPayload>>,
+  locale: "en" | "ar" | "es",
+): Promise<Map<string | number, ModifierGroupDoc>> {
+  const { docs } = await payload.find({
+    collection: "modifier-groups",
+    limit: 500,
+    locale,
+  });
+  const map = new Map<string | number, ModifierGroupDoc>();
+  for (const doc of asArray<ModifierGroupDoc>(docs)) {
+    map.set(doc.id, doc);
+  }
+  return map;
+}
+
 async function fetchMenuItems(
   payload: Awaited<ReturnType<typeof getPayload>>,
   locale: "en" | "ar" | "es",
   locationId: string | number | null,
+  modifierGroups: Map<string | number, ModifierGroupDoc>,
 ): Promise<MenuViewItem[]> {
   const { docs } = await payload.find({
     collection: "products",
@@ -154,6 +203,7 @@ async function fetchMenuItems(
     label?: string;
     value?: string;
     priceInUSD?: number;
+    isDefault?: boolean | null;
   };
   type RawOverride = {
     location?: { id: string | number } | string | number;
@@ -168,6 +218,9 @@ async function fetchMenuItems(
     priceInUSD?: number;
     allergens?: ReadonlyArray<string>;
     sizes?: ReadonlyArray<RawSize>;
+    modifierGroups?: ReadonlyArray<
+      string | number | { id: string | number }
+    >;
     isAvailable?: boolean;
     unavailableUntil?: string | null;
     locationOverrides?: ReadonlyArray<RawOverride>;
@@ -176,20 +229,46 @@ async function fetchMenuItems(
   return asArray<RawItem>(docs).map<MenuViewItem>((doc) => {
     const override = locationId
       ? doc.locationOverrides?.find((o) => {
-          const ref = typeof o.location === "object" ? o.location?.id : o.location;
+          const ref =
+            typeof o.location === "object" ? o.location?.id : o.location;
           return String(ref) === String(locationId);
         })
       : undefined;
 
-    const basePrice = asNumber(
-      override?.priceInUSD ?? doc.priceInUSD,
-      0,
-    );
+    const basePrice = asNumber(override?.priceInUSD ?? doc.priceInUSD, 0);
     const restaurantAvailable = doc.isAvailable !== false;
     const branchAvailable =
       override && typeof override.isAvailable === "boolean"
         ? override.isAvailable
         : restaurantAvailable;
+
+    const groupIds = (doc.modifierGroups ?? []).map((g) =>
+      typeof g === "object" ? g.id : g,
+    );
+    const resolvedGroups = groupIds
+      .map((id) => modifierGroups.get(id))
+      .filter((g): g is ModifierGroupDoc => Boolean(g))
+      .map((g) => ({
+        slug: g.slug,
+        label: asString(g.name, g.slug),
+        minSelectable: asNumber(g.minSelectable, 0),
+        maxSelectable: asNumber(g.maxSelectable, 1),
+        options: asArray<{
+          label?: string;
+          value?: string;
+          priceDelta?: number;
+          isDefault?: boolean | null;
+          sortOrder?: number | null;
+        }>(g.options)
+          .slice()
+          .sort((a, b) => asNumber(a.sortOrder, 0) - asNumber(b.sortOrder, 0))
+          .map((o) => ({
+            value: asString(o.value, ""),
+            label: asString(o.label, ""),
+            priceDelta: asNumber(o.priceDelta, 0),
+            isDefault: o.isDefault === true,
+          })),
+      }));
 
     return {
       id: doc.id,
@@ -202,7 +281,9 @@ async function fetchMenuItems(
         label: asString(s.label, ""),
         value: asString(s.value, ""),
         priceQirsh: asNumber(s.priceInUSD, basePrice),
+        isDefault: s.isDefault === true,
       })),
+      modifierGroups: resolvedGroups,
       available: branchAvailable,
     };
   });
@@ -242,10 +323,12 @@ export default async function MenuPage({ searchParams }: MenuPageProps) {
     fulfillmentMode = ctx.mode;
   }
 
+  const modifierGroups = await fetchModifierGroups(payload, locale);
   const items = await fetchMenuItems(
     payload,
     locale,
     location?.id ?? null,
+    modifierGroups,
   );
 
   // Section grouping for the structured list view.

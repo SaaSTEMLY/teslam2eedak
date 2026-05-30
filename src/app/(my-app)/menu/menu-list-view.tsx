@@ -18,13 +18,14 @@ interface MenuListViewProps {
     title: string;
     items: ReadonlyArray<{ item: MenuListItem; dimmed: boolean }>;
   }>;
+  onItemSelect?: (itemId: string | number) => void;
 }
 
 function formatLE(qirsh: number): string {
   return `${(qirsh / 100).toFixed(0)} LE`;
 }
 
-export function MenuListView({ sections }: MenuListViewProps) {
+export function MenuListView({ sections, onItemSelect }: MenuListViewProps) {
   if (sections.length === 0) {
     return (
       <p className="mx-auto max-w-3xl px-4 py-16 text-center text-muted-foreground">
@@ -59,6 +60,7 @@ export function MenuListView({ sections }: MenuListViewProps) {
                     type="button"
                     aria-disabled={disabled}
                     disabled={disabled}
+                    onClick={() => !disabled && onItemSelect?.(item.id)}
                     className={cn(
                       "w-full text-left flex items-baseline justify-between gap-3 transition",
                       "rounded-lg -mx-3 px-3 py-2",
