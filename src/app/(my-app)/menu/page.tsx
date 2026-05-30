@@ -67,6 +67,14 @@ interface MenuViewItem {
     }>;
   }>;
   available: boolean;
+  hotspots: ReadonlyArray<{
+    locale: string;
+    menuImageId: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  }>;
 }
 
 const SECTION_FALLBACK = "Menu";
@@ -210,6 +218,14 @@ async function fetchMenuItems(
     priceInUSD?: number;
     isAvailable?: boolean | null;
   };
+  type RawHotspot = {
+    locale?: string;
+    menuImageId?: string;
+    x?: number;
+    y?: number;
+    w?: number;
+    h?: number;
+  };
   type RawItem = {
     id: string | number;
     name?: string;
@@ -224,6 +240,7 @@ async function fetchMenuItems(
     isAvailable?: boolean;
     unavailableUntil?: string | null;
     locationOverrides?: ReadonlyArray<RawOverride>;
+    hotspotBoxes?: unknown;
   };
 
   return asArray<RawItem>(docs).map<MenuViewItem>((doc) => {
@@ -270,6 +287,27 @@ async function fetchMenuItems(
           })),
       }));
 
+    const hotspots = Array.isArray(doc.hotspotBoxes)
+      ? (doc.hotspotBoxes as ReadonlyArray<RawHotspot>)
+          .filter(
+            (h) =>
+              typeof h.menuImageId === "string" &&
+              typeof h.locale === "string" &&
+              typeof h.x === "number" &&
+              typeof h.y === "number" &&
+              typeof h.w === "number" &&
+              typeof h.h === "number",
+          )
+          .map((h) => ({
+            locale: h.locale as string,
+            menuImageId: h.menuImageId as string,
+            x: h.x as number,
+            y: h.y as number,
+            w: h.w as number,
+            h: h.h as number,
+          }))
+      : [];
+
     return {
       id: doc.id,
       name: asString(doc.name, "Unnamed"),
@@ -285,9 +323,16 @@ async function fetchMenuItems(
       })),
       modifierGroups: resolvedGroups,
       available: branchAvailable,
+      hotspots,
     };
   });
 }
+
+const MENU_IMAGES = [
+  { id: "menu1", url: "/menu1.jpg", label: "Sip Into Summer" },
+  { id: "menu2", url: "/menu2.jpg", label: "Breakfast" },
+  { id: "menu3", url: "/menu3.jpg", label: "All Day" },
+] as const;
 
 export default async function MenuPage({ searchParams }: MenuPageProps) {
   const params = await searchParams;
@@ -344,6 +389,8 @@ export default async function MenuPage({ searchParams }: MenuPageProps) {
   return (
     <MenuClient
       fulfillmentMode={fulfillmentMode}
+      locale={locale}
+      menuImages={MENU_IMAGES.map((i) => ({ ...i }))}
       table={
         table
           ? { id: table.id, label: table.label, shortId: table.shortId }

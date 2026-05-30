@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Image as ImageIcon, ListOrdered } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { FulfillmentMode } from "@/lib/ordering/fulfillment";
@@ -9,9 +10,11 @@ import {
   type AllergenTag,
   type DietaryPreference,
 } from "@/lib/ordering/menu-filter";
+import { mapHotspotsToSections } from "@/lib/ordering/menu-image-mapping";
 
 import { AllergenFilter } from "./allergen-filter";
 import { MenuListView } from "./menu-list-view";
+import { MenuImageView } from "./menu-image-view";
 import { ItemSheet, type ItemSheetItem, type ItemAddPayload } from "./item-sheet";
 import { CartProvider, useCart } from "./cart-context";
 import { CartDrawer } from "./cart-drawer";
@@ -42,10 +45,20 @@ export interface MenuItemForClient {
     }>;
   }>;
   available: boolean;
+  hotspots: ReadonlyArray<{
+    locale: string;
+    menuImageId: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  }>;
 }
 
 interface MenuClientProps {
   fulfillmentMode: FulfillmentMode;
+  locale: "en" | "ar" | "es";
+  menuImages: ReadonlyArray<{ id: string; url: string; label: string }>;
   table: { id: string | number; label: string; shortId: string } | null;
   location: {
     id: string | number;
@@ -59,6 +72,8 @@ interface MenuClientProps {
     items: ReadonlyArray<MenuItemForClient>;
   }>;
 }
+
+type ViewMode = "list" | "image";
 
 export function MenuClient(props: MenuClientProps) {
   const scope =
@@ -82,6 +97,20 @@ function MenuBody(props: MenuClientProps) {
   const [selectedItemId, setSelectedItemId] = useState<
     string | number | null
   >(null);
+
+  const allItems = useMemo(
+    () => props.sections.flatMap((s) => s.items),
+    [props.sections],
+  );
+
+  const hasAnyHotspots = useMemo(
+    () => allItems.some((it) => it.hotspots.length > 0),
+    [allItems],
+  );
+
+  const [viewMode, setViewMode] = useState<ViewMode>(
+    hasAnyHotspots ? "image" : "list",
+  );
 
   const itemsById = useMemo(() => {
     const map = new Map<string | number, MenuItemForClient>();
@@ -117,6 +146,37 @@ function MenuBody(props: MenuClientProps) {
       })),
     }));
   }, [props.sections, activePreferences]);
+
+  const dimmedByItemId = useMemo(() => {
+    const out = new Map<string | number, boolean>();
+    for (const s of filteredSections) {
+      for (const row of s.items) {
+        out.set(row.item.id, row.dimmed);
+      }
+    }
+    return out;
+  }, [filteredSections]);
+
+  const imageSections = useMemo(() => {
+    const mapped = mapHotspotsToSections({
+      images: props.menuImages,
+      items: allItems.map((it) => ({
+        id: it.id,
+        name: it.name,
+        available: it.available,
+        hotspots: it.hotspots,
+      })),
+      locale: props.locale,
+    });
+    return mapped.map((s) => ({
+      image: s.image,
+      hotspots: s.hotspots.map((h) => ({
+        item: { id: h.item.id, name: h.item.name, available: h.item.available },
+        box: h.box,
+        dimmed: dimmedByItemId.get(h.item.id) ?? false,
+      })),
+    }));
+  }, [props.menuImages, allItems, props.locale, dimmedByItemId]);
 
   const selectedItem: ItemSheetItem | null = selectedItemId
     ? (itemsById.get(selectedItemId) ?? null)
@@ -166,18 +226,59 @@ function MenuBody(props: MenuClientProps) {
                 : props.fulfillmentMode}
           </span>
         </div>
-        <div className="mx-auto max-w-3xl px-4 pb-3">
+        <div className="mx-auto max-w-3xl px-4 pb-3 flex items-center gap-2">
           <AllergenFilter
             value={activePreferences}
             onChange={setActivePreferences}
           />
+          {hasAnyHotspots ? (
+            <div className="ms-auto inline-flex items-center rounded-full border border-border bg-card p-0.5">
+              <button
+                type="button"
+                aria-pressed={viewMode === "image"}
+                onClick={() => setViewMode("image")}
+                className={cn(
+                  "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs transition",
+                  viewMode === "image"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground",
+                )}
+                aria-label="Menu image view"
+              >
+                <ImageIcon className="size-3.5" />
+                <span className="sr-only sm:not-sr-only">Image</span>
+              </button>
+              <button
+                type="button"
+                aria-pressed={viewMode === "list"}
+                onClick={() => setViewMode("list")}
+                className={cn(
+                  "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs transition",
+                  viewMode === "list"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground",
+                )}
+                aria-label="List view"
+              >
+                <ListOrdered className="size-3.5" />
+                <span className="sr-only sm:not-sr-only">List</span>
+              </button>
+            </div>
+          ) : null}
         </div>
       </header>
 
-      <MenuListView
-        sections={filteredSections}
-        onItemSelect={(id) => setSelectedItemId(id)}
-      />
+      {viewMode === "image" && hasAnyHotspots ? (
+        <MenuImageView
+          sections={imageSections}
+          onItemSelect={(id) => setSelectedItemId(id)}
+        />
+      ) : (
+        <MenuListView
+          sections={filteredSections}
+          onItemSelect={(id) => setSelectedItemId(id)}
+        />
+      )}
 
       <ItemSheet
         item={selectedItem}
