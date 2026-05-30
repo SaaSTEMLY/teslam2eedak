@@ -186,82 +186,94 @@ function MenuBody(props: MenuClientProps) {
     cart.add(payload);
   };
 
-  const headerLabel =
+  // Single-line context label — no duplicate of the brand (that's in
+  // the global site header already). At 320px this collapses to just
+  // the mode pill; allergen filter is horizontally scrollable.
+  const modeLabel =
     props.fulfillmentMode === "dine-in" && props.table
       ? `Table ${props.table.label}`
       : props.fulfillmentMode === "pickup"
         ? "Pickup"
         : "Menu";
-
-  const locationLabel = props.location?.name ?? "";
+  const branchLabel = props.location?.name ?? "";
 
   return (
-    <main className="min-h-[80vh] pb-32" id="main-content">
-      <header className="sticky top-0 z-30 bg-background/85 backdrop-blur-xl border-b border-border/60">
-        <div className="mx-auto max-w-3xl px-4 py-4 flex items-center justify-between gap-3">
-          <div className="min-w-0">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              {headerLabel}
-            </p>
-            <h1 className="font-serif text-xl sm:text-2xl font-bold truncate">
-              Koffee Kulture
-              {locationLabel ? (
-                <span className="text-muted-foreground">
-                  {" "}
-                  · {locationLabel}
-                </span>
-              ) : null}
-            </h1>
-          </div>
+    <main
+      className="min-h-[80vh] pb-32 pt-20 sm:pt-24"
+      id="main-content"
+      aria-label="Menu"
+    >
+      <header
+        className="sticky top-16 sm:top-20 z-30 bg-background/90 backdrop-blur-xl border-b border-border/60"
+        aria-label="Order context"
+      >
+        <div className="mx-auto max-w-3xl px-3 sm:px-4 py-2.5 flex items-center gap-2 sm:gap-3">
+          {/* Mode pill — minimum tap surface; always visible. */}
           <span
             className={cn(
-              "shrink-0 inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1 text-[11px] font-medium",
-              "bg-card text-foreground/80",
+              "shrink-0 inline-flex items-center gap-1 rounded-full bg-primary/12 text-primary border border-primary/30 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider",
             )}
+            aria-label={`Ordering mode: ${modeLabel}`}
           >
-            {props.fulfillmentMode === "dine-in"
-              ? "Dine-in"
-              : props.fulfillmentMode === "pickup"
-                ? "Click & Collect"
-                : props.fulfillmentMode}
+            {modeLabel}
           </span>
-        </div>
-        <div className="mx-auto max-w-3xl px-4 pb-3 flex items-center gap-2">
-          <AllergenFilter
-            value={activePreferences}
-            onChange={setActivePreferences}
-          />
+
+          {/* Branch name — secondary; hide on viewports < 400px.
+              Logo + brand are in the global header already; we only
+              surface the branch here when there's a meaningful one. */}
+          {branchLabel ? (
+            <span
+              className="hidden min-[400px]:inline shrink-0 text-xs text-muted-foreground truncate max-w-[40vw]"
+              aria-label="Branch"
+            >
+              {branchLabel}
+            </span>
+          ) : null}
+
+          {/* Allergen filter — horizontally scrollable on narrow widths
+              (already overflow-x-auto inside). Takes remaining space. */}
+          <div className="flex-1 min-w-0 overflow-x-auto -mx-1 px-1">
+            <AllergenFilter
+              value={activePreferences}
+              onChange={setActivePreferences}
+            />
+          </div>
+
+          {/* View toggle — only when hotspots exist. Icon-only at all
+              widths to keep the row a single line. */}
           {hasAnyHotspots ? (
-            <div className="ms-auto inline-flex items-center rounded-full border border-border bg-card p-0.5">
+            <div
+              className="shrink-0 inline-flex items-center rounded-full border border-border bg-card p-0.5"
+              role="group"
+              aria-label="Menu view"
+            >
               <button
                 type="button"
                 aria-pressed={viewMode === "image"}
                 onClick={() => setViewMode("image")}
                 className={cn(
-                  "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs transition",
+                  "inline-flex items-center justify-center size-7 rounded-full transition",
                   viewMode === "image"
                     ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground",
+                    : "text-muted-foreground hover:text-foreground",
                 )}
                 aria-label="Menu image view"
               >
-                <ImageIcon className="size-3.5" />
-                <span className="sr-only sm:not-sr-only">Image</span>
+                <ImageIcon className="size-3.5" aria-hidden />
               </button>
               <button
                 type="button"
                 aria-pressed={viewMode === "list"}
                 onClick={() => setViewMode("list")}
                 className={cn(
-                  "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs transition",
+                  "inline-flex items-center justify-center size-7 rounded-full transition",
                   viewMode === "list"
                     ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground",
+                    : "text-muted-foreground hover:text-foreground",
                 )}
                 aria-label="List view"
               >
-                <ListOrdered className="size-3.5" />
-                <span className="sr-only sm:not-sr-only">List</span>
+                <ListOrdered className="size-3.5" aria-hidden />
               </button>
             </div>
           ) : null}
