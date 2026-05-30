@@ -5,15 +5,17 @@ import {
   KITCHEN_STATUSES,
   type KitchenStatus,
 } from "@/lib/ordering/tracker";
+import { buildActiveAndRecentDeliveredFilter } from "@/lib/ordering/archive";
 
 const KNOWN = new Set<string>(KITCHEN_STATUSES);
 
 /**
- * GET /api/staff/orders?location=<id>
+ * GET /api/staff/orders?location=<id>&archiveHours=N
  *
- * Returns active orders (non-delivered, non-cancelled) for the Live
- * Orders Board kanban. Delivered orders auto-archive after N hours via
- * a separate cleanup job (not yet implemented — see GOAL §7).
+ * Returns the active board: non-terminal tickets plus delivered ones
+ * still inside the archive window (default 2h). Cancelled orders are
+ * excluded immediately. The archive policy is implemented in
+ * src/lib/ordering/archive.ts as a pure helper.
  */
 export const GET = (req: Request) =>
   handleRoute(
@@ -24,13 +26,19 @@ export const GET = (req: Request) =>
       const url = new URL(req.url);
       const locationParam = url.searchParams.get("location");
       const since = url.searchParams.get("since"); // optional ISO date
+      const archiveHoursParam = url.searchParams.get("archiveHours");
+      const archiveAfterHours = archiveHoursParam
+        ? Math.max(0, Number(archiveHoursParam))
+        : undefined;
 
       const db = yield* Payload;
+      const archiveFilter = buildActiveAndRecentDeliveredFilter({
+        nowMs: Date.now(),
+        archiveAfterHours,
+      });
 
       const where: Record<string, unknown> = {
-        kitchenStatus: {
-          not_in: ["delivered", "cancelled"],
-        },
+        or: [...archiveFilter.or],
       };
       if (locationParam) {
         where.location = {
