@@ -328,10 +328,15 @@ async function fetchMenuItems(
   });
 }
 
-const MENU_IMAGES = [
-  { id: "menu1", url: "/menu1.jpg", label: "Sip Into Summer" },
-  { id: "menu2", url: "/menu2.jpg", label: "Breakfast" },
-  { id: "menu3", url: "/menu3.jpg", label: "All Day" },
+import {
+  pickImageUrlForLocale,
+  defaultLocalizedUrlsForBase,
+} from "@/lib/ordering/menu-image-locale";
+
+const MENU_IMAGE_VARIANTS = [
+  { id: "menu1", baseUrl: "/menu1.jpg", label: "Sip Into Summer" },
+  { id: "menu2", baseUrl: "/menu2.jpg", label: "Breakfast" },
+  { id: "menu3", baseUrl: "/menu3.jpg", label: "All Day" },
 ] as const;
 
 export default async function MenuPage({ searchParams }: MenuPageProps) {
@@ -390,7 +395,17 @@ export default async function MenuPage({ searchParams }: MenuPageProps) {
     <MenuClient
       fulfillmentMode={fulfillmentMode}
       locale={locale}
-      menuImages={MENU_IMAGES.map((i) => ({ ...i }))}
+      menuImages={MENU_IMAGE_VARIANTS.map((variant) => ({
+        id: variant.id,
+        label: variant.label,
+        url: pickImageUrlForLocale(
+          {
+            ...variant,
+            localizedUrls: defaultLocalizedUrlsForBase(variant.baseUrl),
+          },
+          locale,
+        ),
+      }))}
       table={
         table
           ? { id: table.id, label: table.label, shortId: table.shortId }

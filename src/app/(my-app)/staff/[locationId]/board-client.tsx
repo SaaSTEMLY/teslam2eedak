@@ -172,6 +172,44 @@ export function BoardClient({ locationId, locationName }: BoardClientProps) {
     }
   };
 
+  const refund = async (t: Ticket) => {
+    if (busyId !== null) return;
+    const confirmRefund = window.confirm(
+      `Issue a refund for order #${String(t.orderId).slice(-4)}? This cannot be undone.`,
+    );
+    if (!confirmRefund) return;
+    const reason = window.prompt("Reason (optional)?") ?? "";
+    setBusyId(t.orderId);
+    try {
+      const res = await fetch(
+        `/api/orders/${t.orderId}/payment-status`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ to: "refunded", reason }),
+        },
+      );
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as
+          | { error?: string }
+          | null;
+        setError(body?.error ?? "Failed to issue refund");
+      } else {
+        setTickets((prev) =>
+          prev.map((x) =>
+            x.orderId === t.orderId
+              ? { ...x, paymentStatus: "refunded" }
+              : x,
+          ),
+        );
+      }
+    } catch {
+      setError("Network error.");
+    } finally {
+      setBusyId(null);
+    }
+  };
+
   return (
     <main className="min-h-[80vh] py-6 px-3" id="main-content">
       <div className="mx-auto max-w-7xl">
@@ -251,6 +289,11 @@ export function BoardClient({ locationId, locationName }: BoardClientProps) {
                               Paid
                             </span>
                           ) : null}
+                          {t.paymentStatus === "refunded" ? (
+                            <span className="inline-flex items-center rounded-full bg-destructive/15 text-destructive border border-destructive/40 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+                              Refunded
+                            </span>
+                          ) : null}
                         </div>
                         <ul className="text-sm space-y-0.5 mb-2">
                           {t.items.map((it, idx) => (
@@ -277,6 +320,16 @@ export function BoardClient({ locationId, locationName }: BoardClientProps) {
                                 className="rounded-full bg-accent text-accent-foreground px-3 py-1 text-xs font-semibold hover:opacity-90 disabled:opacity-50"
                               >
                                 Mark paid
+                              </button>
+                            ) : null}
+                            {t.paymentStatus === "paid" ? (
+                              <button
+                                type="button"
+                                disabled={busyId !== null}
+                                onClick={() => refund(t)}
+                                className="rounded-full border border-destructive/40 text-destructive px-3 py-1 text-xs font-semibold hover:bg-destructive/10 disabled:opacity-50"
+                              >
+                                Refund
                               </button>
                             ) : null}
                             {allowed
