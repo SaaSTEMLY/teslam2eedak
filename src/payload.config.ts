@@ -27,6 +27,9 @@ import {
 import { Reviews } from "./collections/reviews";
 import { Wishlists } from "./collections/wishlists";
 import { NewsletterSubscribers } from "./collections/newsletter-subscribers";
+import { Locations } from "./collections/locations";
+import { Tables } from "./collections/tables";
+import { ModifierGroups } from "./collections/modifier-groups";
 import { sendOrderConfirmationEmail } from "./lib/email/order-confirmation";
 import { sendOrderStatusEmail } from "./lib/email/order-status";
 import { syncOrderToSaaSignal, checkLowStockAlert } from "./lib/saasignal-sync";
@@ -467,6 +470,9 @@ export default buildConfig({
     Reviews,
     Wishlists,
     NewsletterSubscribers,
+    Locations,
+    Tables,
+    ModifierGroups,
   ],
 
   // Your Payload secret - should be a complex and secure string, unguessable
@@ -513,6 +519,68 @@ export default buildConfig({
               admin: {
                 position: "sidebar",
                 description: "Applied discount code for this cart",
+              },
+            },
+            // ─── Restaurant cart fields ────────────────────────────
+            {
+              name: "fulfillmentMode",
+              type: "select",
+              required: true,
+              defaultValue: "merch",
+              options: [
+                { label: "Dine-in", value: "dine-in" },
+                { label: "Pickup (click & collect)", value: "pickup" },
+                { label: "Delivery", value: "delivery" },
+                { label: "Merch", value: "merch" },
+              ],
+              admin: {
+                position: "sidebar",
+                description:
+                  "How this cart is fulfilled. Determines tax/service rules, payment provider allow-list, and ticket routing.",
+              },
+            },
+            {
+              name: "restaurantId",
+              type: "text",
+              defaultValue: "kk-main",
+              admin: {
+                position: "sidebar",
+                description: "Reserved for multi-tenant.",
+              },
+            },
+            {
+              name: "location",
+              type: "relationship",
+              relationTo: "locations",
+              admin: {
+                description:
+                  "Branch this cart was opened at. Required for dine-in and pickup; optional for delivery/merch.",
+              },
+            },
+            {
+              name: "table",
+              type: "relationship",
+              relationTo: "tables",
+              admin: {
+                description:
+                  "Table this cart is paired with. Only set when fulfillmentMode = dine-in.",
+              },
+            },
+            {
+              name: "pickupTime",
+              type: "date",
+              admin: {
+                description:
+                  "When the guest plans to pick up. Null = ASAP. Only used when fulfillmentMode = pickup.",
+                date: { pickerAppearance: "dayAndTime" },
+              },
+            },
+            {
+              name: "guestSessionId",
+              type: "text",
+              admin: {
+                description:
+                  "Anonymous session id (cookie-bound) that owns this cart.",
               },
             },
           ],
@@ -695,6 +763,231 @@ export default buildConfig({
                 description: "Show this product in featured sections",
               },
             },
+            // ─── Restaurant / menu-item fields ───────────────────────
+            {
+              name: "restaurantId",
+              type: "text",
+              defaultValue: "kk-main",
+              required: true,
+              admin: {
+                position: "sidebar",
+                description:
+                  "Reserved for multi-tenant. Single-tenant deployments use the default.",
+              },
+            },
+            {
+              name: "menuSection",
+              type: "text",
+              localized: true,
+              admin: {
+                description:
+                  "Section heading for the structured menu list (e.g., 'Hot Klassiks', 'Bagels Kulture').",
+              },
+            },
+            {
+              name: "sizes",
+              type: "array",
+              labels: { singular: "Size", plural: "Sizes" },
+              admin: {
+                description:
+                  "Optional size variants with their own price. If empty, the item has a single base price.",
+              },
+              fields: [
+                {
+                  name: "label",
+                  type: "text",
+                  required: true,
+                  localized: true,
+                  admin: { description: "e.g., 'M' or 'L'." },
+                },
+                {
+                  name: "value",
+                  type: "text",
+                  required: true,
+                  admin: { description: "Stable id, e.g., 'm' / 'l'." },
+                },
+                {
+                  name: "priceInUSD",
+                  type: "number",
+                  required: true,
+                  admin: {
+                    description:
+                      "Price in qirsh (1/100 EGP). Currency follows order.currency at checkout time.",
+                  },
+                },
+                {
+                  name: "isDefault",
+                  type: "checkbox",
+                  defaultValue: false,
+                  admin: {
+                    description: "Pre-selected when the item sheet opens.",
+                  },
+                },
+              ],
+            },
+            {
+              name: "modifierGroups",
+              type: "relationship",
+              relationTo: "modifier-groups",
+              hasMany: true,
+              admin: {
+                description:
+                  "Reusable customisation groups attached to this item.",
+              },
+            },
+            {
+              name: "allergens",
+              type: "select",
+              hasMany: true,
+              options: [
+                { label: { en: "Vegan", ar: "نباتي صرف" }, value: "vegan" },
+                { label: { en: "Vegetarian", ar: "نباتي" }, value: "vegetarian" },
+                {
+                  label: { en: "Gluten-free", ar: "خالي من الجلوتين" },
+                  value: "gluten-free",
+                },
+                {
+                  label: { en: "Dairy-free", ar: "خالي من الألبان" },
+                  value: "dairy-free",
+                },
+                {
+                  label: { en: "Contains nuts", ar: "يحتوي على مكسرات" },
+                  value: "contains-nuts",
+                },
+                {
+                  label: { en: "Contains soy", ar: "يحتوي على صويا" },
+                  value: "contains-soy",
+                },
+                {
+                  label: { en: "Contains eggs", ar: "يحتوي على بيض" },
+                  value: "contains-eggs",
+                },
+              ],
+              admin: {
+                description:
+                  "Allergen tags shown on the item sheet and used by the allergen filter.",
+              },
+            },
+            {
+              type: "group",
+              name: "nutritionalInfo",
+              label: "Nutritional Info",
+              admin: {
+                description:
+                  "Optional per-serving nutritional info shown on the item sheet.",
+              },
+              fields: [
+                { name: "calories", type: "number" },
+                { name: "proteinGrams", type: "number" },
+                { name: "carbsGrams", type: "number" },
+                { name: "fatGrams", type: "number" },
+                { name: "sugarGrams", type: "number" },
+              ],
+            },
+            {
+              name: "prepTimeMinutes",
+              type: "number",
+              min: 0,
+              max: 120,
+              defaultValue: 3,
+              admin: {
+                position: "sidebar",
+                description:
+                  "Average time to prepare. Used to compute ASAP pickup ETAs.",
+              },
+            },
+            {
+              name: "isAvailable",
+              type: "checkbox",
+              defaultValue: true,
+              admin: {
+                position: "sidebar",
+                description:
+                  "Uncheck to '86' the item (sold out). The menu shows it dimmed; add-to-cart is blocked.",
+              },
+            },
+            {
+              name: "unavailableUntil",
+              type: "date",
+              admin: {
+                position: "sidebar",
+                description:
+                  "Optional auto-restock time. After this moment, the item becomes available again.",
+                date: { pickerAppearance: "dayAndTime" },
+              },
+            },
+            {
+              name: "locationOverrides",
+              type: "array",
+              labels: {
+                singular: "Branch Override",
+                plural: "Branch Overrides",
+              },
+              admin: {
+                description:
+                  "Per-branch sparse overrides — only set the fields you want to differ from the restaurant default.",
+              },
+              fields: [
+                {
+                  name: "location",
+                  type: "relationship",
+                  relationTo: "locations",
+                  required: true,
+                },
+                {
+                  name: "priceInUSD",
+                  type: "number",
+                  admin: {
+                    description:
+                      "Override base price for this branch (in qirsh).",
+                  },
+                },
+                {
+                  name: "isAvailable",
+                  type: "checkbox",
+                  admin: {
+                    description:
+                      "Override availability for this branch. Leave unchecked AND unset to inherit.",
+                  },
+                },
+                {
+                  name: "prepTimeMinutes",
+                  type: "number",
+                  min: 0,
+                  max: 120,
+                },
+              ],
+            },
+            {
+              name: "hotspotBoxes",
+              type: "json",
+              admin: {
+                description:
+                  "Normalized bounding boxes drawn on menu images, linking this item to coordinates. Shape: Array<{ locale, menuImageId, x, y, w, h }> with x/y/w/h in 0–1. Authored by the admin hotspot tool.",
+              },
+            },
+            {
+              name: "posItemIds",
+              type: "array",
+              labels: { singular: "POS Mapping", plural: "POS Mappings" },
+              admin: {
+                description:
+                  "Maps this menu item to its identifier in connected POS systems. Used by future POS adapters (Foodics, Marn, Square).",
+              },
+              fields: [
+                {
+                  name: "provider",
+                  type: "select",
+                  required: true,
+                  options: [
+                    { label: "Foodics", value: "foodics" },
+                    { label: "Marn", value: "marn" },
+                    { label: "Square", value: "square" },
+                  ],
+                },
+                { name: "externalId", type: "text", required: true },
+              ],
+            },
             ...defaultCollection.fields,
           ],
         }),
@@ -809,6 +1102,165 @@ export default buildConfig({
                 position: "sidebar",
                 readOnly: true,
               },
+            },
+            // ─── Restaurant order fields ───────────────────────────
+            {
+              name: "fulfillmentMode",
+              type: "select",
+              required: true,
+              defaultValue: "merch",
+              options: [
+                { label: "Dine-in", value: "dine-in" },
+                { label: "Pickup (click & collect)", value: "pickup" },
+                { label: "Delivery", value: "delivery" },
+                { label: "Merch", value: "merch" },
+              ],
+              admin: {
+                position: "sidebar",
+                description:
+                  "How this order is fulfilled. Captured from the cart at order-creation time.",
+              },
+            },
+            {
+              name: "kitchenStatus",
+              type: "select",
+              required: true,
+              defaultValue: "placed",
+              options: [
+                {
+                  label: { en: "Placed", ar: "متلقى", es: "Recibido" },
+                  value: "placed",
+                },
+                {
+                  label: {
+                    en: "Preparing",
+                    ar: "قيد التحضير",
+                    es: "Preparando",
+                  },
+                  value: "preparing",
+                },
+                {
+                  label: { en: "Ready", ar: "جاهز", es: "Listo" },
+                  value: "ready",
+                },
+                {
+                  label: { en: "Delivered", ar: "تم التسليم", es: "Entregado" },
+                  value: "delivered",
+                },
+                {
+                  label: { en: "Cancelled", ar: "ملغى", es: "Cancelado" },
+                  value: "cancelled",
+                },
+              ],
+              admin: {
+                position: "sidebar",
+                description:
+                  "Live Orders Board kanban state. Separate from fulfillmentStatus, which tracks merch shipping.",
+              },
+            },
+            {
+              name: "restaurantId",
+              type: "text",
+              defaultValue: "kk-main",
+              admin: { position: "sidebar" },
+            },
+            {
+              name: "location",
+              type: "relationship",
+              relationTo: "locations",
+              admin: {
+                description:
+                  "Branch this order belongs to. Drives the Live Orders Board scoping.",
+              },
+            },
+            {
+              name: "table",
+              type: "relationship",
+              relationTo: "tables",
+              admin: {
+                description:
+                  "Table for dine-in orders. Shown on the ticket header.",
+              },
+            },
+            {
+              name: "pickupTime",
+              type: "date",
+              admin: {
+                description: "When the guest is picking up (null = ASAP).",
+                date: { pickerAppearance: "dayAndTime" },
+              },
+            },
+            {
+              name: "guestSessionId",
+              type: "text",
+              admin: { description: "Anonymous guest session for tracker URL." },
+            },
+            {
+              name: "vatPercent",
+              type: "number",
+              defaultValue: 14,
+              admin: {
+                position: "sidebar",
+                description:
+                  "VAT rate snapshotted at order-creation time. Historical orders never change.",
+              },
+            },
+            {
+              name: "serviceChargePercent",
+              type: "number",
+              defaultValue: 0,
+              admin: {
+                position: "sidebar",
+                description:
+                  "Service charge rate snapshotted at order-creation time. Zero for pickup/delivery/merch by default.",
+              },
+            },
+            {
+              name: "tipAmount",
+              type: "number",
+              defaultValue: 0,
+              admin: {
+                position: "sidebar",
+                description: "Tip amount in qirsh (separate from service charge).",
+              },
+            },
+            {
+              name: "kitchenAuditTrail",
+              type: "array",
+              labels: {
+                singular: "Status Change",
+                plural: "Status History",
+              },
+              admin: {
+                description:
+                  "Append-only log of kitchenStatus transitions. Used for ops debugging and SLA tracking.",
+              },
+              fields: [
+                {
+                  name: "from",
+                  type: "text",
+                  admin: {
+                    description: "Previous kitchenStatus (null on creation).",
+                  },
+                },
+                { name: "to", type: "text", required: true },
+                {
+                  name: "at",
+                  type: "date",
+                  required: true,
+                  admin: { date: { pickerAppearance: "dayAndTime" } },
+                },
+                {
+                  name: "byUserId",
+                  type: "text",
+                  admin: { description: "Staff user id, or 'system' for auto." },
+                },
+                {
+                  name: "byUserName",
+                  type: "text",
+                  admin: { description: "Display name at the time of change." },
+                },
+              ],
             },
           ],
         }),

@@ -99,6 +99,12 @@ export interface Config {
     reviews: Review;
     wishlists: Wishlist;
     "payload-migrations": PayloadMigration;
+    // Restaurant collections (KK MVP). Re-generate via `bun payload:types`
+    // once the payload-auth ESM-loader bug is resolved upstream — the shapes
+    // here are minimal placeholders that satisfy `CollectionSlug`.
+    locations: { id: string | number; [key: string]: unknown };
+    tables: { id: string | number; [key: string]: unknown };
+    "modifier-groups": { id: string | number; [key: string]: unknown };
   };
   collectionsJoins: {
     users: {
@@ -148,6 +154,9 @@ export interface Config {
     "payload-migrations":
       | PayloadMigrationsSelect<false>
       | PayloadMigrationsSelect<true>;
+    locations: Record<string, unknown>;
+    tables: Record<string, unknown>;
+    "modifier-groups": Record<string, unknown>;
   };
   db: {
     defaultIDType: number;
