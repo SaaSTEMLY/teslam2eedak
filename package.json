@@ -28,6 +28,7 @@
     "test:routes": "vitest run tests/routes/"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.100.1",
     "@daveyplate/better-auth-ui": "^3.3.15",
     "@dicebear/core": "^9.3.1",
     "@dicebear/notionists": "^9.3.1",
