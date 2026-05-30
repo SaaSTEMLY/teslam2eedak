@@ -86,7 +86,7 @@ export const Blogs: CollectionConfig = {
       type: "text",
       required: true,
       minLength: 1,
-      defaultValue: "SaaSTARTER Team",
+      defaultValue: "Koffee Kulture Team",
       admin: {
         description: "Display name of the post author.",
       },

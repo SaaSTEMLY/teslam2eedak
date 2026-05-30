@@ -5,7 +5,7 @@ export const Icon = () => {
     <div className="flex items-center justify-center">
       <Image
         src="/logo/main/raw.svg"
-        alt="SaaStarter"
+        alt="Koffee Kulture"
         width={24}
         height={24}
         className="h-6 w-6"

@@ -61,9 +61,10 @@ export async function Footer() {
           <div className="space-y-4 max-w-xs">
             <Link
               href="/"
-              className="font-serif text-xl font-bold text-foreground"
+              className="text-xl font-extrabold tracking-tight text-foreground"
             >
-              SaaSTARTER
+              <span className="text-primary">K</span>offee{" "}
+              <span className="text-primary">K</span>ulture
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {m.tagline}
@@ -119,9 +120,10 @@ export async function Footer() {
           <div className="space-y-4 flex flex-col items-center">
             <Link
               href="/"
-              className="font-serif text-xl font-bold text-foreground"
+              className="text-xl font-extrabold tracking-tight text-foreground"
             >
-              SaaSTARTER
+              <span className="text-primary">K</span>offee{" "}
+              <span className="text-primary">K</span>ulture
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {m.tagline}

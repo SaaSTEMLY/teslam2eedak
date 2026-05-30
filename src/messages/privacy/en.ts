@@ -2,7 +2,7 @@ const messages = {
   // Metadata
   metaTitle: "Privacy Policy",
   metaDescription:
-    "Learn how SaaSTARTER collects, uses, and protects your personal information. Your privacy matters to us.",
+    "Learn how Koffee Kulture collects, uses, and protects your personal information. Your privacy matters to us.",
 
   // Page header
   pageTitle: "Privacy Policy",
@@ -10,7 +10,7 @@ const messages = {
 
   // Content
   intro:
-    "At SaaSTARTER, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.",
+    "At Koffee Kulture, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.",
 
   section1Title: "1. Information We Collect",
   section1Subtitle1: "Personal Information",

@@ -9,7 +9,7 @@ import {
 
 const blog = {
   slug: "buttery-smooth-scrolling-nextjs-lenis",
-  author: "SaaSTARTER Team",
+  author: "Koffee Kulture Team",
   category: "engineering" as const,
   status: "published" as const,
   publishedAt: "2026-02-14T14:00:00.000Z",

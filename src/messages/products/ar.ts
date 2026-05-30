@@ -17,7 +17,7 @@ const messages = {
   from: "من",
 
   // Product detail page
-  productNotFoundTitle: "المنتج غير موجود | SaaSTARTER",
+  productNotFoundTitle: "المنتج غير موجود | Koffee Kulture",
   backToProducts: "جميع المنتجات",
   detailsHeading: "التفاصيل",
   browseMore: "تصفح المزيد من المنتجات",

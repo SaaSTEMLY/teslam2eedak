@@ -201,15 +201,15 @@ const check = (has: boolean) => (has ? "\u2713" : "\u2014");
 const colWidth = 100;
 
 const productIntro: Record<Locale, string> = {
-  en: "Ship your SaaS in days, not months. SaaStarter is a production-grade Next.js starter kit with four tiers designed to match every stage of your project — from polished marketing pages to a full-stack e-commerce platform with Stripe payments, authentication, and a complete admin dashboard.",
-  ar: "أطلق مشروع SaaS الخاص بك في أيام وليس أشهر. SaaStarter هو قالب Next.js احترافي جاهز للإنتاج بأربعة مستويات مصممة لتناسب كل مرحلة من مشروعك — من صفحات تسويقية مصقولة إلى منصة تجارة إلكترونية متكاملة مع مدفوعات Stripe والمصادقة ولوحة إدارة شاملة.",
-  es: "Lanza tu SaaS en días, no en meses. SaaStarter es un kit de inicio Next.js de nivel producción con cuatro niveles diseñados para cada etapa de tu proyecto — desde páginas de marketing pulidas hasta una plataforma e-commerce completa con pagos Stripe, autenticación y un panel de administración completo.",
+  en: "Our top seller, four ways. The Salted Karamel is the drink that put us on the map — Maldon salt over a double shot, house karamel syrup, served hot, iced, blended, or as a frappe. Sized M for the morning rush or L for the long study session.",
+  ar: "الأكثر مبيعًا عندنا، بأربع طرق. السالتد كراميل هو المشروب اللي خلانا معروفين — ملح مالدون فوق دبل شوت، سيرب كراميل بيتنا، يقدّم ساخن، مثلج، مخلوط، أو فرابيه. حجم M للصبح المتسارع أو L لجلسة المذاكرة الطويلة.",
+  es: "Nuestro éxito de ventas, de cuatro formas. El Salted Karamel es la bebida que nos puso en el mapa — sal Maldon sobre un doble shot, sirope de karamel de la casa, servido caliente, frío, batido o frappe. Talla M para la prisa de la mañana o L para la sesión larga.",
 };
 
 const techStackLine: Record<Locale, string> = {
-  en: "Built with: TypeScript · Next.js · React · Tailwind v4 · ShadCN · Zod · GraphQL · REST API · SQLite · Stripe · Better-Auth · Lenis",
-  ar: "مبني بـ: TypeScript · Next.js · React · Tailwind v4 · ShadCN · Zod · GraphQL · REST API · SQLite · Stripe · Better-Auth · Lenis",
-  es: "Construido con: TypeScript · Next.js · React · Tailwind v4 · ShadCN · Zod · GraphQL · REST API · SQLite · Stripe · Better-Auth · Lenis",
+  en: "Bean: 100% Arabica · Origin: Ethiopia + Brazil blend · Roast: medium-dark, house-roasted Tuesdays · Allergens: contains milk (swap-able) · Vegan with oat milk",
+  ar: "الفول: عربيكا ١٠٠٪ · المنشأ: مزيج إثيوبيا + البرازيل · التحميص: متوسط غامق، محمص عندنا كل تلات · الحساسية: يحتوي على حليب (قابل للتبديل) · نباتي مع حليب الشوفان",
+  es: "Grano: 100% Arabica · Origen: mezcla Etiopía + Brasil · Tueste: medio-oscuro, tostado los martes · Alérgenos: contiene leche (intercambiable) · Vegano con leche de avena",
 };
 
 function buildLongDescription(locale: Locale) {
@@ -269,14 +269,14 @@ function buildLongDescription(locale: Locale) {
 // ─── Product Definition ─────────────────────────────────
 
 const product = {
-  name: "SaaStarter",
-  slug: "saastarter",
+  name: "Salted Karamel",
+  slug: "salted-karamel",
   category: "software" as const,
   featured: true,
   description: {
-    en: "Production-grade Next.js SaaS starter kit. Four tiers from marketing pages to full-stack e-commerce. TypeScript-first. Ship in days, not months.",
-    ar: "قالب SaaS احترافي مبني على Next.js. أربعة مستويات من صفحات التسويق إلى تجارة إلكترونية متكاملة. TypeScript أولاً. أطلق في أيام وليس أشهر.",
-    es: "Kit de inicio SaaS de nivel producción con Next.js. Cuatro niveles desde páginas de marketing hasta e-commerce completo. TypeScript-first. Lanza en días, no en meses.",
+    en: "Our top seller. Double shot, house karamel syrup, finished with Maldon sea salt. Hot, iced, blended, or frappe — M or L. Choose your milk.",
+    ar: "الأكثر مبيعًا. دبل شوت، سيرب كراميل بيتنا، ولمسة ملح مالدون. ساخن، مثلج، مخلوط، أو فرابيه — M أو L. اختار حليبك.",
+    es: "Nuestro top. Doble shot, sirope de karamel de la casa, terminado con sal Maldon. Caliente, frío, batido o frappe — M o L. Elige tu leche.",
   },
   longDescription: {
     en: buildLongDescription("en"),
@@ -285,79 +285,79 @@ const product = {
   },
   images: [
     {
-      url: "https://images.pexels.com/photos/5474295/pexels-photo-5474295.jpeg?auto=compress&cs=tinysrgb&w=1920",
+      url: "https://images.pexels.com/photos/2074122/pexels-photo-2074122.jpeg?auto=compress&cs=tinysrgb&w=1920",
       alt: {
-        en: "Close-up of hands coding on a laptop, showcasing software development in action",
-        ar: "لقطة مقربة لأيدٍ تكتب كوداً على حاسوب محمول، تُظهر تطوير البرمجيات أثناء العمل",
-        es: "Primer plano de manos programando en una laptop, mostrando el desarrollo de software en acción",
+        en: "Top-down view of a latte with crema and a sprinkle of salt — Koffee Kulture's signature Salted Karamel",
+        ar: "لقطة من فوق للسالتد كراميل بكريمته ورشة الملح المميزة لكوفي كلتشر",
+        es: "Vista superior de un latte con crema y un toque de sal — el Salted Karamel insignia de Koffee Kulture",
       },
     },
     {
-      url: "https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg?auto=compress&cs=tinysrgb&w=1920",
+      url: "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1920",
       alt: {
-        en: "Close-up of colorful code on a laptop screen, showcasing programming concepts",
-        ar: "لقطة مقربة لكود ملون على شاشة حاسوب محمول، تعرض مفاهيم البرمجة",
-        es: "Primer plano de código colorido en una pantalla de laptop, mostrando conceptos de programación",
+        en: "Barista pouring milk to create latte art in a ceramic cup",
+        ar: "باريستا يصبّ الحليب يصنع لاتيه آرت في كوب سيراميك",
+        es: "Barista vertiendo leche creando latte art en una taza de cerámica",
       },
     },
     {
-      url: "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1920",
+      url: "https://images.pexels.com/photos/2074130/pexels-photo-2074130.jpeg?auto=compress&cs=tinysrgb&w=1920",
       alt: {
-        en: "Close-up of HTML and JavaScript code on a computer screen in Visual Studio Code",
-        ar: "لقطة مقربة لكود HTML و JavaScript على شاشة حاسوب في Visual Studio Code",
-        es: "Primer plano de código HTML y JavaScript en una pantalla de computadora en Visual Studio Code",
+        en: "Iced coffee in a tall glass with ice cubes, perfect for Cairo summers",
+        ar: "قهوة مثلجة في كوب طويل بمكعبات الثلج، مناسبة لحرّ كايرو",
+        es: "Café helado en un vaso alto con hielo, perfecto para los veranos de El Cairo",
       },
     },
     {
-      url: "https://images.pexels.com/photos/34212896/pexels-photo-34212896.jpeg?auto=compress&cs=tinysrgb&w=1920",
+      url: "https://images.pexels.com/photos/1556881/pexels-photo-1556881.jpeg?auto=compress&cs=tinysrgb&w=1920",
       alt: {
-        en: "A vibrant workspace showing computer monitors with code, keyboard, and tech accessories",
-        ar: "مساحة عمل نابضة بالحياة تعرض شاشات حاسوب بالكود ولوحة مفاتيح وملحقات تقنية",
-        es: "Un espacio de trabajo vibrante mostrando monitores con código, teclado y accesorios tecnológicos",
+        en: "Espresso shot pouring into a small cup with crema forming on top",
+        ar: "شوت إسبريسو ينسكب في كوب صغير وتتكوّن الكريما فوقه",
+        es: "Shot de espresso vertiéndose en una taza pequeña con crema en la superficie",
       },
     },
     {
-      url: "https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=1920",
+      url: "https://images.pexels.com/photos/541218/pexels-photo-541218.jpeg?auto=compress&cs=tinysrgb&w=1920",
       alt: {
-        en: "Close-up of a person coding on a laptop, showcasing web development and programming",
-        ar: "لقطة مقربة لشخص يكتب كوداً على حاسوب محمول، تُظهر تطوير الويب والبرمجة",
-        es: "Primer plano de una persona programando en una laptop, mostrando desarrollo web y programación",
+        en: "Cappuccino with intricate latte art on a wooden table, ready to drink",
+        ar: "كابتشينو بلاتيه آرت معقّد على ترابيزة خشب جاهز للشرب",
+        es: "Cappuccino con latte art elaborado en una mesa de madera, listo para beber",
       },
     },
   ],
-  variantType: { label: "Tier", name: "tier" },
+  variantType: { label: "Style", name: "style" },
   variants: [
     {
-      en: "Frontend LITE",
-      ar: "الواجهة الأمامية LITE",
-      es: "Frontend LITE",
-      optionLabel: "Frontend LITE",
-      optionValue: "frontend-lite",
-      price: 2900,
+      en: "Hot — M",
+      ar: "ساخن — M",
+      es: "Caliente — M",
+      optionLabel: "Hot — M",
+      optionValue: "hot-m",
+      price: 11000,
     },
     {
-      en: "Frontend PRO",
-      ar: "الواجهة الأمامية PRO",
-      es: "Frontend PRO",
-      optionLabel: "Frontend PRO",
-      optionValue: "frontend-pro",
-      price: 9900,
+      en: "Hot — L",
+      ar: "ساخن — L",
+      es: "Caliente — L",
+      optionLabel: "Hot — L",
+      optionValue: "hot-l",
+      price: 13500,
     },
     {
-      en: "Frontend + Backend LITE",
-      ar: "واجهة + خلفية LITE",
-      es: "Frontend + Backend LITE",
-      optionLabel: "Frontend + Backend LITE",
-      optionValue: "frontend-backend-lite",
-      price: 19900,
+      en: "Iced — L",
+      ar: "مثلج — L",
+      es: "Helado — L",
+      optionLabel: "Iced — L",
+      optionValue: "iced-l",
+      price: 13500,
     },
     {
-      en: "Frontend + Backend PRO",
-      ar: "واجهة + خلفية PRO",
-      es: "Frontend + Backend PRO",
-      optionLabel: "Frontend + Backend PRO",
-      optionValue: "frontend-backend-pro",
-      price: 29900,
+      en: "Frappe — L",
+      ar: "فرابيه — L",
+      es: "Frappe — L",
+      optionLabel: "Frappe — L",
+      optionValue: "frappe-l",
+      price: 14500,
     },
   ],
 };

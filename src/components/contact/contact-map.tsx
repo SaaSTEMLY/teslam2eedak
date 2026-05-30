@@ -9,20 +9,20 @@ import {
 } from "@/components/ui/map";
 import { MapPinIcon } from "lucide-react";
 
-const SF_CENTER = [37.7749, -122.4194] as [number, number];
+const MAADI_CENTER = [29.9602, 31.2569] as [number, number];
 
 export function ContactMap() {
   return (
     <div className="overflow-hidden rounded-xl border border-border/50">
       <Map
-        center={SF_CENTER}
-        zoom={13}
+        center={MAADI_CENTER}
+        zoom={15}
         scrollWheelZoom={false}
         className="h-[240px] min-h-0 rounded-xl"
       >
         <MapTileLayer />
         <MapMarker
-          position={SF_CENTER}
+          position={MAADI_CENTER}
           icon={
             <div className="flex items-center justify-center size-8 rounded-full bg-primary/70 text-primary-foreground shadow-lg ring-2 ring-background">
               <MapPinIcon className="size-4" />
@@ -33,8 +33,8 @@ export function ContactMap() {
         >
           <MapPopup>
             <div className="text-center text-sm">
-              <p className="font-semibold">SaaSTARTER</p>
-              <p className="text-muted-foreground">San Francisco, CA</p>
+              <p className="font-semibold">Koffee Kulture</p>
+              <p className="text-muted-foreground">Degla, Maadi · Cairo</p>
             </div>
           </MapPopup>
         </MapMarker>

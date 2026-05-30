@@ -15,7 +15,7 @@ export function AuthLayout({ children, translations }: AuthLayoutProps) {
       <div className="hidden lg:flex lg:w-1/2 flex-col justify-between bg-foreground p-12 text-background">
         <Link href="/" className="inline-flex items-center gap-2">
           <span className="font-serif text-lg font-semibold tracking-tight">
-            SaaSTARTER
+            Koffee Kulture
           </span>
         </Link>
 
@@ -33,7 +33,7 @@ export function AuthLayout({ children, translations }: AuthLayoutProps) {
         </div>
 
         <p className="text-xs text-background/30">
-          &copy; {new Date().getFullYear()} SaaSTARTER
+          &copy; {new Date().getFullYear()} Koffee Kulture
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export function AuthLayout({ children, translations }: AuthLayoutProps) {
             href="/"
             className="font-serif text-lg font-semibold tracking-tight text-foreground"
           >
-            SaaSTARTER
+            Koffee Kulture
           </Link>
         </div>
 

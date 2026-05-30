@@ -2,7 +2,7 @@ const messages = {
   // Metadata
   metaTitle: "Terms of Service",
   metaDescription:
-    "Read the Terms of Service for SaaSTARTER. Understand your rights and responsibilities when using our platform.",
+    "Read the Terms of Service for Koffee Kulture. Understand your rights and responsibilities when using our platform.",
 
   // Page header
   pageTitle: "Terms of Service",
@@ -10,7 +10,7 @@ const messages = {
 
   // Content
   intro:
-    'Welcome to SaaSTARTER. These Terms of Service ("Terms") govern your access to and use of our website, products, and services. By accessing or using SaaSTARTER, you agree to be bound by these Terms.',
+    'Welcome to Koffee Kulture. These Terms of Service ("Terms") govern your access to and use of our website, products, and services. By accessing or using Koffee Kulture, you agree to be bound by these Terms.',
 
   section1Title: "1. Acceptance of Terms",
   section1Content:
@@ -18,15 +18,15 @@ const messages = {
 
   section2Title: "2. Description of Services",
   section2Intro:
-    "SaaSTARTER provides a production-ready Next.js SaaS template with eCommerce capabilities, authentication, payment processing, and related tools and services. Our services include:",
-  section2Item1: "Access to the SaaSTARTER codebase and template files",
+    "Koffee Kulture provides a production-ready Next.js SaaS template with eCommerce capabilities, authentication, payment processing, and related tools and services. Our services include:",
+  section2Item1: "Access to the Koffee Kulture codebase and template files",
   section2Item2: "Documentation and implementation guides",
   section2Item3: "Updates and improvements to the template",
   section2Item4: "Community support through designated channels",
 
   section3Title: "3. License and Usage Rights",
   section3Content:
-    "Upon purchasing SaaSTARTER, you receive a license to use the template according to the terms outlined in our",
+    "Upon purchasing Koffee Kulture, you receive a license to use the template according to the terms outlined in our",
   section3Link: "License Agreement",
   section3Content2:
     ". This license is non-exclusive and subject to the restrictions described therein.",
@@ -48,7 +48,7 @@ const messages = {
 
   section6Title: "6. Intellectual Property",
   section6Content:
-    "SaaSTARTER and its original content, features, and functionality are owned by SaaSTARTER and are protected by international copyright, trademark, and other intellectual property laws. The template code you purchase is licensed, not sold.",
+    "Koffee Kulture and its original content, features, and functionality are owned by Koffee Kulture and are protected by international copyright, trademark, and other intellectual property laws. The template code you purchase is licensed, not sold.",
 
   section7Title: "7. Prohibited Uses",
   section7Intro: "You agree not to:",
@@ -65,11 +65,11 @@ const messages = {
 
   section9Title: "9. Limitation of Liability",
   section9Content:
-    "To the maximum extent permitted by law, SaaSTARTER shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly.",
+    "To the maximum extent permitted by law, Koffee Kulture shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly.",
 
   section10Title: "10. Indemnification",
   section10Content:
-    "You agree to indemnify and hold harmless SaaSTARTER and its officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the services or violation of these Terms.",
+    "You agree to indemnify and hold harmless Koffee Kulture and its officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the services or violation of these Terms.",
 
   section11Title: "11. Modifications to Terms",
   section11Content:

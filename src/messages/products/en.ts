@@ -17,7 +17,7 @@ const messages = {
   from: "From",
 
   // Product detail page
-  productNotFoundTitle: "Product Not Found | SaaSTARTER",
+  productNotFoundTitle: "Product Not Found | Koffee Kulture",
   backToProducts: "All products",
   detailsHeading: "Details",
   browseMore: "Browse more products",

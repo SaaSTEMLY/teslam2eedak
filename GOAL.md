@@ -18,13 +18,13 @@ teslam2eedak is a **fork-and-rebrand template** in the short term, with **schema
 
 ## 2. Personas
 
-| Persona | Surface | Need |
-|---|---|---|
-| **Guest** | Phone browser, no install, scans a QR | Order food/drinks fast, see price+tax breakdown, pay, know when it's ready |
-| **Floor staff** ("waiter") | Tablet at floor station | See incoming orders, mark ready/delivered |
-| **Kitchen staff** | Shared kitchen screen | See orders to prepare, mark when ready |
-| **Restaurant manager** | Payload admin desktop | Author menu, draw hotspots, manage tables + branches, print QR codes, mark items 86, see day's revenue |
-| **Restaurant owner** | Payload admin desktop | Same as manager + branding/payment/integration config |
+| Persona                    | Surface                               | Need                                                                                                   |
+| -------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Guest**                  | Phone browser, no install, scans a QR | Order food/drinks fast, see price+tax breakdown, pay, know when it's ready                             |
+| **Floor staff** ("waiter") | Tablet at floor station               | See incoming orders, mark ready/delivered                                                              |
+| **Kitchen staff**          | Shared kitchen screen                 | See orders to prepare, mark when ready                                                                 |
+| **Restaurant manager**     | Payload admin desktop                 | Author menu, draw hotspots, manage tables + branches, print QR codes, mark items 86, see day's revenue |
+| **Restaurant owner**       | Payload admin desktop                 | Same as manager + branding/payment/integration config                                                  |
 
 > MVP collapses floor + kitchen staff into ONE role looking at ONE Live Orders Board. Role split is a deferred concern.
 
@@ -96,7 +96,7 @@ These are concepts, not table definitions. See [CONTEXT.md](./CONTEXT.md) for on
 2. Cart is anonymous, paired to `(branchId, tableId, sessionId)`. Two phones at the same table = two independent carts (no shared-cart model in MVP).
 3. **Browse** the menu. Default view = menu image with hotspots overlaid; tapping a hotspot opens the item sheet. Toggle in the header switches to a structured list (always available; default for assistive-tech).
 4. **Item sheet**: image (placeholder if none), description, price, size picker (if applicable), modifier groups (with min/max enforcement), allergen icons, nutritional info, quantity, free-text note ("no onions"). Combo builder appears for items in a combo group.
-5. **Allergen filter** lives in the header (vegan, vegetarian, gluten-free, …). Active filter dims+badges non-matching hotspots in the image view; non-matching items are visually marked in the list. The filter never *hides* an item — it disables add-to-cart with an explanatory toast.
+5. **Allergen filter** lives in the header (vegan, vegetarian, gluten-free, …). Active filter dims+badges non-matching hotspots in the image view; non-matching items are visually marked in the list. The filter never _hides_ an item — it disables add-to-cart with an explanatory toast.
 6. **Cart view**: line items with their modifiers, subtotal, VAT (14%, configurable), service charge (12%, dine-in only, configurable), optional tip slider, grand total.
 7. **Pay**: Stripe Payment Intent (cards). The restaurant may configure additional providers; cash-on-pickup is NOT available for dine-in. Discount codes (existing collection) work as-is.
 8. On success → **order tracker page**. Shows order #, items, current status (PLACED → PREPARING → READY → DELIVERED), table number, and an optional "email me the receipt" capture.
@@ -155,18 +155,18 @@ Reuses ≥90% of the dine-in flow:
 
 ## 9. Cross-cutting requirements
 
-| Concern | Requirement |
-|---|---|
-| **Locales** | `en` (default) + `ar` (RTL). All customer-facing strings translatable; menu image is uploaded per locale. Item-name, description, modifier-group labels are per-locale. RTL applied throughout — Tailwind logical properties only (per [CLAUDE.md](./CLAUDE.md)). |
-| **Accessibility** | The structured-list fallback is the accessibility surface: ARIA-labeled, keyboard-navigable, screen-reader-friendly. Image-overlay view is decorative; hotspots have accessible names. |
-| **Mobile-first** | 320px minimum viewport. Phone is the primary surface. Admin is desktop-first. |
-| **VAT + service charge** | Restaurant + branch override the rates. Cart shows the breakdown pre-pay. Order line items capture the rates AT ORDER TIME (so historical orders aren't broken when admin changes percentages). |
-| **Payments** | Stripe + CashOnPickup ship in MVP via the `PaymentProvider` adapter. Adapter accepts a unique fulfillment-mode allow-list (dine-in MUST pre-pay; cash-on-pickup is pickup-only). |
-| **Availability** | Per-item binary toggle + optional `unavailableUntil`. Dimmed-with-badge in both menu views. Add-to-cart blocked with a toast on tap. |
-| **Authentication** | Better-Auth for staff + admin. Guests are anonymous — no Better-Auth session needed for ordering. Optional "save to account" hook at receipt step (deferred). |
-| **Error handling** | Effect TS pattern from CLAUDE.md applies to all order/payment/menu API routes. New `TaggedError` types: `ItemUnavailableError`, `ModifierConstraintViolationError`, `BranchClosedError`, `TableInactiveError`, `PaymentProviderNotAllowedError`. |
-| **Logging / observability** | Per-order audit trail: every state transition (and who triggered it) is recorded on the order. |
-| **Existing collections** | Re-used as-is: `blogs`, `faqs`, `media`, `reviews`, `discount-codes`, `contact-form-submissions`, `newsletter-subscribers`, `wishlists`. Reviews collection becomes "restaurant reviews"; wishlists become "favorites" for future loyalty. |
+| Concern                     | Requirement                                                                                                                                                                                                                                                       |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Locales**                 | `en` (default) + `ar` (RTL). All customer-facing strings translatable; menu image is uploaded per locale. Item-name, description, modifier-group labels are per-locale. RTL applied throughout — Tailwind logical properties only (per [CLAUDE.md](./CLAUDE.md)). |
+| **Accessibility**           | The structured-list fallback is the accessibility surface: ARIA-labeled, keyboard-navigable, screen-reader-friendly. Image-overlay view is decorative; hotspots have accessible names.                                                                            |
+| **Mobile-first**            | 320px minimum viewport. Phone is the primary surface. Admin is desktop-first.                                                                                                                                                                                     |
+| **VAT + service charge**    | Restaurant + branch override the rates. Cart shows the breakdown pre-pay. Order line items capture the rates AT ORDER TIME (so historical orders aren't broken when admin changes percentages).                                                                   |
+| **Payments**                | Stripe + CashOnPickup ship in MVP via the `PaymentProvider` adapter. Adapter accepts a unique fulfillment-mode allow-list (dine-in MUST pre-pay; cash-on-pickup is pickup-only).                                                                                  |
+| **Availability**            | Per-item binary toggle + optional `unavailableUntil`. Dimmed-with-badge in both menu views. Add-to-cart blocked with a toast on tap.                                                                                                                              |
+| **Authentication**          | Better-Auth for staff + admin. Guests are anonymous — no Better-Auth session needed for ordering. Optional "save to account" hook at receipt step (deferred).                                                                                                     |
+| **Error handling**          | Effect TS pattern from CLAUDE.md applies to all order/payment/menu API routes. New `TaggedError` types: `ItemUnavailableError`, `ModifierConstraintViolationError`, `BranchClosedError`, `TableInactiveError`, `PaymentProviderNotAllowedError`.                  |
+| **Logging / observability** | Per-order audit trail: every state transition (and who triggered it) is recorded on the order.                                                                                                                                                                    |
+| **Existing collections**    | Re-used as-is: `blogs`, `faqs`, `media`, `reviews`, `discount-codes`, `contact-form-submissions`, `newsletter-subscribers`, `wishlists`. Reviews collection becomes "restaurant reviews"; wishlists become "favorites" for future loyalty.                        |
 
 ## 10. Branding: Koffee Kulture as first instance
 
@@ -186,18 +186,22 @@ The `rebrand` skill from CLAUDE.md applies — the KK instance is the first run 
 Each item below has an architectural anchor in MVP so it can be added without painful migration.
 
 ### Delivery
+
 - Anchor: `fulfillmentMode: 'delivery'` already accepted on `Cart` / `Order`. Address fields added to delivery-only checkout. Delivery zone + fee rules on the branch.
 - Reuses: cart, item sheet, payment, tracker, Live Orders Board (the "READY" column gets a "rider assigned" sub-state).
 
 ### Merchandise
+
 - Anchor: merch is just `products` with `fulfillmentMode: 'merch'`. Stripe + shipping address. The existing plugin-ecommerce shipping/fulfillment model fits as-is.
 - Reuses: cart, item sheet, checkout, payment, order tracker.
 
 ### POS integration (Foodics et al.)
+
 - Anchor: `OrderSink` interface (default = our kanban). Menu items carry an optional `posItemId` per provider. Adapters subscribe to order state changes and call POS APIs; can also push availability changes back.
 - A POS-connected branch turns off our Live Orders Board for that branch (or runs both).
 
 ### Recommendations: regulars / suggestions / FBT
+
 - Anchor: order line-item history is queryable per session + per saved account. Three recommendation surfaces planned:
   - **Regulars** — before menu opens: "Your usual: Spanish Latte L + Salty Beef Truffle Bagel".
   - **Suggestions** — on item sheet: "Pairs well with: Kult Made Cookies".
@@ -205,12 +209,14 @@ Each item below has an architectural anchor in MVP so it can be added without pa
 - MVP captures the data (anonymized session → items + branch + time) so models have substrate later.
 
 ### AI features
+
 - Order-building assistant: "I want a strong sweet drink for a hot day" → builds a cart.
 - Smart customization: "make it dairy-free" → swaps modifier choices, flags incompatibilities.
 - Upsell whisperer: post-cart suggestion engine ("Add a croissant for 75 LE more?").
 - Anchor: menu data structure is rich enough (modifier groups, allergens, nutritional info) for LLM tool-calling. Add a `/api/ai/assistant` route later that consumes the menu + cart and proposes mutations.
 
 ### Other deferred (no architectural anchor needed)
+
 - Loyalty, reservations, SMS/WhatsApp notifications, web push, split bill, open-tab dine-in, real-time table occupancy, thermal printers, separate kitchen-vs-waiter UI, multi-tenant self-serve signup.
 
 ## 12. Architectural commitments

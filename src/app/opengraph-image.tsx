@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "SaaSTARTER - Ship Your SaaS in Days, Not Months";
+export const alt = "Koffee Kulture — Scan. Sip. Repeat.";
 export const size = {
   width: 1200,
   height: 630,
@@ -25,20 +25,42 @@ export default async function Image() {
         alignItems: "center",
         justifyContent: "center",
         background:
-          "linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)",
+          "linear-gradient(135deg, #f2ead0 0%, #e8dfc2 50%, #f2ead0 100%)",
         fontFamily: "system-ui, -apple-system, sans-serif",
+        color: "#2a2418",
       }}
     >
       {/* Logo — next/image is not supported inside ImageResponse (Satori) */}
       <img
         src={logoUrl.toString()}
-        alt="SaaSTARTER Logo"
-        width={200}
-        height={200}
+        alt="Koffee Kulture Logo"
+        width={180}
+        height={180}
         style={{
-          marginBottom: "40px",
+          marginBottom: "28px",
+          borderRadius: "32px",
         }}
       />
+      <div
+        style={{
+          fontSize: 72,
+          fontWeight: 800,
+          letterSpacing: "-0.02em",
+          color: "#7a8f4f",
+        }}
+      >
+        Koffee Kulture
+      </div>
+      <div
+        style={{
+          fontSize: 28,
+          marginTop: 12,
+          color: "#5a4838",
+          letterSpacing: "0.04em",
+        }}
+      >
+        Scan. Sip. Repeat.
+      </div>
     </div>,
     {
       ...size,

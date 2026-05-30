@@ -2,7 +2,7 @@ const messages = {
   // Page metadata
   metaTitle: "Contact Us",
   metaDescription:
-    "Get in touch with the SaaSTARTER team. We'd love to hear from you — whether it's a question, feedback, or partnership inquiry.",
+    "Get in touch with the Koffee Kulture team. We'd love to hear from you — whether it's a question, feedback, or partnership inquiry.",
 
   // Page heading
   pageTitle: "Get in touch.",

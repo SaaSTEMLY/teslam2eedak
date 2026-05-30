@@ -124,7 +124,7 @@ const fulfillmentSteps = [
 function formatCurrency(amount: number, locale: SupportedLocale) {
   return new Intl.NumberFormat(locale, {
     style: "currency",
-    currency: "USD",
+    currency: "EGP",
     numberingSystem: locale === "ar" ? "arab" : undefined,
   }).format(amount / 100);
 }

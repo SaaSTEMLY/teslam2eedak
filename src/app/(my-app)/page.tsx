@@ -11,26 +11,26 @@ import { getMessages } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title:
-    "SaaSTARTER - Ship Your SaaS in Days, Not Months | Next.js SaaS Template",
+    "Koffee Kulture — Scan. Sip. Repeat. | House-roasted coffee, Maadi · Cairo",
   description:
-    "The production-ready Next.js SaaS template with Stripe payments, authentication, eCommerce, and 50+ pre-built components. Stop building boilerplate — start shipping.",
+    "Maadi's house-roasted koffee, all-day breakfast, and the bagels Kairo whispers about. Scan the table QR or order ahead — no app required.",
   keywords: [
-    "SaaS template",
-    "Next.js template",
-    "SaaS boilerplate",
-    "Stripe integration",
-    "shadcn/ui",
-    "PayloadCMS",
-    "eCommerce template",
-    "React SaaS starter",
+    "Koffee Kulture",
+    "Maadi coffee",
+    "Cairo café",
+    "specialty coffee Cairo",
+    "QR menu order",
+    "click and collect Cairo",
+    "Maadi breakfast",
+    "Egyptian coffee shop",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "SaaSTARTER - Ship Your SaaS in Days, Not Months",
+    title: "Koffee Kulture — Scan. Sip. Repeat.",
     description:
-      "Production-ready Next.js SaaS template with eCommerce, authentication, payments, and everything you need to launch.",
+      "House-roasted koffee, all-day breakfast, and the bagels Kairo whispers about. Maadi · Cairo.",
     url: "/",
     type: "website",
     images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         url: "/logo/main/pwa-512x512.png",
         width: 512,
         height: 512,
-        alt: "SaaSTARTER - Ship Your SaaS in Days, Not Months",
+        alt: "Koffee Kulture — Scan. Sip. Repeat.",
       },
     ],
   },

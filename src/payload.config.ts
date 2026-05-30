@@ -313,7 +313,7 @@ const sendOrderEmailHook: CollectionAfterChangeHook = ({
           customerName,
           items,
           totalAmount: doc.amount ?? 0,
-          currency: doc.currency ?? "USD",
+          currency: doc.currency ?? "EGP",
           shippingAddress: doc.shippingAddress ?? null,
           orderDate: doc.createdAt,
           discountCode: doc.discountCode ?? null,
@@ -415,16 +415,17 @@ const checkInventoryHook: CollectionAfterChangeHook = ({ doc, operation }) => {
 const emailAdapter = isDev
   ? undefined // Payload falls back to console logging in dev
   : resendAdapter({
-      defaultFromAddress: "noreply@yourdomain.com",
-      defaultFromName: "SaaSTARTER",
+      defaultFromAddress: "noreply@koffee-kulture.com",
+      defaultFromName: "Koffee Kulture",
       apiKey: process.env.RESEND_API_KEY || "",
     });
 
 export default buildConfig({
   admin: {
     meta: {
-      titleSuffix: "- SaaStarter",
-      description: "The best admin panel in the world",
+      titleSuffix: "— Koffee Kulture",
+      description:
+        "Koffee Kulture Kitchen — menu, orders, branches, and tables",
       icons: [
         {
           rel: "icon",
@@ -493,7 +494,7 @@ export default buildConfig({
       collections: ["products", "blogs"],
       uploadsCollection: "media",
       generateTitle: ({ doc }) =>
-        `${(doc as { name?: string; title?: string }).name || (doc as { name?: string; title?: string }).title || "Page"} | SaaSTARTER`,
+        `${(doc as { name?: string; title?: string }).name || (doc as { name?: string; title?: string }).title || "Page"} | Koffee Kulture`,
       generateDescription: ({ doc }) =>
         (doc as { description?: string; excerpt?: string }).description ||
         (doc as { description?: string; excerpt?: string }).excerpt ||
@@ -838,10 +839,10 @@ export default buildConfig({
       openapiVersion: "3.1",
       specEndpoint: "/payload-spec.json",
       metadata: {
-        title: "SaaSTARTER API",
+        title: "Koffee Kulture API",
         version: "1.0.0",
         description:
-          "Enterprise-grade SaaS API with ecommerce, authentication, and content management.",
+          "Menu, ordering, tables, branches, and content management for Koffee Kulture (powered by teslam2eedak).",
       },
     }),
     // Scalar UI is served at /api/docs via a Next.js route handler

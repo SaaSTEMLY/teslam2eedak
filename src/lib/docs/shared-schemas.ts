@@ -280,7 +280,7 @@ export const apiTags: OpenAPIV3_1.TagObject[] = [
 
 /** Full API info (includes admin/internal docs). */
 export const apiInfo: OpenAPIV3_1.InfoObject = {
-  title: "SaaSTARTER API",
+  title: "Koffee Kulture API",
   version: "1.0.0",
   description:
     "Enterprise-grade SaaS API with ecommerce, authentication, and content management.\n\n" +
@@ -296,7 +296,7 @@ export const apiInfo: OpenAPIV3_1.InfoObject = {
     "`{ details: { fieldErrors, formErrors } }` with per-field messages.",
   contact: {
     name: "API Support",
-    email: "support@yourdomain.com",
+    email: "support@koffee-kulture.com",
   },
   license: {
     name: "MIT",
@@ -305,7 +305,7 @@ export const apiInfo: OpenAPIV3_1.InfoObject = {
 
 /** Public storefront API info (consumer-facing docs). */
 export const publicApiInfo: OpenAPIV3_1.InfoObject = {
-  title: "SaaSTARTER Storefront API",
+  title: "Koffee Kulture Storefront API",
   version: "1.0.0",
   description:
     "API for building storefronts and ecommerce experiences.\n\n" +
@@ -332,7 +332,7 @@ export const publicApiInfo: OpenAPIV3_1.InfoObject = {
     "`{ details: { fieldErrors, formErrors } }` with per-field messages.",
   contact: {
     name: "API Support",
-    email: "support@yourdomain.com",
+    email: "support@koffee-kulture.com",
   },
   license: {
     name: "MIT",

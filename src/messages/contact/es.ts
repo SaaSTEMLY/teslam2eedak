@@ -4,7 +4,7 @@ const messages: ContactMessages = {
   // Page metadata
   metaTitle: "Contáctanos",
   metaDescription:
-    "Ponte en contacto con el equipo de SaaSTARTER. Nos encantaría saber de ti, ya sea una pregunta, comentario o consulta de asociación.",
+    "Ponte en contacto con el equipo de Koffee Kulture. Nos encantaría saber de ti, ya sea una pregunta, comentario o consulta de asociación.",
 
   // Page heading
   pageTitle: "Ponte en contacto.",

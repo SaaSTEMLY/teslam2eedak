@@ -1,14 +1,14 @@
 import type { Messages } from "@/lib/i18n";
 
 const stack = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Stripe",
-  "PostgreSQL",
-  "Tailwind",
-  "shadcn/ui",
-  "Vercel",
+  "Cairo Scene",
+  "Identity Magazine",
+  "Scoop Empire",
+  "Cairo 360",
+  "Cairo Gossip",
+  "What Women Want",
+  "TimeOut Cairo",
+  "The Daily Brew",
 ];
 
 export function LogoMarquee({ messages: m }: { messages: Messages<"home"> }) {

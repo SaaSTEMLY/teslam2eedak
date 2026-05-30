@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  ShoppingCart,
-  LayoutDashboard,
-  ShieldCheck,
+  QrCode,
+  Bike,
+  SlidersHorizontal,
   CreditCard,
-  Globe,
-  Search,
+  Languages,
+  Clock,
 } from "lucide-react";
 import {
   AnimateOnScroll,
@@ -21,17 +21,17 @@ export function FeaturesSection({
 }) {
   const features = [
     {
-      icon: ShoppingCart,
+      icon: QrCode,
       title: m.featureEcommerceTitle,
       description: m.featureEcommerceDesc,
     },
     {
-      icon: LayoutDashboard,
+      icon: Bike,
       title: m.featureAdminTitle,
       description: m.featureAdminDesc,
     },
     {
-      icon: ShieldCheck,
+      icon: SlidersHorizontal,
       title: m.featureAuthTitle,
       description: m.featureAuthDesc,
     },
@@ -41,12 +41,12 @@ export function FeaturesSection({
       description: m.featurePaymentsDesc,
     },
     {
-      icon: Globe,
+      icon: Languages,
       title: m.featureI18nTitle,
       description: m.featureI18nDesc,
     },
     {
-      icon: Search,
+      icon: Clock,
       title: m.featureSeoTitle,
       description: m.featureSeoDesc,
     },

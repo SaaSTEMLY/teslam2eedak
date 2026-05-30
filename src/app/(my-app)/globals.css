@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@daveyplate/better-auth-ui/css";
-@import "../../../public/colorSchemes/graphite.css";
+@import "../../../public/colorSchemes/koffee-kulture.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is([data-theme='dark'] *));

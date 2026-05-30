@@ -5,7 +5,7 @@ export const Logo = () => {
     <div className="flex items-center gap-2">
       <Image
         src="/logo/main/raw.svg"
-        alt="SaaStarter"
+        alt="Koffee Kulture"
         width={120}
         height={32}
         className="h-8 w-auto"

@@ -18,145 +18,145 @@ const faqSeedData = [
   {
     order: 1,
     en: {
-      question: "What is SaaSTARTER?",
+      question: "Do I need to download an app to order?",
       answer:
-        "SaaSTARTER is a production-grade Next.js SaaS starter kit that eliminates months of boilerplate work. It ships with everything you need — from SEO-optimized marketing pages to Stripe-powered e-commerce and multi-provider authentication. Choose a tier that matches your needs, customize it to your brand, and launch your product while your competitors are still setting up their dev environment.",
+        "No. Scan the QR on the table, the door, or our Instagram — it opens straight in your browser. No download, no signup, no friction.",
     },
     ar: {
-      question: "ما هو SaaSTARTER؟",
+      question: "محتاج أنزّل تطبيق علشان أطلب؟",
       answer:
-        "SaaSTARTER هو قالب SaaS احترافي جاهز للإنتاج مبني على Next.js يزيل أشهر من العمل التكراري. يأتي بكل ما تحتاجه — من صفحات تسويقية مُحسَّنة لمحركات البحث إلى تجارة إلكترونية مدعومة بـ Stripe ومصادقة متعددة المزودين. اختر المستوى المناسب لاحتياجاتك، خصصه لعلامتك التجارية، وأطلق منتجك بينما منافسوك لا يزالون يُعدّون بيئة التطوير.",
+        "لأ. امسح QR من الترابيزة أو الباب أو الإنستجرام بتاعنا — بيفتح في المتصفح على طول. مفيش تنزيل، مفيش تسجيل، مفيش تأخير.",
     },
     es: {
-      question: "¿Qué es SaaSTARTER?",
+      question: "¿Necesito descargar una app para pedir?",
       answer:
-        "SaaSTARTER es un kit de inicio SaaS de nivel producción construido con Next.js que elimina meses de trabajo repetitivo. Incluye todo lo que necesitas — desde páginas de marketing optimizadas para SEO hasta e-commerce con Stripe y autenticación multi-proveedor. Elige el nivel que se ajuste a tus necesidades, personalízalo para tu marca y lanza tu producto mientras tu competencia aún está configurando su entorno de desarrollo.",
+        "No. Escanea el QR de la mesa, la puerta o nuestro Instagram — se abre directo en tu navegador. Sin descargas, sin registro, sin fricción.",
     },
   },
   {
     order: 2,
     en: {
-      question: "What tech stack does SaaSTARTER use?",
+      question: "Can I order ahead and just walk in?",
       answer:
-        "SaaSTARTER is built on a modern, battle-tested stack: TypeScript, Next.js (App Router), React, Tailwind CSS v4, ShadCN for UI components, Zod for schema validation, Better-Auth for authentication, Stripe for payments, GraphQL and RESTful API support, SQLite for the database, PayloadCMS for content management, and Lenis for buttery-smooth scrolling. Everything is TypeScript-first with strict mode enabled.",
+        "Yes — pick 'Click & Collect', choose ASAP or a time slot, pay, and we'll start brewing the minute you tap pay. Walk up to the bar, give us your order number, and you're out the door.",
     },
     ar: {
-      question: "ما هي التقنيات المستخدمة في SaaSTARTER؟",
+      question: "أقدر أطلب قبل ما آجي وأستلم وبس؟",
       answer:
-        "SaaSTARTER مبني على مجموعة تقنيات حديثة ومُجرَّبة: TypeScript و Next.js (App Router) و React و Tailwind CSS v4 و ShadCN لمكونات الواجهة و Zod للتحقق من المخططات و Better-Auth للمصادقة و Stripe للمدفوعات ودعم GraphQL و RESTful API و SQLite لقاعدة البيانات و PayloadCMS لإدارة المحتوى و Lenis للتمرير السلس. كل شيء مبني بـ TypeScript أولاً مع تفعيل الوضع الصارم.",
+        "أيوه — اختار 'اطلب واستلم'، اختار ASAP أو وقت محدد، ادفع، وبنبدأ التحضير في نفس اللحظة. تيجي تستلم من البار وتقول رقم طلبك وتمشي.",
     },
     es: {
-      question: "¿Qué tecnologías usa SaaSTARTER?",
+      question: "¿Puedo pedir adelantado y solo pasar a recoger?",
       answer:
-        "SaaSTARTER está construido con un stack moderno y probado en batalla: TypeScript, Next.js (App Router), React, Tailwind CSS v4, ShadCN para componentes UI, Zod para validación de esquemas, Better-Auth para autenticación, Stripe para pagos, soporte para GraphQL y RESTful API, SQLite para la base de datos, PayloadCMS para gestión de contenido y Lenis para scroll ultra suave. Todo es TypeScript-first con modo estricto activado.",
+        "Sí — elige 'Pedido y recogida', elige 'lo antes posible' o una hora, paga, y empezamos a prepararlo en el momento. Pasa por la barra, da tu número de pedido y te vas.",
     },
   },
   {
     order: 3,
     en: {
-      question: "What is the difference between the tiers?",
+      question: "How do I pay?",
       answer:
-        "Frontend LITE gives you production-ready marketing pages (landing, about, terms of service, privacy policy, license) plus FAQ, contact, and blog pages — all optimized for speed, SEO-ready, and PWA-compatible out of the box. Frontend PRO adds multiple color schemes, dark mode, and full multi-language support with RTL layouts. Frontend + Backend LITE adds admin panels for FAQ, contact, and blog management, plus media management with ready-made storage adapters. Frontend + Backend PRO is the complete package — full e-commerce with products, variants, cart, discount codes, Stripe checkout, saved cards, address management, and order tracking, plus authentication with email verification, Google login, and passkey support.",
+        "Card on the QR (Visa, Mastercard, Meeza) — dine-in always pays before the kitchen starts. For Click & Collect you can choose card now or cash when you pick up.",
     },
     ar: {
-      question: "ما الفرق بين المستويات؟",
+      question: "إزاي بادفع؟",
       answer:
-        "Frontend LITE يمنحك صفحات تسويقية جاهزة للإنتاج (هبوط، من نحن، شروط الخدمة، سياسة الخصوصية، ترخيص) بالإضافة إلى صفحات الأسئلة الشائعة والتواصل والمدونة — جميعها مُحسَّنة للسرعة وجاهزة لمحركات البحث ومتوافقة مع PWA. Frontend PRO يضيف أنظمة ألوان متعددة والوضع الداكن ودعم كامل لتعدد اللغات مع تخطيطات RTL. Frontend + Backend LITE يضيف لوحات إدارة للأسئلة الشائعة والتواصل والمدونة بالإضافة إلى إدارة الوسائط مع محولات تخزين جاهزة. Frontend + Backend PRO هو الحزمة الكاملة — تجارة إلكترونية شاملة مع منتجات ومتغيرات وسلة وأكواد خصم ودفع Stripe وحفظ البطاقات وإدارة العناوين وتتبع الطلبات، بالإضافة إلى مصادقة مع تحقق البريد الإلكتروني وتسجيل Google ودعم مفتاح المرور.",
+        "كارت من الـ QR (فيزا، ماستر كارد، ميزة) — الطلب على الترابيزة بيتدفع قبل ما المطبخ يبدأ. مع اطلب واستلم تقدر تدفع كارت دلوقتي أو كاش لما تيجي.",
     },
     es: {
-      question: "¿Cuál es la diferencia entre los niveles?",
+      question: "¿Cómo pago?",
       answer:
-        "Frontend LITE te da páginas de marketing listas para producción (inicio, acerca de, términos de servicio, política de privacidad, licencia) más páginas de FAQ, contacto y blog — todo optimizado para velocidad, SEO y compatible con PWA. Frontend PRO añade esquemas de colores múltiples, modo oscuro y soporte completo multi-idioma con layouts RTL. Frontend + Backend LITE añade paneles de administración para FAQ, contacto y blog, más gestión de medios con adaptadores de almacenamiento listos. Frontend + Backend PRO es el paquete completo — e-commerce integral con productos, variantes, carrito, códigos de descuento, checkout con Stripe, tarjetas guardadas, gestión de direcciones y seguimiento de pedidos, más autenticación con verificación de email, login con Google y soporte de passkey.",
+        "Tarjeta en el QR (Visa, Mastercard, Meeza) — el consumo en mesa siempre se paga antes de que la cocina empiece. Para 'Pedido y recogida' puedes elegir tarjeta ahora o efectivo al recoger.",
     },
   },
   {
     order: 4,
     en: {
-      question: "Can I use SaaSTARTER for commercial projects?",
+      question: "Do you charge VAT and a service charge?",
       answer:
-        "Absolutely. Once you purchase a license, you can use SaaSTARTER to build and deploy as many projects as your license allows. There are no royalties or recurring fees — you own the code and can modify it however you need.",
+        "VAT is 14% (Egyptian law) and a 12% service charge applies to dine-in orders. Both are itemised in your cart before you pay — no surprises. Click & Collect orders don't get a service charge.",
     },
     ar: {
-      question: "هل يمكنني استخدام SaaSTARTER لمشاريع تجارية؟",
+      question: "بتاخدوا ضريبة قيمة مضافة وخدمة؟",
       answer:
-        "بالتأكيد. بمجرد شراء الترخيص، يمكنك استخدام SaaSTARTER لبناء ونشر أي عدد من المشاريع حسب ما يسمح به ترخيصك. لا توجد رسوم ملكية أو رسوم متكررة — أنت تملك الكود ويمكنك تعديله كما تشاء.",
+        "الضريبة ١٤٪ (القانون المصري) و١٢٪ خدمة بتتطبق على طلبات الترابيزة. الاتنين بيظهروا في السلة قبل ما تدفع — مفيش مفاجآت. طلبات اطلب واستلم مفيش عليها خدمة.",
     },
     es: {
-      question: "¿Puedo usar SaaSTARTER en proyectos comerciales?",
+      question: "¿Cobran IVA y propina?",
       answer:
-        "Por supuesto. Una vez que compres una licencia, puedes usar SaaSTARTER para construir y desplegar tantos proyectos como tu licencia permita. No hay regalías ni tarifas recurrentes — eres dueño del código y puedes modificarlo como necesites.",
+        "El IVA es 14% (ley egipcia) y se aplica un 12% de servicio a los pedidos en mesa. Ambos aparecen desglosados en tu carrito antes de pagar — sin sorpresas. Los pedidos para recoger no llevan cargo por servicio.",
     },
   },
   {
     order: 5,
     en: {
-      question: "How long does it take to get up and running?",
+      question: "Can I customise my drink?",
       answer:
-        "Most developers are up and running within 5 minutes. Clone the repo, install dependencies with Bun, set your environment variables, push the database schema, and you are live. The setup guide walks you through every step.",
+        "Yes — swap milk (oat, almond, soy), add a shot, change the sweetness, choose hot or iced. Anything we have at the bar is on the menu.",
     },
     ar: {
-      question: "كم يستغرق الإعداد والتشغيل؟",
+      question: "أقدر أخصّص مشروبي؟",
       answer:
-        "معظم المطورين يبدأون العمل خلال 5 دقائق. انسخ المستودع، ثبّت التبعيات بـ Bun، اضبط متغيرات البيئة، ادفع مخطط قاعدة البيانات، وستكون جاهزاً. دليل الإعداد يرشدك خطوة بخطوة.",
+        "أيوه — بدّل الحليب (شوفان، لوز، صويا)، زوّد شوت، غيّر السكر، اختار ساخن أو مثلج. أي حاجة عندنا على البار موجودة في المنيو.",
     },
     es: {
-      question: "¿Cuánto tiempo toma estar listo?",
+      question: "¿Puedo personalizar mi bebida?",
       answer:
-        "La mayoría de los desarrolladores están listos en 5 minutos. Clona el repositorio, instala las dependencias con Bun, configura las variables de entorno, ejecuta el esquema de base de datos y estarás en línea. La guía de configuración te lleva paso a paso.",
+        "Sí — cambia la leche (avena, almendra, soja), añade un shot, ajusta el dulzor, elige caliente o frío. Todo lo que tenemos en la barra está en el menú.",
     },
   },
   {
     order: 6,
     en: {
-      question: "Do you offer refunds?",
+      question: "What about allergies and dietary preferences?",
       answer:
-        "Yes. If SaaSTARTER does not meet your expectations, contact us within 14 days of purchase for a full refund. No questions asked. We want you to feel confident in your investment.",
+        "Toggle the allergen filter at the top of the menu — vegan, vegetarian, dairy-free, gluten-free. Items that don't match are dimmed. Every item shows its allergen tags on the detail sheet.",
     },
     ar: {
-      question: "هل تقدمون استرداد الأموال؟",
+      question: "والحساسية والنظام الغذائي؟",
       answer:
-        "نعم. إذا لم يلبِّ SaaSTARTER توقعاتك، تواصل معنا خلال 14 يوماً من الشراء لاسترداد كامل المبلغ. بدون أي أسئلة. نريدك أن تشعر بالثقة في استثمارك.",
+        "اضغط فلتر الحساسية فوق المنيو — نباتي، نباتي صرف، خالي من الألبان، خالي من الجلوتين. اللي مش مطابق بيظهر باهت. كل صنف بيوضح علامات الحساسية في صفحته.",
     },
     es: {
-      question: "¿Ofrecen reembolsos?",
+      question: "¿Y las alergias y preferencias dietéticas?",
       answer:
-        "Sí. Si SaaSTARTER no cumple tus expectativas, contáctanos dentro de los 14 días posteriores a la compra para un reembolso completo. Sin preguntas. Queremos que te sientas seguro con tu inversión.",
+        "Activa el filtro de alérgenos en la parte superior del menú — vegano, vegetariano, sin lactosa, sin gluten. Los artículos que no coinciden se atenúan. Cada artículo muestra sus etiquetas en la ficha de detalle.",
     },
   },
   {
     order: 7,
     en: {
-      question: "Is there support available?",
+      question: "Where are you?",
       answer:
-        "Every purchase includes access to our community Discord where you can ask questions, share what you are building, and get help from other developers. Priority email support is available for Frontend + Backend PRO customers.",
+        "Currently at 9 Road 233, Degla, Maadi — two minutes from Sakanat El-Maadi metro. Open daily 7am – 11pm. More branches coming soon.",
     },
     ar: {
-      question: "هل يتوفر دعم فني؟",
+      question: "فين موقعكم؟",
       answer:
-        "كل عملية شراء تتضمن الوصول إلى مجتمعنا على Discord حيث يمكنك طرح الأسئلة ومشاركة ما تبنيه والحصول على مساعدة من مطورين آخرين. الدعم بالبريد الإلكتروني ذو الأولوية متاح لعملاء Frontend + Backend PRO.",
+        "حالياً في ٩ شارع ٢٣٣، دجلة، المعادي — دقيقتين من مترو سكنات المعادي. فاتحين يومياً من ٧ ص لـ ١١ م. فروع تانية قريب.",
     },
     es: {
-      question: "¿Hay soporte disponible?",
+      question: "¿Dónde están?",
       answer:
-        "Cada compra incluye acceso a nuestro Discord comunitario donde puedes hacer preguntas, compartir lo que estás construyendo y obtener ayuda de otros desarrolladores. El soporte prioritario por correo electrónico está disponible para clientes de Frontend + Backend PRO.",
+        "Actualmente en 9 Calle 233, Degla, Maadi — dos minutos del metro Sakanat El-Maadi. Abrimos todos los días de 7am a 11pm. Más sucursales pronto.",
     },
   },
   {
     order: 8,
     en: {
-      question: "How do I receive updates?",
+      question: "Can I get a printed receipt for my expenses?",
       answer:
-        "When we ship new features or fixes, you will receive an email notification with a changelog. You can pull updates into your project via Git. We follow semantic versioning so you always know what to expect.",
+        "Every order has a tracker URL you can bookmark — it's also your receipt. Tap 'Email me the receipt' on the success screen if you need a copy. We can add a printed receipt at the counter on request.",
     },
     ar: {
-      question: "كيف أتلقى التحديثات؟",
+      question: "أقدر آخد فاتورة مطبوعة للمصاريف؟",
       answer:
-        "عندما نصدر ميزات جديدة أو إصلاحات، ستتلقى إشعاراً بالبريد الإلكتروني مع سجل التغييرات. يمكنك سحب التحديثات إلى مشروعك عبر Git. نتبع الإصدار الدلالي حتى تعرف دائماً ما تتوقعه.",
+        "كل طلب ليه لينك تتبع تقدر تحفظه — هو نفسه الفاتورة. اضغط 'ابعتلي الفاتورة بالإيميل' في صفحة النجاح لو محتاج نسخة. ولو محتاج فاتورة مطبوعة من البار، اطلبها.",
     },
     es: {
-      question: "¿Cómo recibo las actualizaciones?",
+      question: "¿Puedo obtener un recibo impreso para mis gastos?",
       answer:
-        "Cuando lanzamos nuevas funciones o correcciones, recibirás una notificación por correo electrónico con un registro de cambios. Puedes incorporar las actualizaciones a tu proyecto mediante Git. Seguimos versionado semántico para que siempre sepas qué esperar.",
+        "Cada pedido tiene una URL de seguimiento que puedes guardar — también es tu recibo. Toca 'Envíame el recibo' en la pantalla de éxito si necesitas una copia. Podemos imprimirte el recibo en el mostrador si lo pides.",
     },
   },
 ];

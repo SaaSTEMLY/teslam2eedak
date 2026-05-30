@@ -131,9 +131,10 @@ export function Header({
           {/* Logo */}
           <Link
             href="/"
-            className="font-serif text-xl font-bold tracking-tight text-foreground hover:text-primary transition-colors"
+            className="text-xl font-extrabold tracking-tight text-foreground hover:text-primary transition-colors"
           >
-            SaaSTARTER
+            <span className="text-primary">K</span>offee{" "}
+            <span className="text-primary">K</span>ulture
           </Link>
 
           {/* Desktop Navigation - centered on the page */}

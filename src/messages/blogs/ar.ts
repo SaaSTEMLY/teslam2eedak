@@ -2,14 +2,14 @@ const messages = {
   // Blogs listing page
   metaTitle: "المدونة",
   metaDescription:
-    "رؤى ودروس وتحديثات من فريق SaaSTARTER. تعلم كيفية بناء تطبيقات SaaS الحديثة.",
+    "رؤى ودروس وتحديثات من فريق Koffee Kulture. تعلم كيفية بناء تطبيقات SaaS الحديثة.",
   pageTitle: "المدونة.",
   pageSubtitle: "دروس وتحديثات وأفكار حول بناء SaaS.",
   noPostsTitle: "لا توجد منشورات بعد",
   noPostsDescription: "تحقق مرة أخرى قريبًا للحصول على محتوى جديد.",
 
   // Blog post page
-  postNotFoundTitle: "المنشور غير موجود | SaaSTARTER",
+  postNotFoundTitle: "المنشور غير موجود | Koffee Kulture",
   backToBlog: "جميع المنشورات",
   morePosts: "المزيد من المنشورات",
   getInTouch: "تواصل معنا",

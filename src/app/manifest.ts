@@ -3,13 +3,13 @@ import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/seo";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${SITE_NAME} - Ship Your SaaS in Days, Not Months`,
+    name: `${SITE_NAME} — Scan. Sip. Repeat.`,
     short_name: SITE_NAME,
     description: SITE_DESCRIPTION,
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#0a0a0a",
+    background_color: "#f2ead0",
+    theme_color: "#7a8f4f",
     icons: [
       {
         src: "/logo/main/pwa-64x64.png",

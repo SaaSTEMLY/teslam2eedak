@@ -4,7 +4,7 @@ import { getMessages } from "@/lib/i18n";
 import { getLocale } from "@/lib/locale";
 
 export const metadata: Metadata = {
-  title: "Checkout | SaaSTARTER",
+  title: "Checkout | Koffee Kulture",
   description: "Complete your purchase securely with Stripe.",
 };
 

@@ -12,8 +12,9 @@ const messages = {
   github: "GitHub",
   twitter: "Twitter",
   linkedin: "LinkedIn",
-  tagline: "Production-ready Next.js SaaS template. Ship your product faster.",
-  copyright: "\u00A9 2026 SaaSTARTER. All rights reserved.",
+  tagline:
+    "House-roasted koffee, scratch-made breakfast, and a menu you can scan. Maadi \u00B7 Cairo.",
+  copyright: "\u00A9 2026 Koffee Kulture. All rights reserved.",
 
   // Developers
   developers: "Developers",
@@ -23,11 +24,11 @@ const messages = {
   humanDocs: "Markdown Docs",
 
   // Newsletter
-  newsletterTitle: "Stay in the loop",
-  newsletterPlaceholder: "Enter your email",
+  newsletterTitle: "Get the seasonal menu first",
+  newsletterPlaceholder: "Your email",
   newsletterButton: "Subscribe",
   newsletterSubscribing: "Subscribing...",
-  newsletterSuccess: "You're subscribed!",
+  newsletterSuccess: "Welcome to the Kulture!",
   newsletterError: "Something went wrong. Try again.",
   newsletterInvalidEmail: "Please enter a valid email.",
 } as const;

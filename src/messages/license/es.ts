@@ -4,7 +4,7 @@ const messages: LicenseMessages = {
   // Metadata
   metaTitle: "Licencia",
   metaDescription:
-    "Comprende los términos de licencia para usar SaaSTARTER. Aprende qué puedes y qué no puedes hacer con nuestra plantilla.",
+    "Comprende los términos de licencia para usar Koffee Kulture. Aprende qué puedes y qué no puedes hacer con nuestra plantilla.",
 
   // Page header
   pageTitle: "Acuerdo de Licencia",
@@ -12,11 +12,11 @@ const messages: LicenseMessages = {
 
   // Content
   intro:
-    'Este Acuerdo de Licencia ("Acuerdo") es un acuerdo legal entre tú ("Licenciatario") y SaaSTARTER ("Licenciante") que rige el uso de la plantilla SaaSTARTER y materiales asociados.',
+    'Este Acuerdo de Licencia ("Acuerdo") es un acuerdo legal entre tú ("Licenciatario") y Koffee Kulture ("Licenciante") que rige el uso de la plantilla Koffee Kulture y materiales asociados.',
 
   section1Title: "1. Concesión de Licencia",
   section1Content:
-    "Tras la compra, SaaSTARTER te otorga una licencia no exclusiva e intransferible para usar la plantilla sujeta a los términos de este Acuerdo.",
+    "Tras la compra, Koffee Kulture te otorga una licencia no exclusiva e intransferible para usar la plantilla sujeta a los términos de este Acuerdo.",
 
   section1Subtitle1: "Licencia Estándar",
   section1Content1: "La Licencia Estándar te permite:",
@@ -68,7 +68,7 @@ const messages: LicenseMessages = {
 
   section4Title: "4. Propiedad",
   section4Content1:
-    "La plantilla y todos los derechos de propiedad intelectual asociados siguen siendo propiedad exclusiva de SaaSTARTER. Este Acuerdo te otorga una licencia para usar la plantilla; no transfiere la propiedad.",
+    "La plantilla y todos los derechos de propiedad intelectual asociados siguen siendo propiedad exclusiva de Koffee Kulture. Este Acuerdo te otorga una licencia para usar la plantilla; no transfiere la propiedad.",
   section4Content2:
     "Retienes la propiedad de cualquier código personalizado, contenido o modificaciones que crees mientras usas la plantilla.",
 
@@ -99,15 +99,15 @@ const messages: LicenseMessages = {
 
   section7Title: "7. Descargo de Garantía",
   section7Content1:
-    'La plantilla se proporciona "tal cual" sin garantía de ningún tipo, expresa o implícita. SaaSTARTER no garantiza que la plantilla cumpla con tus requisitos, sea ininterrumpida o esté libre de errores.',
+    'La plantilla se proporciona "tal cual" sin garantía de ningún tipo, expresa o implícita. Koffee Kulture no garantiza que la plantilla cumpla con tus requisitos, sea ininterrumpida o esté libre de errores.',
   section7Content2:
     "Asumes toda la responsabilidad y el riesgo por el uso de la plantilla y tu confianza en ella.",
 
   section8Title: "8. Limitación de Responsabilidad",
   section8Content1:
-    "En ningún caso SaaSTARTER será responsable de daños indirectos, incidentales, especiales, consecuentes o punitivos que surjan de o estén relacionados con tu uso de la plantilla, incluso si se le advirtió de la posibilidad de tales daños.",
+    "En ningún caso Koffee Kulture será responsable de daños indirectos, incidentales, especiales, consecuentes o punitivos que surjan de o estén relacionados con tu uso de la plantilla, incluso si se le advirtió de la posibilidad de tales daños.",
   section8Content2:
-    "La responsabilidad total de SaaSTARTER no excederá el monto que pagaste por la plantilla.",
+    "La responsabilidad total de Koffee Kulture no excederá el monto que pagaste por la plantilla.",
 
   section9Title: "9. Terminación",
   section9Content1:
@@ -121,7 +121,7 @@ const messages: LicenseMessages = {
 
   section11Title: "11. Verificación de Licencia",
   section11Content:
-    "SaaSTARTER se reserva el derecho de verificar el cumplimiento de la licencia. El uso no autorizado de la plantilla puede resultar en acciones legales y responsabilidad por daños.",
+    "Koffee Kulture se reserva el derecho de verificar el cumplimiento de la licencia. El uso no autorizado de la plantilla puede resultar en acciones legales y responsabilidad por daños.",
 
   section12Title: "12. Ley Aplicable",
   section12Content:

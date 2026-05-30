@@ -28,7 +28,7 @@ export const betterAuthOptions = {
     sendResetPassword: async ({ user, url }) => {
       await sendEmail({
         to: user.email,
-        subject: "Reset Your Password — SaaSTARTER",
+        subject: "Reset Your Password — Koffee Kulture",
         html: await brandedEmailHtml({
           icon: "&#128274;",
           heading: "Reset Your Password",
@@ -61,7 +61,7 @@ export const betterAuthOptions = {
     sendVerificationEmail: async ({ user, url }) => {
       await sendEmail({
         to: user.email,
-        subject: "Verify Your Email — SaaSTARTER",
+        subject: "Verify Your Email — Koffee Kulture",
         html: await brandedEmailHtml({
           icon: "&#9993;",
           heading: "Verify Your Email",
@@ -80,7 +80,7 @@ export const betterAuthOptions = {
       sendChangeEmailVerification: async ({ user, newEmail, url }) => {
         await sendEmail({
           to: newEmail,
-          subject: "Confirm Email Change — SaaSTARTER",
+          subject: "Confirm Email Change — Koffee Kulture",
           html: await brandedEmailHtml({
             icon: "&#128231;",
             heading: "Confirm Email Change",
@@ -103,7 +103,7 @@ export const betterAuthOptions = {
         const deleteUrl = `${baseURL}/delete-account/confirm?token=${token}`;
         await sendEmail({
           to: user.email,
-          subject: "Confirm Account Deletion — SaaSTARTER",
+          subject: "Confirm Account Deletion — Koffee Kulture",
           html: await brandedEmailHtml({
             icon: "&#9888;",
             heading: "Confirm Account Deletion",

@@ -97,6 +97,7 @@ Also see [quick-reference.md](./references/quick-reference.md) for the full bran
 When adding or modifying API routes, services, or backend logic during rebranding, follow these rules strictly. Use the `/typescript-types-best-practices` and `/effect-errors` skills for guidance.
 
 **Effect Services & DI:**
+
 - All reusable business logic belongs in Effect services (`src/lib/effect/services/`), not inline in route handlers.
 - Existing services: `Auth`, `Payload`, `StripeService`, `Discount`, `CartService`. Use them — don't duplicate their logic.
 - When adding a new domain (e.g., subscriptions, inventory, notifications), create a new Effect service: `Context.Tag` + `Layer.effect` in `src/lib/effect/services/`, wire its `Live` layer into `AppLive` in `layers.ts`, export from `index.ts`.
@@ -105,6 +106,7 @@ When adding or modifying API routes, services, or backend logic during rebrandin
 - Use `auth.requireAdmin` for admin-only routes — never inline role checks.
 
 **Effect Error Handling:**
+
 - All domain errors use `Data.TaggedError` from `@/lib/effect/errors.ts`.
 - New error types go in `errors.ts` and must be added to the `HttpError` union + `errorToResponse()` switch.
 - Use `yield* new ErrorType({...})` for domain failures (not `throw`).
@@ -112,6 +114,7 @@ When adding or modifying API routes, services, or backend logic during rebrandin
 - Non-critical side effects use `Effect.catchAll` with logging — never silently swallow via `Effect.either`.
 
 **Type Safety:**
+
 - No `any`. No `eslint-disable no-explicit-any`. No `as unknown as`.
 - Use `as` only at type boundaries (Payload `docs[0]` returns `unknown`, Stripe API returns unions with deleted types).
 - Use type guards (`isSessionUser()`, `hasRole()`) for runtime shape validation — not blind `as` casts.
@@ -142,13 +145,13 @@ bun run api:types                     # Regenerate API client types
 
 The project ships with several Claude skills in `.claude/skills/`. During a rebrand, review and update these skills to stay accurate:
 
-| Skill             | When to update              | What to change                                                                                                                                |
-| ----------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/seed`           | Phase 3 (Seed Data)         | Update sample data descriptions if product type changes                                                                                       |
-| `/deploy-setup`   | Phase 9 (Final)             | If new integrations were added, document them in Phase B's "Common Post-Rebrand Integrations" table so the next user knows how to set them up |
-| `/ci`             | If CI pipeline changes      | Update commands or service requirements                                                                                                       |
-| `/test`           | If test setup changes       | Update service requirements or troubleshooting table                                                                                          |
-| `/quality-review` | If new services are added   | Add service usage checks to the code quality section                                                                                          |
-| `/rebrand`        | After completing a rebrand  | Update phase references if you added/removed phases; update service table in Phase 7 if new services were created                             |
+| Skill             | When to update             | What to change                                                                                                                                |
+| ----------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/seed`           | Phase 3 (Seed Data)        | Update sample data descriptions if product type changes                                                                                       |
+| `/deploy-setup`   | Phase 9 (Final)            | If new integrations were added, document them in Phase B's "Common Post-Rebrand Integrations" table so the next user knows how to set them up |
+| `/ci`             | If CI pipeline changes     | Update commands or service requirements                                                                                                       |
+| `/test`           | If test setup changes      | Update service requirements or troubleshooting table                                                                                          |
+| `/quality-review` | If new services are added  | Add service usage checks to the code quality section                                                                                          |
+| `/rebrand`        | After completing a rebrand | Update phase references if you added/removed phases; update service table in Phase 7 if new services were created                             |
 
 After rebrand, run `/deploy-setup b` to configure any new services that were added. The `/ci`, `/test`, and `/quality-review` skills are intentionally generic (no hardcoded paths or brand names) so they work after rebranding without changes. Only update them if the project structure or tooling fundamentally changes.

@@ -4,7 +4,7 @@ const messages: TermsMessages = {
   // Metadata
   metaTitle: "Términos de Servicio",
   metaDescription:
-    "Lee los Términos de Servicio de SaaSTARTER. Comprende tus derechos y responsabilidades al usar nuestra plataforma.",
+    "Lee los Términos de Servicio de Koffee Kulture. Comprende tus derechos y responsabilidades al usar nuestra plataforma.",
 
   // Page header
   pageTitle: "Términos de Servicio",
@@ -12,7 +12,7 @@ const messages: TermsMessages = {
 
   // Content
   intro:
-    'Bienvenido a SaaSTARTER. Estos Términos de Servicio ("Términos") rigen tu acceso y uso de nuestro sitio web, productos y servicios. Al acceder o usar SaaSTARTER, aceptas estar sujeto a estos Términos.',
+    'Bienvenido a Koffee Kulture. Estos Términos de Servicio ("Términos") rigen tu acceso y uso de nuestro sitio web, productos y servicios. Al acceder o usar Koffee Kulture, aceptas estar sujeto a estos Términos.',
 
   section1Title: "1. Aceptación de los Términos",
   section1Content:
@@ -20,15 +20,16 @@ const messages: TermsMessages = {
 
   section2Title: "2. Descripción de los Servicios",
   section2Intro:
-    "SaaSTARTER proporciona una plantilla de SaaS Next.js lista para producción con capacidades de eCommerce, autenticación, procesamiento de pagos y herramientas y servicios relacionados. Nuestros servicios incluyen:",
-  section2Item1: "Acceso al código base de SaaSTARTER y archivos de plantilla",
+    "Koffee Kulture proporciona una plantilla de SaaS Next.js lista para producción con capacidades de eCommerce, autenticación, procesamiento de pagos y herramientas y servicios relacionados. Nuestros servicios incluyen:",
+  section2Item1:
+    "Acceso al código base de Koffee Kulture y archivos de plantilla",
   section2Item2: "Documentación y guías de implementación",
   section2Item3: "Actualizaciones y mejoras de la plantilla",
   section2Item4: "Soporte comunitario a través de canales designados",
 
   section3Title: "3. Licencia y Derechos de Uso",
   section3Content:
-    "Al comprar SaaSTARTER, recibes una licencia para usar la plantilla según los términos descritos en nuestro",
+    "Al comprar Koffee Kulture, recibes una licencia para usar la plantilla según los términos descritos en nuestro",
   section3Link: "Acuerdo de Licencia",
   section3Content2:
     ". Esta licencia no es exclusiva y está sujeta a las restricciones descritas en él.",
@@ -51,7 +52,7 @@ const messages: TermsMessages = {
 
   section6Title: "6. Propiedad Intelectual",
   section6Content:
-    "SaaSTARTER y su contenido, características y funcionalidad originales son propiedad de SaaSTARTER y están protegidos por leyes internacionales de derechos de autor, marcas comerciales y otras leyes de propiedad intelectual. El código de plantilla que compras tiene licencia, no se vende.",
+    "Koffee Kulture y su contenido, características y funcionalidad originales son propiedad de Koffee Kulture y están protegidos por leyes internacionales de derechos de autor, marcas comerciales y otras leyes de propiedad intelectual. El código de plantilla que compras tiene licencia, no se vende.",
 
   section7Title: "7. Usos Prohibidos",
   section7Intro: "Aceptas no:",
@@ -68,11 +69,11 @@ const messages: TermsMessages = {
 
   section9Title: "9. Limitación de Responsabilidad",
   section9Content:
-    "En la medida máxima permitida por la ley, SaaSTARTER no será responsable de ningún daño indirecto, incidental, especial, consecuente o punitivo, o cualquier pérdida de beneficios o ingresos, ya sea incurrida directa o indirectamente.",
+    "En la medida máxima permitida por la ley, Koffee Kulture no será responsable de ningún daño indirecto, incidental, especial, consecuente o punitivo, o cualquier pérdida de beneficios o ingresos, ya sea incurrida directa o indirectamente.",
 
   section10Title: "10. Indemnización",
   section10Content:
-    "Aceptas indemnizar y eximir de responsabilidad a SaaSTARTER y sus funcionarios, directores, empleados y agentes de cualquier reclamo, daño, pérdida o gasto que surja de tu uso de los servicios o violación de estos Términos.",
+    "Aceptas indemnizar y eximir de responsabilidad a Koffee Kulture y sus funcionarios, directores, empleados y agentes de cualquier reclamo, daño, pérdida o gasto que surja de tu uso de los servicios o violación de estos Términos.",
 
   section11Title: "11. Modificaciones a los Términos",
   section11Content:

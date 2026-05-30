@@ -34,7 +34,7 @@ interface OrderConfirmationData {
 function formatCurrency(
   amount: number,
   locale: SupportedLocale,
-  currency = "USD",
+  currency = "EGP",
 ): string {
   return new Intl.NumberFormat(locale, {
     style: "currency",
@@ -114,13 +114,13 @@ async function buildOrderConfirmationHtml(
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${t(messages, "orderConfirmed")} - ${t(messages, "brandName")}</title>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f5f3f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+<body style="margin: 0; padding: 0; background-color: #f2ead0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased;">
   <!-- Preheader text -->
   <div style="display: none; max-height: 0; overflow: hidden;">
     ${t(messages, "orderConfirmationPreheader", { orderId: String(data.orderId) })}
   </div>
 
-  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f5f3f0;">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f2ead0;">
     <tr>
       <td align="center" style="padding: 40px 16px;">
         <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 560px;">
@@ -129,7 +129,7 @@ async function buildOrderConfirmationHtml(
           <tr>
             <td align="center" style="padding-bottom: 32px;">
               <a href="${baseUrl}" style="text-decoration: none;">
-                <span style="font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.5px;">${t(messages, "brandName")}</span>
+                <span style="font-family: 'Outfit', 'Helvetica Neue', Arial, sans-serif; font-size: 24px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.5px;">${t(messages, "brandName")}</span>
               </a>
             </td>
           </tr>
@@ -141,9 +141,9 @@ async function buildOrderConfirmationHtml(
               <!-- Header Banner -->
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #d4722a 0%, #e8944d 100%); padding: 36px 32px; text-align: center;">
+                  <td style="background: linear-gradient(135deg, #7a8f4f 0%, #9bab66 100%); padding: 36px 32px; text-align: center;">
                     <div style="width: 56px; height: 56px; margin: 0 auto 16px; background: rgba(255,255,255,0.2); border-radius: 50%; line-height: 56px; font-size: 24px;">&#10003;</div>
-                    <h1 style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.3;">${t(messages, "orderConfirmed")}</h1>
+                    <h1 style="margin: 0; font-family: 'Outfit', 'Helvetica Neue', Arial, sans-serif; font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.3;">${t(messages, "orderConfirmed")}</h1>
                     <p style="margin: 8px 0 0; font-size: 15px; color: rgba(255,255,255,0.9);">${data.customerName ? t(messages, "thankYouForPurchaseWithName", { name: data.customerName }) : t(messages, "thankYouForPurchase")}</p>
                   </td>
                 </tr>
@@ -214,7 +214,7 @@ async function buildOrderConfirmationHtml(
                                 <p style="margin: 0; font-size: 16px; font-weight: 700; color: #1a1a1a;">${t(messages, "total")}</p>
                               </td>
                               <td align="right">
-                                <p style="margin: 0; font-size: 20px; font-weight: 700; color: #d4722a;">${formatCurrency(data.totalAmount, locale, data.currency)}</p>
+                                <p style="margin: 0; font-size: 20px; font-weight: 700; color: #7a8f4f;">${formatCurrency(data.totalAmount, locale, data.currency)}</p>
                               </td>
                             </tr>
                           </table>
@@ -228,7 +228,7 @@ async function buildOrderConfirmationHtml(
                     <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top: 32px;">
                       <tr>
                         <td align="center">
-                          <a href="${baseUrl}/account/orders" style="display: inline-block; padding: 14px 32px; background: #d4722a; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; border-radius: 12px; letter-spacing: 0.3px;">${t(messages, "viewYourOrders")}</a>
+                          <a href="${baseUrl}/account/orders" style="display: inline-block; padding: 14px 32px; background: #7a8f4f; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; border-radius: 12px; letter-spacing: 0.3px;">${t(messages, "viewYourOrders")}</a>
                         </td>
                       </tr>
                     </table>

@@ -5,7 +5,7 @@ import { CheckoutSuccess } from "@/components/checkout/checkout-success";
 import { getMessages } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Order Confirmed | SaaSTARTER",
+  title: "Order Confirmed | Koffee Kulture",
   description: "Your order has been confirmed. Thank you for your purchase!",
 };
 

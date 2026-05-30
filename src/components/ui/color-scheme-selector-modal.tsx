@@ -362,6 +362,18 @@ const schemePreviewColors = {
       "oklch(0.3709 0.0248 153.9823)",
     ],
   },
+  "koffee-kulture": {
+    light: [
+      "oklch(0.945 0.024 88)",
+      "oklch(0.625 0.09 125)",
+      "oklch(0.74 0.13 45)",
+    ],
+    dark: [
+      "oklch(0.18 0.02 70)",
+      "oklch(0.725 0.09 125)",
+      "oklch(0.76 0.13 45)",
+    ],
+  },
   "soft-pop": {
     light: [
       "oklch(0.9789 0.0082 121.6272)",

@@ -25,9 +25,7 @@ export interface AdminUser extends SessionUser {
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
 /** Type guard to validate a session user has the required shape. */
-function isSessionUser(
-  user: unknown,
-): user is {
+function isSessionUser(user: unknown): user is {
   id: string;
   email: string;
   name?: string | null;

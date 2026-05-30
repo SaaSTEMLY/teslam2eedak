@@ -7,51 +7,51 @@ import { createServerApiClient } from "@/lib/api/client";
 const defaultFaqs = [
   {
     id: "1",
-    question: "What's included in SaaSTARTER?",
+    question: "Do I need to download an app to order?",
     answer:
-      "SaaSTARTER includes a complete Next.js application with authentication (better-auth), payments (Stripe), eCommerce functionality, admin dashboard, internationalization, and over 50 pre-built components. Everything you need to launch a SaaS product.",
+      "No. Scan the QR on the table, the door, or our Instagram — it opens straight in your browser. No download, no signup, no friction.",
   },
   {
     id: "2",
-    question: "Do I need coding experience?",
+    question: "Can I order ahead and just walk in?",
     answer:
-      "Basic knowledge of React and TypeScript is recommended. SaaSTARTER is designed for developers who want to ship faster, not for complete beginners. However, the code is well-documented and follows best practices.",
+      "Yes — pick 'Click & Collect', choose ASAP or a time slot, pay, and we'll start brewing the minute you tap pay. Walk up to the bar, give us your order number, and you're out the door.",
   },
   {
     id: "3",
-    question: "Is this a subscription or one-time payment?",
+    question: "How do I pay?",
     answer:
-      "SaaSTARTER is a one-time purchase. You pay once and get lifetime access to the codebase. No recurring fees, no hidden costs.",
+      "Card on the QR (Visa, Mastercard, Meeza) — dine-in always pays before the kitchen starts. For Click & Collect you can choose card now or cash when you pick up.",
   },
   {
     id: "4",
-    question: "Can I use this for client projects?",
+    question: "Do you charge VAT and a service charge?",
     answer:
-      "Yes! Your license allows you to use SaaSTARTER for unlimited personal and client projects. You can build and deploy as many applications as you want.",
+      "VAT is 14% (Egyptian law) and a 12% service charge applies to dine-in orders. Both are itemised in your cart before you pay — no surprises. Click & Collect orders don't get a service charge.",
   },
   {
     id: "5",
-    question: "What payment methods do you accept?",
+    question: "Can I customise my drink?",
     answer:
-      "We accept all major credit cards, debit cards, and digital wallets through Stripe. This includes Visa, Mastercard, American Express, and more.",
+      "Yes — swap milk (oat, almond, soy), add a shot, change the sweetness, choose hot or iced. Anything we have at the bar is on the menu.",
   },
   {
     id: "6",
-    question: "Do you offer refunds?",
+    question: "What about allergies and dietary preferences?",
     answer:
-      "Yes, we offer a 14-day money-back guarantee. If you're not satisfied with SaaSTARTER, contact us within 14 days of purchase for a full refund.",
+      "Toggle the allergen filter at the top of the menu — vegan, vegetarian, dairy-free, gluten-free. Items that don't match are dimmed. Every item shows its allergen tags on the detail sheet.",
   },
   {
     id: "7",
-    question: "How do updates work?",
+    question: "Where are you?",
     answer:
-      "Starter plan includes free updates for 1 year. Pro plan includes lifetime updates. You'll get access to our private repository where all updates are pushed regularly.",
+      "Currently at Maadi, Cairo. More branches coming. Hours, directions, and a map are on the Contact page.",
   },
   {
     id: "8",
-    question: "What kind of support is included?",
+    question: "Can I get a printed receipt for my expenses?",
     answer:
-      "Starter plan includes community support via GitHub Discussions. Pro plan includes priority support via private Discord channel and a 1-on-1 setup call to help you get started.",
+      "Every order has a tracker URL you can bookmark — it's also your receipt. Tap 'Email me the receipt' on the success screen if you need a copy. We can add a printed receipt at the counter on request.",
   },
 ];
 

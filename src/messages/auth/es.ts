@@ -33,7 +33,7 @@ const authEs = {
   termsLink: "Términos",
   // Metadata
   metaTitle: "Iniciar sesión",
-  metaDescription: "Inicia sesión en tu cuenta de SaaSTARTER",
+  metaDescription: "Inicia sesión en tu cuenta de Koffee Kulture",
 } as const;
 
 export default authEs;

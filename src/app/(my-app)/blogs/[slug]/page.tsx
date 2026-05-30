@@ -72,7 +72,7 @@ export async function generateMetadata({
       meta?: { title?: string; description?: string; image?: unknown };
     }
   ).meta;
-  const seoTitle = seo?.title || `${post.title} | SaaSTARTER Blog`;
+  const seoTitle = seo?.title || `${post.title} | Koffee Kulture Blog`;
   const seoDescription = seo?.description || post.excerpt;
   const seoImage = resolveMedia(seo?.image) ?? resolveMedia(post.coverImage);
 
@@ -157,7 +157,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     publisher: {
       "@type": "Organization",
-      name: "SaaSTARTER",
+      name: "Koffee Kulture",
     },
     datePublished: post.publishedAt || undefined,
   };

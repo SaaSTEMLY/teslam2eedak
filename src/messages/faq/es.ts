@@ -4,12 +4,12 @@ const messages: FaqMessages = {
   // Metadata
   metaTitle: "Preguntas Frecuentes",
   metaDescription:
-    "Preguntas frecuentes sobre SaaSTARTER. Encuentra respuestas sobre precios, características, soporte y más.",
+    "Preguntas frecuentes sobre Koffee Kulture. Encuentra respuestas sobre precios, características, soporte y más.",
 
   // Page header
   backToHome: "Inicio",
   pageTitle: "Preguntas.",
-  pageSubtitle: "Todo lo que necesitas saber sobre SaaSTARTER.",
+  pageSubtitle: "Todo lo que necesitas saber sobre Koffee Kulture.",
   contactLink: "Contáctanos",
   contactPrompt: "si necesitas más ayuda.",
 
@@ -19,21 +19,21 @@ const messages: FaqMessages = {
   noFaqsContactLink: "contáctanos",
 
   // Default FAQs
-  faq1Question: "¿Qué incluye SaaSTARTER?",
+  faq1Question: "¿Qué incluye Koffee Kulture?",
   faq1Answer:
-    "SaaSTARTER incluye una aplicación completa de Next.js con autenticación (better-auth), pagos (Stripe), funcionalidad de eCommerce, panel de administración, internacionalización y más de 50 componentes pre-construidos. Todo lo que necesitas para lanzar un producto SaaS.",
+    "Koffee Kulture incluye una aplicación completa de Next.js con autenticación (better-auth), pagos (Stripe), funcionalidad de eCommerce, panel de administración, internacionalización y más de 50 componentes pre-construidos. Todo lo que necesitas para lanzar un producto SaaS.",
 
   faq2Question: "¿Necesito experiencia en programación?",
   faq2Answer:
-    "Se recomienda conocimiento básico de React y TypeScript. SaaSTARTER está diseñado para desarrolladores que quieren lanzar más rápido, no para principiantes completos. Sin embargo, el código está bien documentado y sigue las mejores prácticas.",
+    "Se recomienda conocimiento básico de React y TypeScript. Koffee Kulture está diseñado para desarrolladores que quieren lanzar más rápido, no para principiantes completos. Sin embargo, el código está bien documentado y sigue las mejores prácticas.",
 
   faq3Question: "¿Es una suscripción o un pago único?",
   faq3Answer:
-    "SaaSTARTER es una compra única. Pagas una vez y obtienes acceso de por vida al código base. Sin tarifas recurrentes, sin costos ocultos.",
+    "Koffee Kulture es una compra única. Pagas una vez y obtienes acceso de por vida al código base. Sin tarifas recurrentes, sin costos ocultos.",
 
   faq4Question: "¿Puedo usarlo para proyectos de clientes?",
   faq4Answer:
-    "¡Sí! Tu licencia te permite usar SaaSTARTER para proyectos personales y de clientes ilimitados. Puedes construir e implementar tantas aplicaciones como quieras.",
+    "¡Sí! Tu licencia te permite usar Koffee Kulture para proyectos personales y de clientes ilimitados. Puedes construir e implementar tantas aplicaciones como quieras.",
 
   faq5Question: "¿Qué métodos de pago aceptan?",
   faq5Answer:
@@ -41,7 +41,7 @@ const messages: FaqMessages = {
 
   faq6Question: "¿Ofrecen reembolsos?",
   faq6Answer:
-    "Sí, ofrecemos una garantía de devolución de dinero de 14 días. Si no estás satisfecho con SaaSTARTER, contáctanos dentro de los 14 días posteriores a la compra para un reembolso completo.",
+    "Sí, ofrecemos una garantía de devolución de dinero de 14 días. Si no estás satisfecho con Koffee Kulture, contáctanos dentro de los 14 días posteriores a la compra para un reembolso completo.",
 
   faq7Question: "¿Cómo funcionan las actualizaciones?",
   faq7Answer:

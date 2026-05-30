@@ -2,31 +2,30 @@ import type { ContactMessages } from "./en";
 
 const messages: ContactMessages = {
   // Page metadata
-  metaTitle: "اتصل بنا",
+  metaTitle: "زورنا في كوفي كلتشر",
   metaDescription:
-    "تواصل مع فريق SaaSTARTER. يسعدنا سماع رأيك — سواء كان سؤالاً أو ملاحظات أو استفسار شراكة.",
+    "تعالى المعادي. ادخل، امسح، اشرب. المواعيد، العنوان، أرقام التواصل — وأسرع طريقة توصلك للبار.",
 
   // Page heading
-  pageTitle: "تواصل معنا.",
+  pageTitle: "تعالى زورنا.",
   pageSubtitle:
-    "سواء كان لديك سؤال حول الميزات أو الأسعار أو أي شيء آخر — فريقنا جاهز للإجابة.",
+    "كاترينج، حساسية، حاجة ضايعة، أو شكوى على الفلات وايت — ابعتلنا. بنقرا كل الرسايل.",
 
   // Contact info
   emailLabel: "البريد الإلكتروني",
-  emailValue: "hello@saastarter.dev",
-  emailDescription: "نهدف للرد خلال 24 ساعة.",
+  emailValue: "hello@koffee-kulture.com",
+  emailDescription: "بنرد في خلال يوم. عادةً أسرع.",
 
-  locationLabel: "الموقع",
-  locationValue: "سان فرانسيسكو، كاليفورنيا",
-  locationDescription: "نعمل عن بُعد، نشحن عالميًا.",
+  locationLabel: "تلاقينا",
+  locationValue: "٩ شارع ٢٣٣، دجلة، المعادي · القاهرة",
+  locationDescription: "دقيقتين من مترو سكنات المعادي.",
 
-  hoursLabel: "ساعات العمل",
-  hoursValue: "الاثنين – الجمعة، 9ص – 6م (PST)",
-  hoursDescription: "الدعم متاح خلال ساعات العمل.",
+  hoursLabel: "المواعيد",
+  hoursValue: "يوميًا · ٧ ص – ١١ م",
+  hoursDescription: "المطبخ بيقفل ١٠:٣٠ م. القهوة لحد القفل.",
 
   // Additional info
-  proPlanNote:
-    "يحصل عملاء الباقة الاحترافية على دعم ذو أولوية عبر Discord الخاص. للأسئلة العامة، راجع",
+  proPlanNote: "كاترينج أو طلب كبير؟ ابعتلنا إيميل مباشر. أي حاجة تاني، شوف",
   faqLink: "الأسئلة الشائعة",
 
   // Form section

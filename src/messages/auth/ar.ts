@@ -31,7 +31,7 @@ const authAr = {
   termsLink: "الشروط",
   // Metadata
   metaTitle: "تسجيل الدخول",
-  metaDescription: "سجل الدخول إلى حسابك في SaaSTARTER",
+  metaDescription: "سجل الدخول إلى حسابك في Koffee Kulture",
 } as const;
 
 export default authAr;

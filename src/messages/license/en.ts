@@ -2,7 +2,7 @@ const messages = {
   // Metadata
   metaTitle: "License",
   metaDescription:
-    "Understand the license terms for using SaaSTARTER. Learn what you can and cannot do with our template.",
+    "Understand the license terms for using Koffee Kulture. Learn what you can and cannot do with our template.",
 
   // Page header
   pageTitle: "License Agreement",
@@ -10,11 +10,11 @@ const messages = {
 
   // Content
   intro:
-    'This License Agreement ("Agreement") is a legal agreement between you ("Licensee") and SaaSTARTER ("Licensor") governing the use of the SaaSTARTER template and associated materials.',
+    'This License Agreement ("Agreement") is a legal agreement between you ("Licensee") and Koffee Kulture ("Licensor") governing the use of the Koffee Kulture template and associated materials.',
 
   section1Title: "1. Grant of License",
   section1Content:
-    "Upon purchase, SaaSTARTER grants you a non-exclusive, non-transferable license to use the template subject to the terms of this Agreement.",
+    "Upon purchase, Koffee Kulture grants you a non-exclusive, non-transferable license to use the template subject to the terms of this Agreement.",
 
   section1Subtitle1: "Standard License",
   section1Content1: "The Standard License permits you to:",
@@ -62,7 +62,7 @@ const messages = {
 
   section4Title: "4. Ownership",
   section4Content1:
-    "The template and all associated intellectual property rights remain the exclusive property of SaaSTARTER. This Agreement grants you a license to use the template; it does not transfer ownership.",
+    "The template and all associated intellectual property rights remain the exclusive property of Koffee Kulture. This Agreement grants you a license to use the template; it does not transfer ownership.",
   section4Content2:
     "You retain ownership of any custom code, content, or modifications you create while using the template.",
 
@@ -92,15 +92,15 @@ const messages = {
 
   section7Title: "7. Warranty Disclaimer",
   section7Content1:
-    'The template is provided "as is" without warranty of any kind, express or implied. SaaSTARTER does not warrant that the template will meet your requirements, be uninterrupted, or be error-free.',
+    'The template is provided "as is" without warranty of any kind, express or implied. Koffee Kulture does not warrant that the template will meet your requirements, be uninterrupted, or be error-free.',
   section7Content2:
     "You assume all responsibility and risk for the use of the template and your reliance thereon.",
 
   section8Title: "8. Limitation of Liability",
   section8Content1:
-    "In no event shall SaaSTARTER be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the template, even if advised of the possibility of such damages.",
+    "In no event shall Koffee Kulture be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the template, even if advised of the possibility of such damages.",
   section8Content2:
-    "SaaSTARTER's total liability shall not exceed the amount paid by you for the template.",
+    "Koffee Kulture's total liability shall not exceed the amount paid by you for the template.",
 
   section9Title: "9. Termination",
   section9Content1:
@@ -114,7 +114,7 @@ const messages = {
 
   section11Title: "11. License Verification",
   section11Content:
-    "SaaSTARTER reserves the right to verify license compliance. Unauthorized use of the template may result in legal action and liability for damages.",
+    "Koffee Kulture reserves the right to verify license compliance. Unauthorized use of the template may result in legal action and liability for damages.",
 
   section12Title: "12. Governing Law",
   section12Content:

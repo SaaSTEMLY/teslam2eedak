@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 
-export const SITE_NAME = "SaaSTARTER";
+export const SITE_NAME = "Koffee Kulture";
 
 export const SITE_DESCRIPTION =
-  "The only Next.js template that sells itself. Built with shadcn/ui, Stripe, PGlite (local dev), and everything you need to launch a profitable SaaS.";
+  "Sip into the Kulture. Scan the table QR or order ahead — house-roasted koffee, all-day breakfast, and the bagels Kairo whispers about. Maadi, Egypt.";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_BETTER_AUTH_URL || "http://localhost:3000";
 
-export const TWITTER_HANDLE = "@saastemly";
+export const TWITTER_HANDLE = "@koffeekulture";
 
 // Base metadata configuration shared across all layouts
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   title: {
-    default: `${SITE_NAME} - Ship Your SaaS in Days, Not Months`,
+    default: `${SITE_NAME} — Scan. Sip. Repeat.`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -51,7 +51,7 @@ export const baseMetadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} - Ship Your SaaS in Days, Not Months`,
+    title: `${SITE_NAME} — Scan. Sip. Repeat.`,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     locale: "en_US",
@@ -60,7 +60,7 @@ export const baseMetadata: Metadata = {
         url: "/logo/main/pwa-512x512.png",
         width: 512,
         height: 512,
-        alt: `${SITE_NAME} - Ship Your SaaS in Days, Not Months`,
+        alt: `${SITE_NAME} — Scan. Sip. Repeat.`,
       },
     ],
   },
@@ -68,14 +68,14 @@ export const baseMetadata: Metadata = {
     card: "summary_large_image",
     site: TWITTER_HANDLE,
     creator: TWITTER_HANDLE,
-    title: `${SITE_NAME} - Ship Your SaaS in Days, Not Months`,
+    title: `${SITE_NAME} — Scan. Sip. Repeat.`,
     description: SITE_DESCRIPTION,
     images: [
       {
         url: "/logo/main/pwa-512x512.png",
         width: 512,
         height: 512,
-        alt: `${SITE_NAME} - Ship Your SaaS in Days, Not Months`,
+        alt: `${SITE_NAME} — Scan. Sip. Repeat.`,
       },
     ],
   },

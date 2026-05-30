@@ -32,7 +32,7 @@ export async function sendEmail(opts: {
   }
 
   await resend.emails.send({
-    from: "SaaSTARTER <noreply@yourdomain.com>",
+    from: "Koffee Kulture <noreply@koffee-kulture.com>",
     ...opts,
   });
 }

@@ -91,7 +91,7 @@ const messages: HomeMessages = {
   // Final CTA
   ctaTitle: "Empieza a lanzar",
   ctaTitleFaded: "hoy.",
-  ctaButton: "Obtener SaaSTARTER",
+  ctaButton: "Obtener Koffee Kulture",
   ctaGuarantee: "Garant\u00eda de devoluci\u00f3n de 14 d\u00edas",
 
   // Newsletter CTA

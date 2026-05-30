@@ -94,7 +94,7 @@ export async function generateMetadata({
         meta?: { title?: string; description?: string; image?: unknown };
       }
     ).meta;
-    const seoTitle = seo?.title || `${product.name} | SaaSTARTER`;
+    const seoTitle = seo?.title || `${product.name} | Koffee Kulture`;
     const seoDescription = seo?.description || product.description || undefined;
     const seoImage =
       resolveMedia(seo?.image) ?? resolveMedia(product.images?.[0]);

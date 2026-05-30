@@ -2,12 +2,12 @@ const messages = {
   // Metadata
   metaTitle: "About Us",
   metaDescription:
-    "Learn about the team and mission behind SaaSTARTER — the production-ready Next.js SaaS template built for speed.",
+    "Learn about the team and mission behind Koffee Kulture — the production-ready Next.js SaaS template built for speed.",
 
   // Hero
   pageTitle: "Built for builders.",
   pageSubtitle:
-    "We believe shipping your product should take days, not months. SaaSTARTER gives you the foundation so you can focus on what matters — your idea.",
+    "We believe shipping your product should take days, not months. Koffee Kulture gives you the foundation so you can focus on what matters — your idea.",
 
   // Mission
   missionTitle: "Our mission",

@@ -15,8 +15,8 @@ const messages: FooterMessages = {
   twitter: "Twitter",
   linkedin: "LinkedIn",
   tagline:
-    "Plantilla SaaS de Next.js lista para producción. Lanza tu producto más rápido.",
-  copyright: "\u00A9 2026 SaaSTARTER. Todos los derechos reservados.",
+    "Café tostado en casa, desayuno hecho al momento, y un menú escaneable. Maadi · El Cairo.",
+  copyright: "\u00A9 2026 Koffee Kulture. Todos los derechos reservados.",
 
   // Developers
   developers: "Desarrolladores",

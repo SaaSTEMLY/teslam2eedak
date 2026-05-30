@@ -32,7 +32,7 @@ const authEn = {
   termsLink: "Terms",
   // Metadata
   metaTitle: "Sign In",
-  metaDescription: "Sign in to your SaaSTARTER account",
+  metaDescription: "Sign in to your Koffee Kulture account",
 } as const;
 
 export default authEn;

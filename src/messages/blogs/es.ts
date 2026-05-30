@@ -2,7 +2,7 @@ const messages = {
   // Blogs listing page
   metaTitle: "Blog",
   metaDescription:
-    "Insights, tutoriales y actualizaciones del equipo de SaaSTARTER. Aprende sobre la creación de aplicaciones SaaS modernas.",
+    "Insights, tutoriales y actualizaciones del equipo de Koffee Kulture. Aprende sobre la creación de aplicaciones SaaS modernas.",
   pageTitle: "Blog.",
   pageSubtitle:
     "Tutoriales, actualizaciones y reflexiones sobre la creación de SaaS.",
@@ -10,7 +10,7 @@ const messages = {
   noPostsDescription: "Vuelve pronto para ver nuevo contenido.",
 
   // Blog post page
-  postNotFoundTitle: "Publicación no encontrada | SaaSTARTER",
+  postNotFoundTitle: "Publicación no encontrada | Koffee Kulture",
   backToBlog: "Todas las publicaciones",
   morePosts: "Más publicaciones",
   getInTouch: "Ponte en contacto",

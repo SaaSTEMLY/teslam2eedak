@@ -98,15 +98,16 @@ Discount validation and calculation logic lives in the `Discount` Effect service
 
 Ecommerce API routes delegate to Effect services for business logic. When modifying ecommerce behavior:
 
-| Concern | Service | File |
-|---------|---------|------|
-| Payment methods, customers, intents | `StripeService` | `src/lib/effect/services/stripe.ts` |
-| Discount validation & calculation | `Discount` | `src/lib/effect/services/discount.ts` |
-| Cart ownership & authorization | `CartService` | `src/lib/effect/services/cart.ts` |
-| Admin-only access | `Auth.requireAdmin` | `src/lib/effect/services/auth.ts` |
-| Rate limiting | `checkRateLimit()` | `src/lib/effect/rate-limit.ts` |
+| Concern                             | Service             | File                                  |
+| ----------------------------------- | ------------------- | ------------------------------------- |
+| Payment methods, customers, intents | `StripeService`     | `src/lib/effect/services/stripe.ts`   |
+| Discount validation & calculation   | `Discount`          | `src/lib/effect/services/discount.ts` |
+| Cart ownership & authorization      | `CartService`       | `src/lib/effect/services/cart.ts`     |
+| Admin-only access                   | `Auth.requireAdmin` | `src/lib/effect/services/auth.ts`     |
+| Rate limiting                       | `checkRateLimit()`  | `src/lib/effect/rate-limit.ts`        |
 
 **When adding new ecommerce features** (e.g., subscriptions, inventory alerts, shipping calculators):
+
 1. Create a new service in `src/lib/effect/services/` following the existing pattern
 2. Wire it into `AppLive` in `src/lib/effect/layers.ts`
 3. Export from `src/lib/effect/index.ts`

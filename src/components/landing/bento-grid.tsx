@@ -112,51 +112,64 @@ export function BentoGrid({ messages: m }: { messages: Messages<"home"> }) {
                   {m.bentoCodePreview}
                 </h3>
               </div>
-              <div className="mx-3 mb-3 rounded-xl bg-[#1a1a2e] p-4 sm:p-5 font-mono text-[11px] sm:text-xs leading-relaxed text-gray-400 overflow-hidden">
-                <div>
-                  <span className="text-[#c792ea]">import</span> {"{"}{" "}
-                  <span className="text-[#ffcb6b]">Button</span> {"}"}{" "}
-                  <span className="text-[#c792ea]">from</span>{" "}
-                  <span className="text-[#c3e88d]">&quot;@/ui&quot;</span>
+              <div className="mx-3 mb-3 rounded-xl bg-primary/[0.07] dark:bg-primary/[0.12] p-4 sm:p-5 text-sm overflow-hidden">
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+                    Today · Sip Into Summer
+                  </span>
+                  <span className="text-[10px] font-medium text-muted-foreground">
+                    Maadi
+                  </span>
                 </div>
-                <div className="mt-0.5">
-                  <span className="text-[#c792ea]">import</span> {"{"}{" "}
-                  <span className="text-[#ffcb6b]">Stripe</span> {"}"}{" "}
-                  <span className="text-[#c792ea]">from</span>{" "}
-                  <span className="text-[#c3e88d]">&quot;stripe&quot;</span>
+                <div className="space-y-2.5">
+                  <div className="flex items-baseline justify-between gap-3 border-b border-border/40 pb-2">
+                    <div className="min-w-0">
+                      <div className="text-foreground font-semibold truncate">
+                        Salted Karamel L
+                      </div>
+                      <div className="text-[11px] text-muted-foreground truncate">
+                        oat milk · extra shot
+                      </div>
+                    </div>
+                    <span className="text-foreground font-bold whitespace-nowrap">
+                      135 LE
+                    </span>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3 border-b border-border/40 pb-2">
+                    <div className="min-w-0">
+                      <div className="text-foreground font-semibold truncate">
+                        Salty Truffle Bagel
+                      </div>
+                      <div className="text-[11px] text-muted-foreground truncate">
+                        mustard mayo · arugula
+                      </div>
+                    </div>
+                    <span className="text-foreground font-bold whitespace-nowrap">
+                      235 LE
+                    </span>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="text-foreground font-semibold truncate">
+                        Pistachio Kroissant
+                      </div>
+                      <div className="text-[11px] text-muted-foreground truncate">
+                        pistachio from Italy
+                      </div>
+                    </div>
+                    <span className="text-foreground font-bold whitespace-nowrap">
+                      95 LE
+                    </span>
+                  </div>
                 </div>
-                <div className="mt-3">
-                  <span className="text-[#c792ea]">
-                    export default function
-                  </span>{" "}
-                  <span className="text-[#82aaff]">Checkout</span>() {"{"}
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-[10px] text-muted-foreground">
+                    + VAT 14% · Service 12%
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">
+                    Add to Order
+                  </span>
                 </div>
-                <div className="ms-4">
-                  <span className="text-[#c792ea]">const</span>{" "}
-                  <span className="text-[#89ddff]">session</span> ={" "}
-                  <span className="text-[#c792ea]">await</span>{" "}
-                  <span className="text-[#ffcb6b]">stripe</span>.
-                  <span className="text-[#82aaff]">checkout</span>({"{"}
-                </div>
-                <div className="ms-8">
-                  <span className="text-[#89ddff]">mode</span>:{" "}
-                  <span className="text-[#c3e88d]">&quot;payment&quot;</span>,
-                </div>
-                <div className="ms-8">
-                  <span className="text-[#89ddff]">success_url</span>:{" "}
-                  <span className="text-[#c3e88d]">&quot;/success&quot;</span>,
-                </div>
-                <div className="ms-4">{"}"})</div>
-                <div className="ms-4">
-                  <span className="text-[#c792ea]">return</span>{" "}
-                  <span className="text-gray-500">&lt;</span>
-                  <span className="text-[#ffcb6b]">Button</span>
-                  <span className="text-gray-500">&gt;</span>Pay
-                  <span className="text-gray-500">&lt;/</span>
-                  <span className="text-[#ffcb6b]">Button</span>
-                  <span className="text-gray-500">&gt;</span>
-                </div>
-                <div>{"}"}</div>
               </div>
             </div>
           </AnimateOnScroll>

@@ -139,15 +139,16 @@ All API route handlers use Effect TS for type-safe, composable error handling wi
 - **Error types:** All errors use `Data.TaggedError` defined in `src/lib/effect/errors.ts`. Key types: `UnauthorizedError`, `ForbiddenError`, `ValidationError`, `NotFoundError`, `ConflictError`, `PaymentError`, `InvalidDiscountError`, `ExternalServiceError`, `RateLimitedError`, `PayloadOperationError`.
 - **Services & Dependency Injection:** Business logic is organized into Effect services (Context.Tag + Layer), composed into `AppLive` in `src/lib/effect/layers.ts`. Route handlers stay thin — they parse input, call services, and return responses.
 
-  | Service | File | Purpose |
-  |---------|------|---------|
-  | `Payload` | `services/payload.ts` | CMS CRUD operations with error wrapping |
-  | `Auth` | `services/auth.ts` | Session auth, API key scopes, `requireAdmin` |
-  | `StripeService` | `services/stripe.ts` | Customer management, payment methods, payment intents |
-  | `Discount` | `services/discount.ts` | Discount code validation and amount calculation |
-  | `CartService` | `services/cart.ts` | Cart fetch with ownership/secret authorization |
+  | Service         | File                   | Purpose                                               |
+  | --------------- | ---------------------- | ----------------------------------------------------- |
+  | `Payload`       | `services/payload.ts`  | CMS CRUD operations with error wrapping               |
+  | `Auth`          | `services/auth.ts`     | Session auth, API key scopes, `requireAdmin`          |
+  | `StripeService` | `services/stripe.ts`   | Customer management, payment methods, payment intents |
+  | `Discount`      | `services/discount.ts` | Discount code validation and amount calculation       |
+  | `CartService`   | `services/cart.ts`     | Cart fetch with ownership/secret authorization        |
 
   Layer dependency graph:
+
   ```
   PayloadLive (no deps)
   ├── AuthLive (depends on Payload)
@@ -172,23 +173,23 @@ All API route handlers use Effect TS for type-safe, composable error handling wi
 
 ## 4. Coding "Do's and Don'ts"
 
-| Category     | **DO**                                                       | **DON'T**                                                         |
-| ------------ | ------------------------------------------------------------ | ----------------------------------------------------------------- |
-| **Imports**  | Use aliases (`@/components`, `@/lib`).                       | Use relative paths (`../../components`).                          |
-| **Styling**  | Use `tailwind-merge` and `clsx` via `cn()` utility.          | Write inline styles or separate `.css` files (except globals).    |
-| **Errors**   | Use Effect `TaggedError` + `handleRoute()` in API routes.    | Use raw `try/catch` in API routes.                                |
-| **Errors**   | Use `yield* new ErrorType({...})` for domain failures.       | Use `throw new Error()` in Effect code.                           |
-| **Errors**   | Use `Effect.tryPromise()` for external calls.                | Use `try/catch` inside `Effect.gen`.                              |
-| **Services** | Put reusable business logic in Effect services.              | Duplicate logic across route handlers.                            |
-| **Services** | Use `yield* StripeService` / `yield* Discount` etc.          | Import Stripe/payment code directly in routes.                    |
-| **Services** | Use `checkRateLimit()` from `@/lib/effect/rate-limit`.       | Copy-paste in-memory rate limiter per route.                      |
-| **Services** | Use `auth.requireAdmin` for admin checks.                    | Inline admin role checking in every admin route.                  |
-| **Types**    | Use type guards and `satisfies` for validation.              | Use `any`, `as unknown as`, or `eslint-disable no-explicit-any`.  |
-| **Types**    | Use `as` only at type boundaries (Payload docs, Stripe API). | Use `as` to silence type errors in application code.              |
-| **Icons**    | Use `lucide-react`.                                          | Import heavy icon libraries.                                      |
-| **Forms**    | Use `react-hook-form` + `zod` schemas.                       | Use raw HTML forms without validation.                            |
-| **I18n**     | Use `t(messages, 'key')` helper.                             | Hardcode strings in components.                                   |
-| **Effect**   | Keep Effect server-side only (API routes, hooks).            | Import `effect` in client components.                             |
+| Category     | **DO**                                                       | **DON'T**                                                        |
+| ------------ | ------------------------------------------------------------ | ---------------------------------------------------------------- |
+| **Imports**  | Use aliases (`@/components`, `@/lib`).                       | Use relative paths (`../../components`).                         |
+| **Styling**  | Use `tailwind-merge` and `clsx` via `cn()` utility.          | Write inline styles or separate `.css` files (except globals).   |
+| **Errors**   | Use Effect `TaggedError` + `handleRoute()` in API routes.    | Use raw `try/catch` in API routes.                               |
+| **Errors**   | Use `yield* new ErrorType({...})` for domain failures.       | Use `throw new Error()` in Effect code.                          |
+| **Errors**   | Use `Effect.tryPromise()` for external calls.                | Use `try/catch` inside `Effect.gen`.                             |
+| **Services** | Put reusable business logic in Effect services.              | Duplicate logic across route handlers.                           |
+| **Services** | Use `yield* StripeService` / `yield* Discount` etc.          | Import Stripe/payment code directly in routes.                   |
+| **Services** | Use `checkRateLimit()` from `@/lib/effect/rate-limit`.       | Copy-paste in-memory rate limiter per route.                     |
+| **Services** | Use `auth.requireAdmin` for admin checks.                    | Inline admin role checking in every admin route.                 |
+| **Types**    | Use type guards and `satisfies` for validation.              | Use `any`, `as unknown as`, or `eslint-disable no-explicit-any`. |
+| **Types**    | Use `as` only at type boundaries (Payload docs, Stripe API). | Use `as` to silence type errors in application code.             |
+| **Icons**    | Use `lucide-react`.                                          | Import heavy icon libraries.                                     |
+| **Forms**    | Use `react-hook-form` + `zod` schemas.                       | Use raw HTML forms without validation.                           |
+| **I18n**     | Use `t(messages, 'key')` helper.                             | Hardcode strings in components.                                  |
+| **Effect**   | Keep Effect server-side only (API routes, hooks).            | Import `effect` in client components.                            |
 
 ## 5. Implementation Commands
 

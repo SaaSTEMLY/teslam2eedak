@@ -1,6 +1,6 @@
 const emailAr = {
   // Brand
-  brandName: "SaaSTARTER",
+  brandName: "Koffee Kulture",
 
   // Order Confirmation
   orderConfirmed: "تم تأكيد الطلب",
@@ -15,14 +15,14 @@ const emailAr = {
   shippingAddressLabel: "عنوان الشحن",
   viewYourOrders: "عرض طلباتك",
   orderQuestionsPrompt:
-    'إذا كانت لديك أي أسئلة حول طلبك،<br/>لا تتردد في <a href="{contactUrl}" style="color: #d4722a; text-decoration: underline;">التواصل مع فريق الدعم</a>.',
+    'إذا كانت لديك أي أسئلة حول طلبك،<br/>لا تتردد في <a href="{contactUrl}" style="color: #7a8f4f; text-decoration: underline;">التواصل مع فريق الدعم</a>.',
 
   // Email Preheaders
   orderConfirmationPreheader: "تم تأكيد طلبك #{orderId}. شكراً لك على الشراء!",
 
   // Generic branded email
   didNotRequest: "إذا لم تطلب هذا، يمكنك تجاهل هذا البريد الإلكتروني بأمان.",
-  allRightsReserved: "© {year} SaaSTARTER. جميع الحقوق محفوظة.",
+  allRightsReserved: "© {year} Koffee Kulture. جميع الحقوق محفوظة.",
 
   // Order Confirmation Text (plain text)
   orderConfirmedText: "تم تأكيد الطلب",

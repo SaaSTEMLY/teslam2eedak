@@ -76,6 +76,7 @@ const colorSchemeFonts: Record<ColorSchemeName, string[]> = {
   "quantum-rose": ["Poppins", "Quicksand", "Playfair Display", "Space Mono"],
   "retro-arcade": ["Outfit", "Space Mono"],
   "sage-garden": ["Antic", "JetBrains Mono"],
+  "koffee-kulture": ["Outfit", "Playfair Display", "Architects Daughter"],
   "soft-pop": ["DM Sans", "Space Mono"],
   "solar-dusk": ["Oxanium", "Merriweather", "Fira Code"],
   "starry-night": ["Libre Baskerville"],
