@@ -1,0 +1,25 @@
+const cartEn = {
+  yourCart: "Your Cart",
+  item: "item",
+  items: "items",
+  cartEmpty: "Your cart is empty",
+  addProducts: "Add some products to get started",
+  browseProducts: "Browse Products",
+  decreaseQuantity: "Decrease quantity",
+  increaseQuantity: "Increase quantity",
+  removeItem: "Remove item",
+  subtotal: "Subtotal",
+  discountCode: "Discount code",
+  discountCodePlaceholder: "Discount code",
+  discountPercentageLabel: "{percentage}% off",
+  discountFlatLabel: "{amount} off",
+  apply: "Apply",
+  total: "Total",
+  removeDiscount: "Remove discount",
+  errorInvalidDiscount: "Invalid discount code",
+  errorValidatingDiscount: "Failed to validate code. Please try again.",
+  proceedToCheckout: "Proceed to Checkout",
+  continueShopping: "Continue Shopping",
+} as const;
+
+export default cartEn;

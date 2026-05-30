@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "next-dev",
+      "runtimeExecutable": "wsl",
+      "runtimeArgs": [
+        "-e",
+        "bash",
+        "-ilc",
+        "cd /home/mk/apps/saastarter && ./scripts/tmux-dev.sh all"
+      ],
+      "port": 3000
+    }
+  ]
+}

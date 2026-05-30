@@ -1,0 +1,27 @@
+# Development files
+
+sqlite-data/
+downloads/
+.env
+.env.local
+.env.development.local
+
+# Documentation
+
+DEBUGGING.md
+REBRAND.md
+CLAUDE.md
+AGENTS.md
+README.md
+
+# VS Code
+
+.vscode/
+
+# Git
+
+.git/
+
+# Bun
+
+.bun/

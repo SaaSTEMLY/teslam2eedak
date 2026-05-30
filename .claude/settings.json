@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun run lint:*)",
+      "Bash(bun run check:*)",
+      "Bash(bun lint:*)",
+      "Bash(bun check:*)",
+      "mcp__stock-images-mcp__search_stock_images",
+      "Edit(~/.claude/skills/rebrand/**)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["shadcn", "dbhub"]
+}

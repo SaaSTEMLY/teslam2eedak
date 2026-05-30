@@ -1,0 +1,46 @@
+@import "~@payloadcms/ui/scss";
+
+.dashboard .before-dashboard {
+  margin-bottom: base(1.5);
+  padding: base(1);
+  background: oklch(from oklch(0.6397 0.172 36.4421) l c h / 0.04);
+  border: 1px solid oklch(from oklch(0.6397 0.172 36.4421) l c h / 0.12);
+  border-radius: 0.75rem;
+
+  &__banner {
+    border-radius: 0.5rem;
+
+    & h4 {
+      margin: 0;
+    }
+  }
+
+  &__instructions {
+    list-style: decimal;
+    margin-bottom: base(0.5);
+
+    & li {
+      width: 100%;
+      line-height: 1.75;
+    }
+  }
+
+  & a {
+    color: oklch(0.6397 0.172 36.4421);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+
+    &:hover {
+      color: oklch(0.56 0.155 36);
+      opacity: 1;
+    }
+  }
+}
+
+html[data-theme="dark"] .dashboard .before-dashboard {
+  background: oklch(from oklch(0.6397 0.172 36.4421) l c h / 0.06);
+  border-color: oklch(from oklch(0.6397 0.172 36.4421) l c h / 0.15);
+}

@@ -1,0 +1,438 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@daveyplate/better-auth-ui/css";
+@import "../../../public/colorSchemes/graphite.css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is([data-theme='dark'] *));
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  .leaflet-container {
+    @apply !bg-card !font-[inherit];
+  }
+  .leaflet-container a {
+    @apply !text-inherit;
+  }
+  .leaflet-div-icon {
+    @apply !bg-transparent !border-none;
+  }
+  .leaflet-popup-content-wrapper,
+  .leaflet-popup-content,
+  .leaflet-popup-content p {
+    @apply ![all:unset];
+  }
+  .leaflet-popup {
+    @apply !animate-none;
+  }
+  .leaflet-popup-close-button {
+    @apply ring-offset-background focus:ring-ring bg-secondary rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-hidden;
+  }
+  .leaflet-tooltip,
+  .leaflet-draw-tooltip {
+    @apply !bg-foreground !text-background !animate-none !rounded-md !border-none !p-0 !px-3 !py-1.5 !shadow-none;
+  }
+  .leaflet-draw-tooltip:before {
+    @apply bg-foreground !top-1/2 !right-0.5 size-2.5 translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[2px] !border-none;
+  }
+  .leaflet-error-draw-tooltip {
+    @apply !bg-destructive !text-white;
+  }
+  .leaflet-error-draw-tooltip:before {
+    @apply bg-destructive;
+  }
+  .leaflet-draw-tooltip-subtext {
+    @apply !text-background;
+  }
+  .leaflet-popup-tip-container,
+  .leaflet-tooltip-top:before,
+  .leaflet-tooltip-bottom:before,
+  .leaflet-tooltip-left:before,
+  .leaflet-tooltip-right:before {
+    @apply hidden;
+  }
+  .leaflet-control-attribution {
+    @apply !bg-muted rounded-md !px-[4px] !py-[2px] text-[10px] !leading-none !text-inherit;
+  }
+  .leaflet-draw-guide-dash {
+    @apply rounded-full;
+  }
+  .leaflet-edit-marker-selected {
+    @apply !border-transparent !bg-transparent;
+  }
+  .marker-cluster div {
+    @apply font-[inherit];
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Header scroll-driven background */
+@keyframes header-bg {
+  0% {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+    border-color: transparent;
+    height: calc(var(--spacing) * 20);
+  }
+  50%,
+  100% {
+    background: oklch(from var(--background) l c h / 0.8);
+    backdrop-filter: blur(24px);
+    box-shadow: var(--shadow-lg);
+    border-color: oklch(from var(--border) l c h / 0.5);
+    height: calc(var(--spacing) * 16);
+  }
+}
+
+.header-scroll {
+  animation: header-bg linear both;
+  animation-timeline: scroll();
+  animation-range: 0px 50px;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Auth UI Custom Styles */
+[data-slot="auth-card"] {
+  --auth-card-padding: 0;
+}
+
+/* Enhanced input focus states */
+[data-slot="auth-card"] input {
+  transition: all 0.2s ease;
+}
+
+[data-slot="auth-card"] input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px -4px oklch(0.6397 0.172 36.4421 / 0.15);
+}
+
+/* Social buttons hover effect */
+[data-slot="auth-card"] button[data-provider] {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-slot="auth-card"] button[data-provider]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    oklch(0.6397 0.172 36.4421 / 0.05),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+[data-slot="auth-card"] button[data-provider]:hover::before {
+  transform: translateX(100%);
+}
+
+/* Primary button shine effect */
+[data-slot="auth-card"] button[data-variant="default"] {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-slot="auth-card"] button[data-variant="default"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+[data-slot="auth-card"] button[data-variant="default"]:hover::after {
+  left: 100%;
+}
+
+/* Separator styling */
+[data-slot="auth-card"] [data-slot="separator"] {
+  position: relative;
+}
+
+[data-slot="auth-card"] [data-slot="separator"]::before,
+[data-slot="auth-card"] [data-slot="separator"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+[data-slot="auth-card"] [data-slot="separator"]::before {
+  left: 0;
+}
+
+[data-slot="auth-card"] [data-slot="separator"]::after {
+  right: 0;
+}
+
+/* Form label animations */
+[data-slot="auth-card"] label {
+  transition: color 0.2s ease;
+}
+
+[data-slot="auth-card"] label:has(+ input:focus) {
+  color: var(--primary);
+}
+
+/* Error message animation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-2px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-slot="auth-card"] [data-slot="error"] {
+  animation: shake 0.4s ease;
+}
+
+/* Field-level error messages */
+[data-slot="auth-card"] [data-slot="field-error"],
+[data-slot="auth-card"] p[class*="text-destructive"],
+[data-slot="auth-card"] span[class*="text-destructive"] {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--destructive);
+  margin-top: 0.375rem;
+  animation: fadeInDown 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+/* Server error flash message */
+[data-slot="auth-card"] [data-slot="server-error"],
+[data-slot="auth-card"] [role="alert"],
+.auth-card-wrapper [role="alert"] {
+  background: oklch(0.6368 0.2078 25.3313 / 0.08);
+  border: 1px solid oklch(0.6368 0.2078 25.3313 / 0.25);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--destructive);
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  animation:
+    shake 0.4s ease,
+    fadeInDown 0.3s ease-out;
+}
+
+/* Input error state */
+[data-slot="auth-card"] input[aria-invalid="true"],
+[data-slot="auth-card"] input.border-destructive {
+  border-color: oklch(0.6368 0.2078 25.3313 / 0.5) !important;
+  box-shadow: 0 0 0 3px oklch(0.6368 0.2078 25.3313 / 0.1) !important;
+}
+
+[data-slot="auth-card"] input[aria-invalid="true"]:focus,
+[data-slot="auth-card"] input.border-destructive:focus {
+  border-color: var(--destructive) !important;
+  box-shadow: 0 0 0 3px oklch(0.6368 0.2078 25.3313 / 0.15) !important;
+}
+
+/* Link hover underline effect */
+[data-slot="auth-card"] a {
+  position: relative;
+}
+
+[data-slot="auth-card"] a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+[data-slot="auth-card"] a:hover::after {
+  width: 100%;
+}
+
+/* Auth Card Wrapper Styles */
+.auth-card-wrapper {
+  position: relative;
+}
+
+.auth-card-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    oklch(0.6397 0.172 36.4421 / 0.2),
+    transparent 40%,
+    transparent 60%,
+    oklch(0.6397 0.172 36.4421 / 0.1)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.auth-card-wrapper:has(input:focus)::before {
+  opacity: 1;
+}
+
+/* Better Auth UI Card Override */
+.auth-card-wrapper > div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Password visibility toggle styling */
+[data-slot="auth-card"] button[type="button"]:has(svg) {
+  color: var(--muted-foreground);
+  transition: color 0.2s ease;
+}
+
+[data-slot="auth-card"] button[type="button"]:has(svg):hover {
+  color: var(--foreground);
+}
+
+/* Checkbox styling */
+[data-slot="auth-card"] input[type="checkbox"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+[data-slot="auth-card"] input[type="checkbox"]:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+[data-slot="auth-card"] input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px oklch(0.6397 0.172 36.4421 / 0.2);
+}
+
+a {
+  [data-slot="dropdown-menu-item"] {
+    cursor: pointer !important;
+  }
+}
+
+/* Keep hover styles active on links while navigation is in progress */
+@custom-variant hover (&:hover, &[data-navigating]);
+@custom-variant group-hover (.group:hover &, .group[data-navigating] &);
+
+.auth-card-wrapper:has(input:focus):before {
+  opacity: 0;
+}
+
+#main-content {
+  min-height: 100dvh;
+}
+
+/* Hero gradient orb animation */
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 15px) scale(0.95);
+  }
+}
+
+.hero-gradient-orb {
+  animation: hero-float 15s ease-in-out infinite;
+}
+
+.hero-gradient-orb-delayed {
+  animation: hero-float 18s ease-in-out infinite reverse;
+}
+
+.shiki {
+  padding: 1rem;
+  overflow: auto;
+}

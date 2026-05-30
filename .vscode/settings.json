@@ -1,0 +1,75 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "/^bun run check$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun run lint$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun run format$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun check$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun lint$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun format$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun run check && bun run lint && bun run format$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun run check && bun run lint$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun run lint && bun run format$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^cd /home/mk/apps/saastarter && bun run check && bun run lint$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun check && bun format$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun check && bun lint$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^bun check && bun lint && bun format$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^cd /home/mk/apps/saastarter && bun lint$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#411764",
+    "titleBar.activeBackground": "#5C218C",
+    "titleBar.activeForeground": "#FDFBFE",
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f",
+    "titleBar.inactiveBackground": "#411764",
+    "titleBar.inactiveForeground": "#FDFBFE",
+    "statusBar.background": "#411764",
+    "statusBar.foreground": "#FDFBFE",
+    "statusBar.debuggingBackground": "#411764",
+    "statusBar.debuggingForeground": "#FDFBFE",
+    "statusBar.noFolderBackground": "#411764",
+    "statusBar.noFolderForeground": "#FDFBFE"
+  }
+}

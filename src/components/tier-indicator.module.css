@@ -1,0 +1,78 @@
+.container {
+  position: fixed;
+  inset-block-end: 1rem;
+  inset-inline-end: 1rem;
+  z-index: 50;
+}
+
+.pill {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid;
+  padding: 0.5rem 1rem;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.35),
+    0 4px 6px -4px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.pillLite {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(6, 78, 59, 0.8);
+  color: #d1fae5;
+}
+
+.pillPro {
+  border-color: rgba(245, 158, 11, 0.3);
+  background: rgba(120, 53, 15, 0.8);
+  color: #fef3c7;
+}
+
+.dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-block-start: 0.25rem;
+  border-radius: 9999px;
+}
+
+.dotLite {
+  background: #34d399;
+  box-shadow: 0 0 6px #34d399;
+}
+
+.dotPro {
+  background: #fbbf24;
+  box-shadow: 0 0 6px #fbbf24;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cta {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 0.8;
+  color: inherit;
+  transition: opacity 0.15s;
+}
+
+.cta:hover {
+  opacity: 1;
+}

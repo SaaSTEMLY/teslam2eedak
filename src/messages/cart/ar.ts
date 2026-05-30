@@ -1,0 +1,25 @@
+const cartAr = {
+  yourCart: "سلة التسوق",
+  item: "عنصر",
+  items: "عناصر",
+  cartEmpty: "سلة التسوق فارغة",
+  addProducts: "أضف بعض المنتجات للبدء",
+  browseProducts: "تصفح المنتجات",
+  decreaseQuantity: "تقليل الكمية",
+  increaseQuantity: "زيادة الكمية",
+  removeItem: "إزالة العنصر",
+  subtotal: "المجموع الفرعي",
+  discountCode: "رمز الخصم",
+  discountCodePlaceholder: "رمز الخصم",
+  discountPercentageLabel: "خصم {percentage}٪",
+  discountFlatLabel: "خصم {amount}",
+  apply: "تطبيق",
+  total: "الإجمالي",
+  removeDiscount: "إزالة الخصم",
+  errorInvalidDiscount: "رمز خصم غير صالح",
+  errorValidatingDiscount: "فشل التحقق من صحة الرمز. يرجى المحاولة مرة أخرى.",
+  proceedToCheckout: "المتابعة للدفع",
+  continueShopping: "متابعة التسوق",
+} as const;
+
+export default cartAr;

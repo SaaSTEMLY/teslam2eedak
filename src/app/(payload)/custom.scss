@@ -1,0 +1,344 @@
+@import "../../../public/colorSchemes/graphite.css";
+
+// ─── PayloadCMS Branding ────────────────────────────────────────────────────
+// All values derived from shadcn.css tokens — no hardcoded colors.
+// color-mix() auto-adapts to light/dark since shadcn vars flip per theme.
+
+:root {
+  // ── Elevation scale (background → foreground) ──
+  --theme-elevation-0: var(--background);
+  --theme-elevation-50: color-mix(
+    in oklch,
+    var(--background) 95%,
+    var(--foreground)
+  );
+  --theme-elevation-100: color-mix(
+    in oklch,
+    var(--background) 90%,
+    var(--foreground)
+  );
+  --theme-elevation-150: color-mix(
+    in oklch,
+    var(--background) 85%,
+    var(--foreground)
+  );
+  --theme-elevation-200: color-mix(
+    in oklch,
+    var(--background) 80%,
+    var(--foreground)
+  );
+  --theme-elevation-250: color-mix(
+    in oklch,
+    var(--background) 75%,
+    var(--foreground)
+  );
+  --theme-elevation-300: color-mix(
+    in oklch,
+    var(--background) 70%,
+    var(--foreground)
+  );
+  --theme-elevation-350: color-mix(
+    in oklch,
+    var(--background) 65%,
+    var(--foreground)
+  );
+  --theme-elevation-400: color-mix(
+    in oklch,
+    var(--background) 60%,
+    var(--foreground)
+  );
+  --theme-elevation-450: color-mix(
+    in oklch,
+    var(--background) 55%,
+    var(--foreground)
+  );
+  --theme-elevation-500: color-mix(
+    in oklch,
+    var(--background) 50%,
+    var(--foreground)
+  );
+  --theme-elevation-550: color-mix(
+    in oklch,
+    var(--background) 45%,
+    var(--foreground)
+  );
+  --theme-elevation-600: color-mix(
+    in oklch,
+    var(--background) 40%,
+    var(--foreground)
+  );
+  --theme-elevation-650: color-mix(
+    in oklch,
+    var(--background) 35%,
+    var(--foreground)
+  );
+  --theme-elevation-700: color-mix(
+    in oklch,
+    var(--background) 30%,
+    var(--foreground)
+  );
+  --theme-elevation-750: color-mix(
+    in oklch,
+    var(--background) 25%,
+    var(--foreground)
+  );
+  --theme-elevation-800: color-mix(
+    in oklch,
+    var(--background) 20%,
+    var(--foreground)
+  );
+  --theme-elevation-850: color-mix(
+    in oklch,
+    var(--background) 15%,
+    var(--foreground)
+  );
+  --theme-elevation-900: color-mix(
+    in oklch,
+    var(--background) 10%,
+    var(--foreground)
+  );
+  --theme-elevation-950: color-mix(
+    in oklch,
+    var(--background) 5%,
+    var(--foreground)
+  );
+  --theme-elevation-1000: var(--foreground);
+
+  // ── Theme surfaces ──
+  --theme-bg: var(--background);
+  --theme-text: var(--foreground);
+  --theme-input-bg: var(--card);
+  --theme-border-color: var(--border);
+
+  // ── Success / action palette (from --primary) ──
+  --color-success-50: color-mix(
+    in oklch,
+    var(--background) 90%,
+    var(--primary)
+  );
+  --color-success-100: color-mix(
+    in oklch,
+    var(--background) 80%,
+    var(--primary)
+  );
+  --color-success-150: color-mix(
+    in oklch,
+    var(--background) 70%,
+    var(--primary)
+  );
+  --color-success-200: color-mix(
+    in oklch,
+    var(--background) 60%,
+    var(--primary)
+  );
+  --color-success-250: color-mix(
+    in oklch,
+    var(--background) 50%,
+    var(--primary)
+  );
+  --color-success-300: color-mix(
+    in oklch,
+    var(--background) 40%,
+    var(--primary)
+  );
+  --color-success-350: color-mix(
+    in oklch,
+    var(--background) 30%,
+    var(--primary)
+  );
+  --color-success-400: color-mix(
+    in oklch,
+    var(--background) 20%,
+    var(--primary)
+  );
+  --color-success-450: color-mix(
+    in oklch,
+    var(--background) 10%,
+    var(--primary)
+  );
+  --color-success-500: var(--primary);
+  --color-success-550: color-mix(
+    in oklch,
+    var(--primary) 90%,
+    var(--foreground)
+  );
+  --color-success-600: color-mix(
+    in oklch,
+    var(--primary) 80%,
+    var(--foreground)
+  );
+  --color-success-650: color-mix(
+    in oklch,
+    var(--primary) 70%,
+    var(--foreground)
+  );
+  --color-success-700: color-mix(
+    in oklch,
+    var(--primary) 60%,
+    var(--foreground)
+  );
+  --color-success-750: color-mix(
+    in oklch,
+    var(--primary) 50%,
+    var(--foreground)
+  );
+  --color-success-800: color-mix(
+    in oklch,
+    var(--primary) 40%,
+    var(--foreground)
+  );
+  --color-success-850: color-mix(
+    in oklch,
+    var(--primary) 30%,
+    var(--foreground)
+  );
+  --color-success-900: color-mix(
+    in oklch,
+    var(--primary) 20%,
+    var(--foreground)
+  );
+  --color-success-950: color-mix(
+    in oklch,
+    var(--primary) 10%,
+    var(--foreground)
+  );
+
+  // ── Blue palette (mirrors success for Payload internals) ──
+  --color-blue-50: var(--color-success-50);
+  --color-blue-100: var(--color-success-100);
+  --color-blue-150: var(--color-success-150);
+  --color-blue-200: var(--color-success-200);
+  --color-blue-250: var(--color-success-250);
+  --color-blue-300: var(--color-success-300);
+  --color-blue-350: var(--color-success-350);
+  --color-blue-400: var(--color-success-400);
+  --color-blue-450: var(--color-success-450);
+  --color-blue-500: var(--color-success-500);
+  --color-blue-550: var(--color-success-550);
+  --color-blue-600: var(--color-success-600);
+  --color-blue-650: var(--color-success-650);
+  --color-blue-700: var(--color-success-700);
+  --color-blue-750: var(--color-success-750);
+  --color-blue-800: var(--color-success-800);
+  --color-blue-850: var(--color-success-850);
+  --color-blue-900: var(--color-success-900);
+  --color-blue-950: var(--color-success-950);
+
+  // ── Error palette (from --destructive) ──
+  --color-error-50: color-mix(
+    in oklch,
+    var(--background) 90%,
+    var(--destructive)
+  );
+  --color-error-100: color-mix(
+    in oklch,
+    var(--background) 80%,
+    var(--destructive)
+  );
+  --color-error-150: color-mix(
+    in oklch,
+    var(--background) 70%,
+    var(--destructive)
+  );
+  --color-error-200: color-mix(
+    in oklch,
+    var(--background) 60%,
+    var(--destructive)
+  );
+  --color-error-250: color-mix(
+    in oklch,
+    var(--background) 50%,
+    var(--destructive)
+  );
+  --color-error-300: color-mix(
+    in oklch,
+    var(--background) 40%,
+    var(--destructive)
+  );
+  --color-error-350: color-mix(
+    in oklch,
+    var(--background) 30%,
+    var(--destructive)
+  );
+  --color-error-400: color-mix(
+    in oklch,
+    var(--background) 20%,
+    var(--destructive)
+  );
+  --color-error-450: color-mix(
+    in oklch,
+    var(--background) 10%,
+    var(--destructive)
+  );
+  --color-error-500: var(--destructive);
+  --color-error-550: color-mix(
+    in oklch,
+    var(--destructive) 90%,
+    var(--foreground)
+  );
+  --color-error-600: color-mix(
+    in oklch,
+    var(--destructive) 80%,
+    var(--foreground)
+  );
+  --color-error-650: color-mix(
+    in oklch,
+    var(--destructive) 70%,
+    var(--foreground)
+  );
+  --color-error-700: color-mix(
+    in oklch,
+    var(--destructive) 60%,
+    var(--foreground)
+  );
+  --color-error-750: color-mix(
+    in oklch,
+    var(--destructive) 50%,
+    var(--foreground)
+  );
+  --color-error-800: color-mix(
+    in oklch,
+    var(--destructive) 40%,
+    var(--foreground)
+  );
+  --color-error-850: color-mix(
+    in oklch,
+    var(--destructive) 30%,
+    var(--foreground)
+  );
+  --color-error-900: color-mix(
+    in oklch,
+    var(--destructive) 20%,
+    var(--foreground)
+  );
+  --color-error-950: color-mix(
+    in oklch,
+    var(--destructive) 10%,
+    var(--foreground)
+  );
+
+  // ── Warning palette (from --destructive shifted warm) ──
+  --color-warning-500: color-mix(
+    in oklch,
+    var(--destructive) 50%,
+    var(--primary)
+  );
+
+  // ── Typography ──
+  --font-body: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+
+  // ── Border radius ──
+  --style-radius-s: calc(var(--radius) - 2px);
+  --style-radius-m: var(--radius);
+  --style-radius-l: calc(var(--radius) + 4px);
+}
+
+html[data-theme="dark"] {
+  --theme-overlay: color-mix(in oklch, var(--background) 50%, transparent);
+}
+
+#main-content {
+  min-height: 100dvh;
+}
