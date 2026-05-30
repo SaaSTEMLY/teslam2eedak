@@ -95,11 +95,25 @@ async function resolveTable(
   payload: Awaited<ReturnType<typeof getPayload>>,
   shortId: string,
 ): Promise<ResolvedTable | null> {
-  const { docs } = await payload.find({
-    collection: "tables",
-    where: { shortId: { equals: shortId } },
-    limit: 1,
-  });
+  let docs: ReadonlyArray<unknown> = [];
+  try {
+    const result = await payload.find({
+      collection: "tables",
+      where: { shortId: { equals: shortId } },
+      limit: 1,
+    });
+    docs = result.docs;
+  } catch (err) {
+    // Schema may not be pushed yet on a fresh deployment. The QR-scan
+    // path silently degrades to pickup mode — the customer still
+    // sees a menu rather than a 500.
+    console.warn(
+      `[menu] tables collection unavailable (likely schema not pushed): ${
+        err instanceof Error ? err.message : String(err)
+      }`,
+    );
+    return null;
+  }
   const doc = docs[0];
   if (!doc) return null;
   const obj = doc as unknown as {
@@ -127,19 +141,25 @@ async function resolveLocation(
   needle: { kind: "id"; id: string | number } | { kind: "slug"; slug: string },
 ): Promise<ResolvedLocation | null> {
   let doc: unknown;
-  if (needle.kind === "id") {
-    try {
+  try {
+    if (needle.kind === "id") {
       doc = await payload.findByID({ collection: "locations", id: needle.id });
-    } catch {
-      doc = null;
+    } else {
+      const { docs } = await payload.find({
+        collection: "locations",
+        where: { slug: { equals: needle.slug } },
+        limit: 1,
+      });
+      doc = docs[0] ?? null;
     }
-  } else {
-    const { docs } = await payload.find({
-      collection: "locations",
-      where: { slug: { equals: needle.slug } },
-      limit: 1,
-    });
-    doc = docs[0] ?? null;
+  } catch (err) {
+    // Same schema-not-pushed degrade as resolveTable.
+    console.warn(
+      `[menu] locations collection unavailable: ${
+        err instanceof Error ? err.message : String(err)
+      }`,
+    );
+    doc = null;
   }
   if (!doc) return null;
   const obj = doc as {
@@ -182,14 +202,22 @@ async function fetchModifierGroups(
   payload: Awaited<ReturnType<typeof getPayload>>,
   locale: "en" | "ar" | "es",
 ): Promise<Map<string | number, ModifierGroupDoc>> {
-  const { docs } = await payload.find({
-    collection: "modifier-groups",
-    limit: 500,
-    locale,
-  });
   const map = new Map<string | number, ModifierGroupDoc>();
-  for (const doc of asArray<ModifierGroupDoc>(docs)) {
-    map.set(doc.id, doc);
+  try {
+    const { docs } = await payload.find({
+      collection: "modifier-groups",
+      limit: 500,
+      locale,
+    });
+    for (const doc of asArray<ModifierGroupDoc>(docs)) {
+      map.set(doc.id, doc);
+    }
+  } catch (err) {
+    console.warn(
+      `[menu] modifier-groups unavailable (likely schema not pushed): ${
+        err instanceof Error ? err.message : String(err)
+      }`,
+    );
   }
   return map;
 }
@@ -200,12 +228,27 @@ async function fetchMenuItems(
   locationId: string | number | null,
   modifierGroups: Map<string | number, ModifierGroupDoc>,
 ): Promise<MenuViewItem[]> {
-  const { docs } = await payload.find({
-    collection: "products",
-    where: { _status: { equals: "published" } },
-    limit: 200,
-    locale,
-  });
+  let docs: ReadonlyArray<unknown> = [];
+  try {
+    const result = await payload.find({
+      collection: "products",
+      where: { _status: { equals: "published" } },
+      limit: 200,
+      locale,
+    });
+    docs = result.docs;
+  } catch (err) {
+    // The products collection always exists (plugin-ecommerce default),
+    // so this catches the case where the new menu-item override fields
+    // haven't been pushed yet. Customer still sees an empty-menu state
+    // rather than a 500.
+    console.warn(
+      `[menu] products query failed: ${
+        err instanceof Error ? err.message : String(err)
+      }`,
+    );
+    return [];
+  }
 
   type RawSize = {
     label?: string;
@@ -396,6 +439,29 @@ export default async function MenuPage({ searchParams }: MenuPageProps) {
     }, new Map<string, MenuViewItem[]>()),
   ).map(([title, list]) => ({ title, items: list }));
 
+  // Fall back to the KK Maadi defaults when no location resolved
+  // (fresh deployment, dropped-table QR, or default-pickup landing).
+  // Cart math still needs vatPercent + serviceChargePercent — without
+  // a real location these come from the restaurant-level KK defaults
+  // documented in GOAL §10.
+  const resolvedLocation = location ?? {
+    id: "kk-main",
+    name: "Koffee Kulture",
+    slug: "kk-main",
+    vatPercent: 14,
+    serviceChargePercent: 12,
+    allowedPaymentProviders: ["stripe", "cash-on-pickup"] as const,
+  };
+
+  if (items.length === 0) {
+    return (
+      <EmptyMenuView
+        fulfillmentMode={fulfillmentMode}
+        locationName={resolvedLocation.name}
+      />
+    );
+  }
+
   return (
     <MenuClient
       fulfillmentMode={fulfillmentMode}
@@ -416,19 +482,52 @@ export default async function MenuPage({ searchParams }: MenuPageProps) {
           ? { id: table.id, label: table.label, shortId: table.shortId }
           : null
       }
-      location={
-        location
-          ? {
-              id: location.id,
-              name: location.name,
-              slug: location.slug,
-              vatPercent: location.vatPercent,
-              serviceChargePercent: location.serviceChargePercent,
-            }
-          : null
-      }
+      location={{
+        id: resolvedLocation.id,
+        name: resolvedLocation.name,
+        slug: resolvedLocation.slug,
+        vatPercent: resolvedLocation.vatPercent,
+        serviceChargePercent: resolvedLocation.serviceChargePercent,
+      }}
       sections={sections}
     />
+  );
+}
+
+function EmptyMenuView({
+  fulfillmentMode,
+  locationName,
+}: {
+  fulfillmentMode: FulfillmentMode;
+  locationName: string;
+}) {
+  return (
+    <main
+      className="min-h-[80vh] flex items-center justify-center px-4"
+      id="main-content"
+    >
+      <div className="max-w-md text-center space-y-4">
+        <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
+          {locationName}
+        </p>
+        <h1 className="font-serif text-3xl font-bold">
+          Menu coming online soon.
+        </h1>
+        <p className="text-muted-foreground">
+          We&apos;re still wiring up the {fulfillmentMode === "dine-in"
+            ? "table"
+            : "pickup"}{" "}
+          menu. Pop in any time between 7am and 11pm — we&apos;ll pour you
+          something good.
+        </p>
+        <Link
+          href="/contact"
+          className="inline-block text-primary underline underline-offset-4 hover:opacity-80"
+        >
+          Find us in Maadi →
+        </Link>
+      </div>
+    </main>
   );
 }
 
