@@ -1,0 +1,2888 @@
+{
+  "source": {
+    "workflow": "wf_6c3be05b-c52",
+    "journal": "/home/mk/.claude/projects/-home-mk-apps-teslam2eedak/01ed5241-0d66-49f8-b5a7-e0d7ba81078a/subagents/workflows/wf_6c3be05b-c52/journal.jsonl",
+    "positionedFile": "/tmp/positioned-output.json"
+  },
+  "summary": {
+    "discovered": 117,
+    "positioned": 117,
+    "itemsWithoutHotspot": 0,
+    "orphanPositions": 0,
+    "invalidBboxes": 0,
+    "confidenceBreakdown": {
+      "high": 78,
+      "medium": 28,
+      "low": 11
+    },
+    "byImage": {
+      "menu1": 58,
+      "menu2": 22,
+      "menu3": 37
+    },
+    "discoveryNotes": [
+      "[menu2] Allergen icons on the image are small and somewhat ambiguous — only flagged 'contains-nuts' for items with explicit nut names (PISTACHIO, ALMOND, THE CHEESY mentions walnuts). The \"KK EXTRAS\" Add-ons row under THE KLASSIC (Avocado +35, Mushrooms +35, Turkey +45, Mix veggies +30, Fried Brie +45) was excluded per instructions as modifier options. The WEEKDAY BAGEL has a \"NEW\" marker visible on the menu.",
+      "[menu1] Used the image as primary source since the bbox HTML appears to be vector/decorative text and is noisy. Section names normalized to Title Case (\"Hot Klassics & Specialties\" etc.). The 'KK EXTRAS' add-ons (EXTRA SHOT 20, PLANT BASED MILKS 35, EXTRA SYRUP 20, EXTRA SAUCE 20) were excluded as instructed. No allergen icons were visible on the menu. \"NEW\" badges identified on: ICED STRAWBERRY LATTE, BLENDED STRAWBERRY MATCHA, BLENDED SALTED CARAMEL MATCHA, OCEAN BREEZE, LOVE STORY, SUNSET. Mojitos and Smoothies sections appear to be single-priced (only one price column visible per row). The \"COOOBERRY\" spelling preserved as printed (could be COOBERRY - hard to be 100% certain from image resolution, but appears to have 3 O's).",
+      "[menu3] Allergen icons (vegan/etc) visible as small symbols in image but not reliably distinguishable via OCR; left empty. SMOKED TO PERFECTION price read as 290 LE (OCR showed both \"590.LE\" and \"290.LE\" — 290 is the consistent confident value). SPICY TUNNACADO BAGEL bagel-section price read as 155 LE from image (not in bbox text clearly). SAN SEBASTIAN CHEESECAKE shows Extras list (Pistachio 50, Caramel 45, Chocolate 45) but those are modifier add-ons so excluded per instructions. Mini Cheesecake and Kult Made Cookies were split per flavor variant since each had its own listed price line. KK EXTRAS-style 'Extras' under Open Face Sourdough (Baby Mozzarella 80, Halloumi 80, Salmon 90) excluded as modifiers per instructions."
+    ]
+  },
+  "items": [
+    {
+      "slug": "kk-the-wild",
+      "name": "THE WILD",
+      "section": "The Benedict Kulture",
+      "column": "left",
+      "basePriceQirsh": 23000,
+      "description": "Marinated mushrooms, welted spinach, grated beetroot, fresh avocado sprinkle with mushroom powder with Non butter hollandaise",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-the-karnivore",
+      "name": "THE KARNIVORE",
+      "section": "The Benedict Kulture",
+      "column": "left",
+      "basePriceQirsh": 27000,
+      "description": "Slow cooking shredded beef, pickled red onions, grilled cherry tomatoes with hollandaise",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-the-la",
+      "name": "THE LA",
+      "section": "The Benedict Kulture",
+      "column": "left",
+      "basePriceQirsh": 27500,
+      "description": "Smoked salmon, avocado spread, with dill hollandaise",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-shroom-truffle",
+      "name": "SHROOM TRUFFLE",
+      "section": "The Benedict Kulture",
+      "column": "left",
+      "basePriceQirsh": 22500,
+      "description": "Marinated mushrooms with sauteed spinach, cream cheese, hollandaise sauce with a truffle oil drizzle",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-the-klassic-omelette",
+      "name": "THE KLASSIC",
+      "section": "The Omelette Kulture",
+      "column": "right",
+      "basePriceQirsh": 12500,
+      "description": "Our signature folded omelette served with parmesan cheese",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-green-dream-omelette",
+      "name": "GREEN DREAM",
+      "section": "The Omelette Kulture",
+      "column": "right",
+      "basePriceQirsh": 18500,
+      "description": "Pesto sauce, cherry tomato, caramelized pepper, cheddar cheese, roasted chickpeas with our pimento cheese",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-mushroom-invasion-omelette",
+      "name": "MUSHROOM INVASION",
+      "section": "The Omelette Kulture",
+      "column": "right",
+      "basePriceQirsh": 20000,
+      "description": "Thyme infused mushrooms, spinach cream, Cheddar cheese, pickled paste, served with fried brie cheese",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-the-cheesy-omelette",
+      "name": "THE CHEESY",
+      "section": "The Omelette Kulture",
+      "column": "right",
+      "basePriceQirsh": 18000,
+      "description": "Walnuts with the ultimate cheese mix: american cheese, cheddar cheese, parmesan cheese",
+      "allergens": [
+        "contains-nuts"
+      ],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-oldie-but-goldie-omelette",
+      "name": "OLDIE BUT GOLDIE",
+      "section": "The Omelette Kulture",
+      "column": "right",
+      "basePriceQirsh": 18500,
+      "description": "Grilled Sujok, roasted peppers, cheese mix, all served to your liking",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-savory-breakfast-bagel",
+      "name": "SAVORY BREAKFAST BAGEL",
+      "section": "The Scrambled Kulture",
+      "column": "right",
+      "basePriceQirsh": 22500,
+      "description": "Scrambled egg bagel with marinated mushrooms, grilled halloumi, and spinach",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-weekday-bagel",
+      "name": "WEEKDAY BAGEL",
+      "section": "The Sesame Bagel Kult",
+      "column": "right",
+      "basePriceQirsh": 20000,
+      "description": "Sesame Bagel with avocado, argula, fried egg, cream cheese, & crushed pepper. Served with hash browns.",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-triple-cheese-egg-tortilla",
+      "name": "TRIPLE CHEESE EGG",
+      "section": "The Tortilla Kulture",
+      "column": "right",
+      "basePriceQirsh": 20000,
+      "description": "The ultimate cheese mix with scrambled eggs served in toasted tortilla bread",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-turkey-mix-tortilla",
+      "name": "TURKEY MIX",
+      "section": "The Tortilla Kulture",
+      "column": "right",
+      "basePriceQirsh": 24000,
+      "description": "Turkey and white cheddar cheese and herbs with scrambled eggs served in toasted tortilla bread",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-all-butter-kroissant",
+      "name": "ALL BUTTER KROISSANT",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 6000,
+      "description": "",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-pistachio-kroissant",
+      "name": "PISTACHIO KROISSANT",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 9500,
+      "description": "pistachio sourced from italy",
+      "allergens": [
+        "contains-nuts"
+      ],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-krema-kroissant",
+      "name": "KREMA KROISSANT",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 7500,
+      "description": "creamy custard topped with powdered sugar",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-almond-kroissant",
+      "name": "ALMOND KROISSANT",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 8500,
+      "description": "",
+      "allergens": [
+        "contains-nuts"
+      ],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-lotus-biscoff-kroissant",
+      "name": "LOTUS BISCOFF KROISSANT",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 8000,
+      "description": "",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-choko-kroissant",
+      "name": "CHOKO KROISSANT",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 8000,
+      "description": "",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-bueno-kroissant",
+      "name": "BUENO KROISSANT",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 9000,
+      "description": "",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-pan-au-chocolat",
+      "name": "PAN AU CHOCOLAT",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 7000,
+      "description": "",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "kk-pan-suisse",
+      "name": "PAN SUISSE",
+      "section": "The Bakery Kulture",
+      "column": "right",
+      "basePriceQirsh": 7000,
+      "description": "",
+      "allergens": [],
+      "menuImageId": "menu2",
+      "pdfPage": 2
+    },
+    {
+      "slug": "espresso",
+      "name": "ESPRESSO",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 5000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "espresso-makkhiato",
+      "name": "ESPRESSO MAKKHIATO",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 5500,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "amerikano",
+      "name": "AMERIKANO",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 6000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "cortado",
+      "name": "CORTADO",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 7000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "flat-white",
+      "name": "FLAT WHITE",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 7000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "kappuccino",
+      "name": "KAPPUCCINO",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 7000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "latte",
+      "name": "LATTE",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 9000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "spanish-latte",
+      "name": "SPANISH LATTE",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "spicy-spanish",
+      "name": "SPICY SPANISH",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "salted-caramel",
+      "name": "SALTED CARAMEL",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "kk-latte",
+      "name": "KK LATTE",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "white-mokka",
+      "name": "WHITE MOKKA",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "mokka",
+      "name": "MOKKA",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 9500,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "pistachio-latte",
+      "name": "PISTACHIO LATTE",
+      "section": "Hot Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 12500,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-amerikano",
+      "name": "ICED AMERIKANO",
+      "section": "Kold Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 6500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 6500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 8500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-latte",
+      "name": "ICED LATTE",
+      "section": "Kold Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 8000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 8000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 10000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-spanish",
+      "name": "ICED SPANISH",
+      "section": "Kold Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 11500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-white-mokka",
+      "name": "ICED WHITE MOKKA",
+      "section": "Kold Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-spicy-mokka",
+      "name": "ICED SPICY MOKKA",
+      "section": "Kold Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-pistachio",
+      "name": "ICED PISTACHIO",
+      "section": "Kold Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 12500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 12500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 15000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-salted-caramel",
+      "name": "ICED SALTED CARAMEL",
+      "section": "Kold Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 11500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-strawberry-latte",
+      "name": "ICED STRAWBERRY LATTE",
+      "section": "Kold Klassics & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-salted-caramel",
+      "name": "BLENDED SALTED CARAMEL",
+      "section": "Blended Koffee & Specialties",
+      "column": "left",
+      "basePriceQirsh": 11000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 11000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-spicy-spanish",
+      "name": "BLENDED SPICY SPANISH",
+      "section": "Blended Koffee & Specialties",
+      "column": "left",
+      "basePriceQirsh": 11000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 11000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-spanish",
+      "name": "BLENDED SPANISH",
+      "section": "Blended Koffee & Specialties",
+      "column": "left",
+      "basePriceQirsh": 11000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 11000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-pistachio",
+      "name": "BLENDED PISTACHIO",
+      "section": "Blended Koffee & Specialties",
+      "column": "left",
+      "basePriceQirsh": 12500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 12500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 14000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-white-mokka",
+      "name": "BLENDED WHITE MOKKA",
+      "section": "Blended Koffee & Specialties",
+      "column": "left",
+      "basePriceQirsh": 12000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 12000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 14000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "koffee-frappe",
+      "name": "KOFFEE FRAPPE",
+      "section": "Blended Koffee & Specialties",
+      "column": "left",
+      "basePriceQirsh": 9000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 9000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 11000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "caramel-koffee-frappe",
+      "name": "CARAMEL KOFFEE FRAPPE",
+      "section": "Blended Koffee & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 11500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "mokka-frappe",
+      "name": "MOKKA FRAPPE",
+      "section": "Blended Koffee & Specialties",
+      "column": "left",
+      "basePriceQirsh": 10000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 11500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "ice-tea-peach",
+      "name": "PEACH",
+      "section": "Ice Teas",
+      "column": "left",
+      "basePriceQirsh": 11000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "ice-tea-mango",
+      "name": "MANGO",
+      "section": "Ice Teas",
+      "column": "left",
+      "basePriceQirsh": 11000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "hot-matcha",
+      "name": "HOT MATCHA",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 9000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 9000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 10500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-matcha",
+      "name": "ICED MATCHA",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 9500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 9500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 10000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-matcha-frappe",
+      "name": "BLENDED MATCHA FRAPPE",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 10000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 11500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-strawberry-matcha",
+      "name": "BLENDED STRAWBERRY MATCHA",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 11500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 11500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 13000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-spanish-matcha",
+      "name": "ICED SPANISH MATCHA",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 11000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 13000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-salted-caramel-matcha",
+      "name": "BLENDED SALTED CARAMEL MATCHA",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 11000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-blueberry-matcha",
+      "name": "ICED BLUEBERRY MATCHA",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 10500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "iced-white-matcha",
+      "name": "ICED WHITE MATCHA",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 10500,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 10500
+        },
+        {
+          "label": "L",
+          "priceQirsh": 12500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "blended-white-matcha",
+      "name": "BLENDED WHITE MATCHA",
+      "section": "Matcha Kulture",
+      "column": "right",
+      "basePriceQirsh": 12000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 12000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 14000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "caramel-klassic",
+      "name": "CARAMEL KLASSIK",
+      "section": "Non Koffee",
+      "column": "right",
+      "basePriceQirsh": 9000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 9000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 10500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "choco-klassic",
+      "name": "CHOCO KLASSIK",
+      "section": "Non Koffee",
+      "column": "right",
+      "basePriceQirsh": 9000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 9000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 10500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "vanilla-klassic",
+      "name": "VANILLA KLASSIK",
+      "section": "Non Koffee",
+      "column": "right",
+      "basePriceQirsh": 9000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 9000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 10500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "pistachio-klassic",
+      "name": "PISTACHIO KLASSIK",
+      "section": "Non Koffee",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 11000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 13000
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "choco-chip-frappe",
+      "name": "CHOCO CHIP FRAPPE",
+      "section": "Non Koffee",
+      "column": "right",
+      "basePriceQirsh": 9000,
+      "sizePrices": [
+        {
+          "label": "M",
+          "priceQirsh": 9000
+        },
+        {
+          "label": "L",
+          "priceQirsh": 10500
+        }
+      ],
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "mojito-raspberry",
+      "name": "RASPBERRY",
+      "section": "Mojitos Kulture",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "mojito-blueberry",
+      "name": "BLUEBERRY",
+      "section": "Mojitos Kulture",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "mojito-passion",
+      "name": "PASSION",
+      "section": "Mojitos Kulture",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "mojito-cooberry-redbull",
+      "name": "COOOBERRY REDBULL",
+      "section": "Mojitos Kulture",
+      "column": "right",
+      "basePriceQirsh": 15000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "mojito-pink-redbull",
+      "name": "PINK REDBULL",
+      "section": "Mojitos Kulture",
+      "column": "right",
+      "basePriceQirsh": 15000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "mojito-ocean-breeze",
+      "name": "OCEAN BREEZE",
+      "section": "Mojitos Kulture",
+      "column": "right",
+      "basePriceQirsh": 12000,
+      "description": "",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "smoothie-pina-colada",
+      "name": "PINA COLADA",
+      "section": "Smoothies",
+      "column": "right",
+      "basePriceQirsh": 12000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "smoothie-blueberry",
+      "name": "BLUEBERRY",
+      "section": "Smoothies",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "smoothie-watermelon",
+      "name": "WATERMELON",
+      "section": "Smoothies",
+      "column": "right",
+      "basePriceQirsh": 9000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "smoothie-lemon-mint",
+      "name": "LEMON MINT",
+      "section": "Smoothies",
+      "column": "right",
+      "basePriceQirsh": 8500,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "smoothie-love-story",
+      "name": "LOVE STORY",
+      "section": "Smoothies",
+      "column": "right",
+      "basePriceQirsh": 12000,
+      "description": "",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "refresher-sunset",
+      "name": "SUNSET",
+      "section": "Refreshers",
+      "column": "right",
+      "basePriceQirsh": 12500,
+      "description": "",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu1",
+      "pdfPage": 1
+    },
+    {
+      "slug": "cream-cheese-bagel",
+      "name": "CREAM CHEESE BAGEL",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 11500,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "all-time-favorite-bagel",
+      "name": "ALL-TIME FAVORITE",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 18500,
+      "description": "Turkey, emmental, lettuce and pickles bagel with pesto mayo spread",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "italian-twist-bagel",
+      "name": "ITALIAN TWIST",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 18000,
+      "description": "Baby mozzarella, pesto, tomatoes, greens, served with our special balsamic vinaggerate.",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "lunch-bagel",
+      "name": "LUNCH BAGEL",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 20000,
+      "description": "Grilled chicken breast infused with our homemade ceaser sauce, red lettuce, topped with parmesan cheese.",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "smoked-to-perfection-bagel",
+      "name": "SMOKED TO PERFECTION",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 29000,
+      "description": "The classic smoked salmon bagel with cream cheese, capri and dill",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "ultimate-halloumi-bagel",
+      "name": "ULTIMATE HALLOUMI",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 17000,
+      "description": "Grilled halloumi, sundried tomato, creamy pesto spread, rocca, and fresh tomato with infused basil oil",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "weve-got-beef-bagel",
+      "name": "WE'VE GOT BEEF",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 22000,
+      "description": "Home roasted beef, red pickled onion, mascarpone, emmental, and rocca",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "kulture-bagel",
+      "name": "KULTURE BAGEL",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 29500,
+      "description": "Salmon, avocado bagel with a layer of freshly made guacomole mixed with our special honey mustard sauce.",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "salty-beef-truffle-bagel",
+      "name": "SALTY BEEF TRUFFLE BAGEL",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 23500,
+      "description": "Roast beef bagel with mustard mayo, baby roca, caramelised onions, and a drizzle of truffle oil",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "spicy-tunnacado-bagel",
+      "name": "SPICY TUNNACADO BAGEL",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 15500,
+      "description": "Tuna mixture on bed of pesto spread with tomatoes jalapenos, and guacomole",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "sriracha-bagel",
+      "name": "SRIRACHA BAGEL",
+      "section": "The Bagels Kulture",
+      "column": "left",
+      "basePriceQirsh": 20000,
+      "description": "Grilled spicy chicken on a bed of lettuce, olives, jalapeno pickles, and siracha mayo, served in a cheese jalapeno bagel.",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "sub-out-sandwich",
+      "name": "SUB OUT",
+      "section": "The Sandwich Kulture",
+      "column": "left",
+      "basePriceQirsh": 20000,
+      "description": "Avocado slices, beef bacon, sundried tomato, chicken, sweet chili mayo served in a baguette",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "the-everything-klub",
+      "name": "THE EVERYTHING KLUB",
+      "section": "The Sandwich Kulture",
+      "column": "left",
+      "basePriceQirsh": 25000,
+      "description": "Roast beef, smoked turkey, cheddar cheese, tomato, pickled cucumber, lettuce, mayo, topped with our homemade guacamole in toasted loaf bread",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "the-basics-sandwich",
+      "name": "THE BASIC S",
+      "section": "The Sandwich Kulture",
+      "column": "left",
+      "basePriceQirsh": 30000,
+      "description": "Smoked salmon, capri, baby roca, with onion cream cheese, served in a baguette",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "philly-steak-wich",
+      "name": "PHILLY STEAK-WICH",
+      "section": "The Sandwich Kulture",
+      "column": "left",
+      "basePriceQirsh": 27500,
+      "description": "Caramelized beef steak, mushrooms, cheddar cheese served in a baguette",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "tahina-twist-sandwich",
+      "name": "TAHINA TWIST",
+      "section": "The Sandwich Kulture",
+      "column": "left",
+      "basePriceQirsh": 20000,
+      "description": "Grilled chicken, guacamole, tomatoes, baby rocca, parmesan with a tahini ranch spread served in a baguette",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "spicy-tunnacado-sandwich",
+      "name": "SPICY TUNNACADO",
+      "section": "The Sandwich Kulture",
+      "column": "left",
+      "basePriceQirsh": 19000,
+      "description": "Tuna mixture on bed of pesto spread with tomatoes, jalapenos, and guacomole served in Sourdough toast.",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "lazy-cheesy-toastie",
+      "name": "LAZY CHEESY TOASTIE",
+      "section": "The Sandwich Kulture",
+      "column": "left",
+      "basePriceQirsh": 19000,
+      "description": "Mix Cheddar with marinated mushrooms, truffle oil & Sourdough bread.",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "beetroot-hummus-avocado-toast",
+      "name": "BEETROOT HUMMUS AVOCADO",
+      "section": "Open Face Sourdough Loaf",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "avocado-on-toast",
+      "name": "AVOCADO ON TOAST",
+      "section": "Open Face Sourdough Loaf",
+      "column": "right",
+      "basePriceQirsh": 11000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "quinoa-lover-salad",
+      "name": "QUINOA LOVER",
+      "section": "Salads",
+      "column": "right",
+      "basePriceQirsh": 18000,
+      "description": "Fresh veggies, avocado, beetroot hummus, lemon vinaigrette, with cooked colored quinoa",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "the-kk-ceaser-salad",
+      "name": "THE KK CEASER",
+      "section": "Salads",
+      "column": "right",
+      "basePriceQirsh": 20000,
+      "description": "Baby mozzarella ceaser salad with injected pesto and grilled chicken skewers in house ceaser dressing mix.",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "bbq-rainbow-salad",
+      "name": "BBQ RAINBOW SALAD",
+      "section": "Salads",
+      "column": "right",
+      "basePriceQirsh": 19500,
+      "description": "Fresh cherry tomatoes, sweet corn, red beans, roasted peppers, BBQ chicken, cheddar cheese, with our house ranch dressing.",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "mood-boost-salad",
+      "name": "MOOD BOOST SALAD",
+      "section": "Salads",
+      "column": "right",
+      "basePriceQirsh": 18000,
+      "description": "Grilled halloumi in our inhouse lettuce mixture, avocado slices with a mix of cherry tomatoes, pomegranate seeds & walnuts sprinkled with goat cheese in lemon mint dressing",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "ebys-millefeuille",
+      "name": "EBY'S MILLEFEUILLE",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 16700,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "chokolate-kake",
+      "name": "CHOKOLATE KAKE",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 9500,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "karrot-kake",
+      "name": "KARROT KAKE",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 9000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "honey-kake",
+      "name": "HONEY KAKE",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 7500,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "mini-cinnamon-sugar-bagel",
+      "name": "MINI CINNAMON & SUGAR BAGEL",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 10000,
+      "description": "Served with Mascarpone",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "tiramisu-jar",
+      "name": "TIRAMISU JAR",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 10000,
+      "description": "Made with our Koffee!",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "matcha-tiramisu-jar",
+      "name": "MATCHA TIRAMISU JAR",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 10500,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "banoffee-jar",
+      "name": "BANOFFEE JAR",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 10000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "mini-cheesecake-lotus",
+      "name": "MINI CHEESECAKE - Lotus Biscoff",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 5500,
+      "description": "Lotus Biscoff",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "mini-cheesecake-salted-karamel-pretzel",
+      "name": "MINI CHEESECAKE - Salted Karamel Pretzel",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 5500,
+      "description": "Salted Karamel Pretzel",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "kult-made-cookies-matcha-white-choko",
+      "name": "KULT MADE COOKIES - Matcha White Choko",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 5000,
+      "description": "Matcha White Choko",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "kult-made-cookies-chokolate-chip",
+      "name": "KULT MADE COOKIES - Chokolate Chip",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 5000,
+      "description": "Chokolate Chip",
+      "allergens": [],
+      "isNew": true,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    },
+    {
+      "slug": "san-sebastian-cheesecake",
+      "name": "SAN SEBASTIAN CHEESECAKE",
+      "section": "The Sweet Tooth Kulture",
+      "column": "right",
+      "basePriceQirsh": 12000,
+      "description": "",
+      "allergens": [],
+      "isNew": false,
+      "menuImageId": "menu3",
+      "pdfPage": 3
+    }
+  ],
+  "hotspots": [
+    {
+      "slug": "espresso",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.17448983243038932,
+      "w": 0.42998491489386975,
+      "h": 0.027500530007139562,
+      "confidence": "high",
+      "rawYMin": 215.73887
+    },
+    {
+      "slug": "espresso-makkhiato",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.19252181143169123,
+      "w": 0.42998491489386975,
+      "h": 0.032258381252362335,
+      "confidence": "high",
+      "rawYMin": 237.2068426
+    },
+    {
+      "slug": "amerikano",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.2130055066985847,
+      "w": 0.42998491489386975,
+      "h": 0.029803788165133786,
+      "confidence": "high",
+      "rawYMin": 261.593706
+    },
+    {
+      "slug": "cortado",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.2314835546596111,
+      "w": 0.42998491489386975,
+      "h": 0.029803788165133786,
+      "confidence": "high",
+      "rawYMin": 283.592746
+    },
+    {
+      "slug": "flat-white",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.24996160262063755,
+      "w": 0.42998491489386975,
+      "h": 0.02980378816513374,
+      "confidence": "high",
+      "rawYMin": 305.591786
+    },
+    {
+      "slug": "kappuccino",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.2684396505816639,
+      "w": 0.42998491489386975,
+      "h": 0.029803788165133786,
+      "confidence": "high",
+      "rawYMin": 327.59082599999994
+    },
+    {
+      "slug": "latte",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.28635036243752887,
+      "w": 0.42998491489386975,
+      "h": 0.02635600100793749,
+      "confidence": "high",
+      "rawYMin": 348.914424
+    },
+    {
+      "slug": "spanish-latte",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.303413794128764,
+      "w": 0.42998491489386975,
+      "h": 0.0322279163411868,
+      "confidence": "high",
+      "rawYMin": 369.2292926
+    },
+    {
+      "slug": "spicy-spanish",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.3238737944647432,
+      "w": 0.42998491489386975,
+      "h": 0.029803788165133786,
+      "confidence": "high",
+      "rawYMin": 393.587946
+    },
+    {
+      "slug": "salted-caramel",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.34235184242576966,
+      "w": 0.42998491489386975,
+      "h": 0.02980378816513374,
+      "confidence": "high",
+      "rawYMin": 415.586986
+    },
+    {
+      "slug": "kk-latte",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.360829890386796,
+      "w": 0.42998491489386975,
+      "h": 0.02980378816513374,
+      "confidence": "high",
+      "rawYMin": 437.586026
+    },
+    {
+      "slug": "white-mokka",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.37930793834782245,
+      "w": 0.42998491489386975,
+      "h": 0.029803788165133786,
+      "confidence": "high",
+      "rawYMin": 459.585066
+    },
+    {
+      "slug": "mokka",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.39778598630884887,
+      "w": 0.42998491489386975,
+      "h": 0.033163579858048776,
+      "confidence": "medium",
+      "rawYMin": 473.584106
+    },
+    {
+      "slug": "pistachio-latte",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.5604367351224224,
+      "w": 0.42998491489386975,
+      "h": 0.027500530847087507,
+      "confidence": "low",
+      "rawYMin": 675.227955
+    },
+    {
+      "slug": "iced-amerikano",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.4705190626181177,
+      "w": 0.42998491489386975,
+      "h": 0.030860321700054625,
+      "confidence": "medium",
+      "rawYMin": 560.17647
+    },
+    {
+      "slug": "iced-latte",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.48849591617319726,
+      "w": 0.42998491489386975,
+      "h": 0.030860322540002545,
+      "confidence": "medium",
+      "rawYMin": 581.578813
+    },
+    {
+      "slug": "iced-spanish",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.5082871849145353,
+      "w": 0.42998491489386975,
+      "h": 0.03271653857460841,
+      "confidence": "medium",
+      "rawYMin": 605.141308
+    },
+    {
+      "slug": "iced-white-mokka",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.5244494603334593,
+      "w": 0.42998491489386975,
+      "h": 0.030860321700054625,
+      "confidence": "medium",
+      "rawYMin": 624.383305
+    },
+    {
+      "slug": "iced-spicy-mokka",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.5412827642686154,
+      "w": 0.42998491489386975,
+      "h": 0.032004851539204494,
+      "confidence": "medium",
+      "rawYMin": 644.424195
+    },
+    {
+      "slug": "iced-pistachio",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.5604030028138256,
+      "w": 0.42998491489386975,
+      "h": 0.03086032254000245,
+      "confidence": "medium",
+      "rawYMin": 667.187795
+    },
+    {
+      "slug": "iced-salted-caramel",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.5783798572088531,
+      "w": 0.42998491489386975,
+      "h": 0.030860321700054625,
+      "confidence": "medium",
+      "rawYMin": 688.590139
+    },
+    {
+      "slug": "iced-strawberry-latte",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.5981535491999497,
+      "w": 0.42998491489386975,
+      "h": 0.03271653857460841,
+      "confidence": "medium",
+      "rawYMin": 712.131708
+    },
+    {
+      "slug": "blended-salted-caramel",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.6143867864432405,
+      "w": 0.42998491489386975,
+      "h": 0.04465099643022143,
+      "confidence": "medium",
+      "rawYMin": 731.4581886
+    },
+    {
+      "slug": "blended-spicy-spanish",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.6421352702532444,
+      "w": 0.42998491489386975,
+      "h": 0.033163579858048776,
+      "confidence": "medium",
+      "rawYMin": 764.494146
+    },
+    {
+      "slug": "blended-spanish",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.659191696274831,
+      "w": 0.42998491489386975,
+      "h": 0.030860321700054625,
+      "confidence": "medium",
+      "rawYMin": 784.800674
+    },
+    {
+      "slug": "blended-pistachio",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.6790913661752971,
+      "w": 0.42998491489386975,
+      "h": 0.033163579858048874,
+      "confidence": "medium",
+      "rawYMin": 808.492226
+    },
+    {
+      "slug": "blended-white-mokka",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.6929021474108605,
+      "w": 0.42998491489386975,
+      "h": 0.03426209130233935,
+      "confidence": "medium",
+      "rawYMin": 824.9346515999999
+    },
+    {
+      "slug": "koffee-frappe",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.7272363729368779,
+      "w": 0.42998491489386975,
+      "h": 0.03905143958674563,
+      "confidence": "high",
+      "rawYMin": 873.8112638
+    },
+    {
+      "slug": "caramel-koffee-frappe",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.7530035580194028,
+      "w": 0.42998491489386975,
+      "h": 0.02980378816513374,
+      "confidence": "medium",
+      "rawYMin": 904.488386
+    },
+    {
+      "slug": "mokka-frappe",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.7714816059804293,
+      "w": 0.42998491489386975,
+      "h": 0.02980378816513374,
+      "confidence": "high",
+      "rawYMin": 926.487426
+    },
+    {
+      "slug": "ice-tea-peach",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.8077585230355717,
+      "w": 0.42998491489386975,
+      "h": 0.031196607282348552,
+      "confidence": "high",
+      "rawYMin": 969.6769095999998
+    },
+    {
+      "slug": "ice-tea-mango",
+      "menuImageId": "menu1",
+      "x": 0.021380465381463137,
+      "y": 0.8274372264919576,
+      "w": 0.42998491489386975,
+      "h": 0.029953093948175132,
+      "confidence": "high",
+      "rawYMin": 993.10539
+    },
+    {
+      "slug": "hot-matcha",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.1485321632858763,
+      "w": 0.49887752556747317,
+      "h": 0.02762821553063711,
+      "confidence": "high",
+      "rawYMin": 184.834967
+    },
+    {
+      "slug": "iced-matcha",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.16545481281760532,
+      "w": 0.49887752556747317,
+      "h": 0.031957372810885724,
+      "confidence": "high",
+      "rawYMin": 204.9822274
+    },
+    {
+      "slug": "blended-matcha-frappe",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.18330965016168999,
+      "w": 0.49887752556747317,
+      "h": 0.027940096594011175,
+      "confidence": "high",
+      "rawYMin": 226.239304
+    },
+    {
+      "slug": "blended-strawberry-matcha",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.20357230271723153,
+      "w": 0.49887752556747317,
+      "h": 0.027971227583889816,
+      "confidence": "high",
+      "rawYMin": 250.363005
+    },
+    {
+      "slug": "iced-spanish-matcha",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.219137254210239,
+      "w": 0.49887752556747317,
+      "h": 0.026675644030070094,
+      "confidence": "high",
+      "rawYMin": 268.893858
+    },
+    {
+      "slug": "blended-salted-caramel-matcha",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.23529334509260427,
+      "w": 0.49887752556747317,
+      "h": 0.027766191256142148,
+      "confidence": "high",
+      "rawYMin": 288.128492
+    },
+    {
+      "slug": "iced-blueberry-matcha",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.25317839989920626,
+      "w": 0.49887752556747317,
+      "h": 0.027103093528201245,
+      "confidence": "high",
+      "rawYMin": 309.421544
+    },
+    {
+      "slug": "iced-white-matcha",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.27203728696820795,
+      "w": 0.49887752556747317,
+      "h": 0.02266097265969509,
+      "confidence": "high",
+      "rawYMin": 331.873992
+    },
+    {
+      "slug": "blended-white-matcha",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.28757514006131624,
+      "w": 0.49887752556747317,
+      "h": 0.026812823484943942,
+      "confidence": "high",
+      "rawYMin": 350.372583
+    },
+    {
+      "slug": "caramel-klassic",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.32640212590819373,
+      "w": 0.49887752556747317,
+      "h": 0.03233186006467601,
+      "confidence": "low",
+      "rawYMin": 388.598051
+    },
+    {
+      "slug": "choco-klassic",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.34447731132669773,
+      "w": 0.49887752556747317,
+      "h": 0.03265886859014743,
+      "confidence": "medium",
+      "rawYMin": 410.117463
+    },
+    {
+      "slug": "vanilla-klassic",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.3637680794590736,
+      "w": 0.49887752556747317,
+      "h": 0.028154547058082378,
+      "confidence": "low",
+      "rawYMin": 441.084087
+    },
+    {
+      "slug": "pistachio-klassic",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.3820859980681198,
+      "w": 0.49887752556747317,
+      "h": 0.028154547058082378,
+      "confidence": "low",
+      "rawYMin": 462.892485
+    },
+    {
+      "slug": "choco-chip-frappe",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.41305599983201047,
+      "w": 0.49887752556747317,
+      "h": 0.028154547058082378,
+      "confidence": "low"
+    },
+    {
+      "slug": "mojito-raspberry",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.44439276468858935,
+      "w": 0.49887752556747317,
+      "h": 0.027500530847087413,
+      "confidence": "high",
+      "rawYMin": 537.071806
+    },
+    {
+      "slug": "mojito-blueberry",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.4643495770862206,
+      "w": 0.49887752556747317,
+      "h": 0.033163579858048874,
+      "confidence": "medium",
+      "rawYMin": 552.831389
+    },
+    {
+      "slug": "mojito-passion",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.4828276250472471,
+      "w": 0.49887752556747317,
+      "h": 0.02980378816513374,
+      "confidence": "high",
+      "rawYMin": 582.830429
+    },
+    {
+      "slug": "mojito-cooberry-redbull",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.5013056730082734,
+      "w": 0.49887752556747317,
+      "h": 0.02980378816513374,
+      "confidence": "low"
+    },
+    {
+      "slug": "mojito-pink-redbull",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.5197837209692999,
+      "w": 0.49887752556747317,
+      "h": 0.02980378816513374,
+      "confidence": "high",
+      "rawYMin": 626.828509
+    },
+    {
+      "slug": "mojito-ocean-breeze",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.5382617689303263,
+      "w": 0.49887752556747317,
+      "h": 0.02980378816513374,
+      "confidence": "high",
+      "rawYMin": 648.827549
+    },
+    {
+      "slug": "smoothie-pina-colada",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.5848379984040989,
+      "w": 0.49887752556747317,
+      "h": 0.029803788165133835,
+      "confidence": "low",
+      "rawYMin": 704.278879
+    },
+    {
+      "slug": "smoothie-blueberry",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.6033160463651254,
+      "w": 0.49887752556747317,
+      "h": 0.033163579858048776,
+      "confidence": "medium",
+      "rawYMin": 718.277919
+    },
+    {
+      "slug": "smoothie-watermelon",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.620296411742472,
+      "w": 0.49887752556747317,
+      "h": 0.027500530847087507,
+      "confidence": "high",
+      "rawYMin": 746.493893
+    },
+    {
+      "slug": "smoothie-lemon-mint",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.6402721422871782,
+      "w": 0.49887752556747317,
+      "h": 0.029803788165133835,
+      "confidence": "high",
+      "rawYMin": 770.275999
+    },
+    {
+      "slug": "smoothie-love-story",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.6587501902482046,
+      "w": 0.49887752556747317,
+      "h": 0.02980378816513374,
+      "confidence": "high",
+      "rawYMin": 792.2750389999999
+    },
+    {
+      "slug": "refresher-sunset",
+      "menuImageId": "menu1",
+      "x": 0.47512145292140306,
+      "y": 0.6940687200033597,
+      "w": 0.49887752556747317,
+      "h": 0.030902299609424314,
+      "confidence": "high",
+      "rawYMin": 834.3235145999998
+    },
+    {
+      "slug": "kk-the-wild",
+      "menuImageId": "menu2",
+      "x": 0.021380465381463137,
+      "y": 0.7253635118222671,
+      "w": 0.47749706018601007,
+      "h": 0.020981253202301386,
+      "confidence": "high",
+      "rawYMin": 871.581529
+    },
+    {
+      "slug": "kk-the-karnivore",
+      "menuImageId": "menu2",
+      "x": 0.021380465381463137,
+      "y": 0.7825284112385033,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 939.6392
+    },
+    {
+      "slug": "kk-the-la",
+      "menuImageId": "menu2",
+      "x": 0.021380465381463137,
+      "y": 0.8257734660451053,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 991.1246
+    },
+    {
+      "slug": "kk-shroom-truffle",
+      "menuImageId": "menu2",
+      "x": 0.021380465381463137,
+      "y": 0.8663297114778883,
+      "w": 0.47749706018601007,
+      "h": 0.030242403930956556,
+      "confidence": "high",
+      "rawYMin": 1039.4088379999998
+    },
+    {
+      "slug": "kk-the-klassic-omelette",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.09178362941497627,
+      "w": 0.47512145292140306,
+      "h": 0.02772164125824198,
+      "confidence": "high",
+      "rawYMin": 117.273
+    },
+    {
+      "slug": "kk-green-dream-omelette",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.15326554953592877,
+      "w": 0.47512145292140306,
+      "h": 0.02772164125824198,
+      "confidence": "high",
+      "rawYMin": 190.4703
+    },
+    {
+      "slug": "kk-mushroom-invasion-omelette",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.20462626517155935,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 251.6178
+    },
+    {
+      "slug": "kk-the-cheesy-omelette",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.25739859728696823,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 314.4459
+    },
+    {
+      "slug": "kk-oldie-but-goldie-omelette",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.3019947410860527,
+      "w": 0.47512145292140306,
+      "h": 0.021287354584015792,
+      "confidence": "high",
+      "rawYMin": 367.539839
+    },
+    {
+      "slug": "kk-savory-breakfast-bagel",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.392886739742136,
+      "w": 0.47512145292140306,
+      "h": 0.02128735374406787,
+      "confidence": "low",
+      "rawYMin": 475.751308
+    },
+    {
+      "slug": "kk-weekday-bagel",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.45585697618747634,
+      "w": 0.47512145292140306,
+      "h": 0.026028967284028395,
+      "confidence": "high",
+      "rawYMin": 550.720523
+    },
+    {
+      "slug": "kk-triple-cheese-egg-tortilla",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.533912057452438,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 643.649
+    },
+    {
+      "slug": "kk-turkey-mix-tortilla",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.5741665045567175,
+      "w": 0.47512145292140306,
+      "h": 0.027173494603334597,
+      "confidence": "high",
+      "rawYMin": 691.573932
+    },
+    {
+      "slug": "kk-all-butter-kroissant",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.6683026097181974,
+      "w": 0.47512145292140306,
+      "h": 0.021381928520431782,
+      "confidence": "high",
+      "rawYMin": 803.647672
+    },
+    {
+      "slug": "kk-pistachio-kroissant",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.6823096887992944,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 820.3238
+    },
+    {
+      "slug": "kk-krema-kroissant",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.7095234975431524,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 852.7232
+    },
+    {
+      "slug": "kk-almond-kroissant",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.7367680483810004,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258241912,
+      "confidence": "high",
+      "rawYMin": 885.1592
+    },
+    {
+      "slug": "kk-lotus-biscoff-kroissant",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.7553541455629751,
+      "w": 0.47512145292140306,
+      "h": 0.02196668682541679,
+      "confidence": "high",
+      "rawYMin": 907.286878
+    },
+    {
+      "slug": "kk-choko-kroissant",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.7693445886355047,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258241912,
+      "confidence": "high",
+      "rawYMin": 923.9432
+    },
+    {
+      "slug": "kk-bueno-kroissant",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.7844210877325606,
+      "w": 0.47512145292140306,
+      "h": 0.025908748897568404,
+      "confidence": "high",
+      "rawYMin": 941.892526
+    },
+    {
+      "slug": "kk-pan-au-chocolat",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.8019211288900089,
+      "w": 0.47512145292140306,
+      "h": 0.03108143295115695,
+      "confidence": "medium",
+      "rawYMin": 954.7272
+    },
+    {
+      "slug": "kk-pan-suisse",
+      "menuImageId": "menu2",
+      "x": 0.49887752556747317,
+      "y": 0.808884114064928,
+      "w": 0.47512145292140306,
+      "h": 0.02432013775145941,
+      "confidence": "medium",
+      "rawYMin": 963.016982
+    },
+    {
+      "slug": "cream-cheese-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.14137659905085886,
+      "w": 0.47749706018601007,
+      "h": 0.027096938389819823,
+      "confidence": "high",
+      "rawYMin": 176.31591
+    },
+    {
+      "slug": "all-time-favorite-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.1631841585821679,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 202.27889999999996
+    },
+    {
+      "slug": "italian-twist-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.1988027155516358,
+      "w": 0.47749706018601007,
+      "h": 0.025865519297803542,
+      "confidence": "low",
+      "rawYMin": 244.684573
+    },
+    {
+      "slug": "lunch-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.23626374364789382,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 289.2838
+    },
+    {
+      "slug": "smoked-to-perfection-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.28264336315148464,
+      "w": 0.47749706018601007,
+      "h": 0.026116694804922097,
+      "confidence": "high",
+      "rawYMin": 344.501056
+    },
+    {
+      "slug": "ultimate-halloumi-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.3292046541514426,
+      "w": 0.47749706018601007,
+      "h": 0.021020624921254907,
+      "confidence": "high",
+      "rawYMin": 399.934601
+    },
+    {
+      "slug": "weve-got-beef-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.36780991978497335,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 445.8961
+    },
+    {
+      "slug": "kulture-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.4075058451975978,
+      "w": 0.47749706018601007,
+      "h": 0.021389524169501458,
+      "confidence": "high",
+      "rawYMin": 493.156084
+    },
+    {
+      "slug": "salty-beef-truffle-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.44916704716307587,
+      "w": 0.47749706018601007,
+      "h": 0.02932986602830626,
+      "confidence": "high",
+      "rawYMin": 542.755828
+    },
+    {
+      "slug": "spicy-tunnacado-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.4871481248162614,
+      "w": 0.47749706018601007,
+      "h": 0.031081432951157045,
+      "confidence": "medium",
+      "rawYMin": 579.9742
+    },
+    {
+      "slug": "sriracha-bagel",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.5213377010625342,
+      "w": 0.47749706018601007,
+      "h": 0.031081432951157045,
+      "confidence": "low"
+    },
+    {
+      "slug": "sub-out-sandwich",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.6449418336063164,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 775.8354999999999
+    },
+    {
+      "slug": "the-everything-klub",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.6849304103145605,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 823.4439
+    },
+    {
+      "slug": "the-basics-sandwich",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.7456977564990971,
+      "w": 0.47749706018601007,
+      "h": 0.028273769266305496,
+      "confidence": "high",
+      "rawYMin": 895.790464
+    },
+    {
+      "slug": "philly-steak-wich",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.7876468858930746,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 945.733
+    },
+    {
+      "slug": "tahina-twist-sandwich",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.8312599605224475,
+      "w": 0.47749706018601007,
+      "h": 0.02855522825584822,
+      "confidence": "low"
+    },
+    {
+      "slug": "spicy-tunnacado-sandwich",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.8748730351518206,
+      "w": 0.47749706018601007,
+      "h": 0.029388815253454433,
+      "confidence": "medium",
+      "rawYMin": 1041.580092
+    },
+    {
+      "slug": "lazy-cheesy-toastie",
+      "menuImageId": "menu3",
+      "x": 0.021380465381463137,
+      "y": 0.9261562303137205,
+      "w": 0.47749706018601007,
+      "h": 0.027721641258242103,
+      "confidence": "high",
+      "rawYMin": 1110.6353
+    },
+    {
+      "slug": "beetroot-hummus-avocado-toast",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.11739927512494226,
+      "w": 0.47512145292140306,
+      "h": 0.026060952500944926,
+      "confidence": "high",
+      "rawYMin": 147.769707
+    },
+    {
+      "slug": "avocado-on-toast",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.14164183444626433,
+      "w": 0.47512145292140306,
+      "h": 0.02708189240267103,
+      "confidence": "high",
+      "rawYMin": 176.63168599999997
+    },
+    {
+      "slug": "quinoa-lover-salad",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.30985586157658224,
+      "w": 0.47512145292140306,
+      "h": 0.02836116332787371,
+      "confidence": "high",
+      "rawYMin": 376.898896
+    },
+    {
+      "slug": "the-kk-ceaser-salad",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.3553727226911932,
+      "w": 0.47512145292140306,
+      "h": 0.027801735332409393,
+      "confidence": "high",
+      "rawYMin": 431.088995
+    },
+    {
+      "slug": "bbq-rainbow-salad",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.4133024232497586,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258241957,
+      "confidence": "high",
+      "rawYMin": 500.0572000000001
+    },
+    {
+      "slug": "mood-boost-salad",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.4710160010079375,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 568.7681
+    },
+    {
+      "slug": "ebys-millefeuille",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.6607877048422998,
+      "w": 0.47512145292140306,
+      "h": 0.02115852253160307,
+      "confidence": "high",
+      "rawYMin": 794.700802
+    },
+    {
+      "slug": "chokolate-kake",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.6687655285372307,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 804.1988
+    },
+    {
+      "slug": "karrot-kake",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.687654277434799,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 826.6868
+    },
+    {
+      "slug": "honey-kake",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.7058777875771702,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 848.3828
+    },
+    {
+      "slug": "mini-cinnamon-sugar-bagel",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.7203954348830373,
+      "w": 0.47512145292140306,
+      "h": 0.03167788081138972,
+      "confidence": "medium",
+      "rawYMin": 857.666785
+    },
+    {
+      "slug": "tiramisu-jar",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.7623024652471547,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 915.5592
+    },
+    {
+      "slug": "matcha-tiramisu-jar",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.7797480156230313,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 936.3289999999998
+    },
+    {
+      "slug": "banoffee-jar",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.8004913695350888,
+      "w": 0.47512145292140306,
+      "h": 0.027721641258242006,
+      "confidence": "high",
+      "rawYMin": 961.025
+    },
+    {
+      "slug": "mini-cheesecake-lotus",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.8189467053042712,
+      "w": 0.47512145292140306,
+      "h": 0.031081432951157045,
+      "confidence": "medium",
+      "rawYMin": 974.997
+    },
+    {
+      "slug": "mini-cheesecake-salted-karamel-pretzel",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.8302907101759691,
+      "w": 0.47512145292140306,
+      "h": 0.024647181554743613,
+      "confidence": "medium",
+      "rawYMin": 988.502605
+    },
+    {
+      "slug": "kult-made-cookies-matcha-white-choko",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.8646513796144638,
+      "w": 0.47512145292140306,
+      "h": 0.031081432951157142,
+      "confidence": "medium",
+      "rawYMin": 1029.4107
+    },
+    {
+      "slug": "kult-made-cookies-chokolate-chip",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.8856534374868759,
+      "w": 0.47512145292140306,
+      "h": 0.031081432951157142,
+      "confidence": "medium",
+      "rawYMin": 1054.4147
+    },
+    {
+      "slug": "san-sebastian-cheesecake",
+      "menuImageId": "menu3",
+      "x": 0.49887752556747317,
+      "y": 0.9055265137961447,
+      "w": 0.47512145292140306,
+      "h": 0.030130955440762535,
+      "confidence": "medium",
+      "rawYMin": 1086.074591
+    }
+  ]
+}
