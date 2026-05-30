@@ -79,13 +79,14 @@ export function Header({
   // Check if locale is RTL
   const isRTL = locale?.startsWith("ar");
 
+  // Nav order = expected click frequency. Menu first (primary CTA),
+  // then the "learn about us" pages. Home is the logo. API Docs lives
+  // in the footer for the rare developer who wants it.
   const navLinks = [
-    { href: "/", label: messages.home },
+    { href: "/menu", label: messages.menu },
     { href: "/about", label: messages.about },
-    { href: "/products", label: messages.products },
     { href: "/blogs", label: messages.blog },
     { href: "/contact", label: messages.contact },
-    { href: "/api/docs", label: messages.apiDocs },
   ];
 
   // Check if a nav link is active based on current pathname
@@ -180,15 +181,35 @@ export function Header({
 
             <CartButton locale={locale} />
 
+            {/* Always-visible primary CTA on desktop — one click from any
+                page to the menu, which is the single most common
+                destination for KK guests visiting the website. */}
+            {pathname !== "/menu" ? (
+              <Button
+                size="sm"
+                className="ml-2 rounded-full px-4 font-semibold"
+                asChild
+              >
+                <Link href="/menu">{messages.orderNowCta}</Link>
+              </Button>
+            ) : null}
+
             {isSignedIn ? (
               <UserButton size="sm" className="ml-2 cursor-pointer!" />
             ) : (
-              <Button variant="ghost" size="sm" className="gap-2 ml-2" asChild>
+              // Subtle icon-only login for staff/admin so the primary
+              // Order CTA stays visually dominant for guests.
+              <Button
+                variant="ghost"
+                size="icon"
+                className="ml-1 text-muted-foreground hover:text-foreground"
+                asChild
+                aria-label={messages.login}
+              >
                 <Link
                   href={`/auth/sign-in?callbackUrl=${encodeURIComponent(pathname || "/")}`}
                 >
                   <User className="size-4" />
-                  <span>{messages.login}</span>
                 </Link>
               </Button>
             )}

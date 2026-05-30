@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${SITE_URL}/products`,
+      url: `${SITE_URL}/menu`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
@@ -71,12 +71,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 0.3,
     },
-    {
-      url: `${SITE_URL}/license`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
   ];
 
   let dynamicRoutes: MetadataRoute.Sitemap = [];
@@ -84,29 +78,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const payload = await getPayload({ config });
 
-    const [products, blogs] = await Promise.all([
-      payload.find({
-        collection: "products",
-        where: { _status: { equals: "published" } },
-        limit: 1000,
-        select: { slug: true, updatedAt: true },
-      }),
-      payload.find({
-        collection: "blogs",
-        where: { status: { equals: "published" } },
-        limit: 1000,
-        select: { slug: true, updatedAt: true },
-      }),
-    ]);
-
-    const productRoutes: MetadataRoute.Sitemap = products.docs
-      .filter((doc) => doc.slug)
-      .map((doc) => ({
-        url: `${SITE_URL}/products/${doc.slug}`,
-        lastModified: new Date(doc.updatedAt),
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-      }));
+    // Menu items live in the `products` collection (per ADR-0003) but
+    // we expose them only via /menu — no individual /menu/[slug] page
+    // in MVP. So the dynamic-route sweep only covers blogs.
+    const blogs = await payload.find({
+      collection: "blogs",
+      where: { status: { equals: "published" } },
+      limit: 1000,
+      select: { slug: true, updatedAt: true },
+    });
 
     const blogRoutes: MetadataRoute.Sitemap = blogs.docs
       .filter((doc) => doc.slug)
@@ -117,7 +97,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.8,
       }));
 
-    dynamicRoutes = [...productRoutes, ...blogRoutes];
+    dynamicRoutes = blogRoutes;
   } catch {
     // Database may not be available during build
   }

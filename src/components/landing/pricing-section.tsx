@@ -130,7 +130,7 @@ export function PricingSection({
                 variant={plan.featured ? "default" : "outline"}
                 asChild
               >
-                <Link href="/products">{plan.cta}</Link>
+                <Link href="/menu">{plan.cta}</Link>
               </Button>
             </div>
           ))}

@@ -1,9 +1,10 @@
 const messages = {
   skipToContent: "Skip to content",
   home: "Home",
-  products: "Products",
+  menu: "Menu",
+  products: "Menu",
   blog: "Blog",
-  contact: "Contact",
+  contact: "Visit",
   about: "About",
   login: "Login",
   cart: "Cart",
@@ -13,6 +14,7 @@ const messages = {
   closeMenu: "Close menu",
   chooseColorScheme: "Choose color scheme",
   apiDocs: "API Docs",
+  orderNowCta: "Order now",
 } as const;
 
 export default messages;

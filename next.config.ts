@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { withPayload } from "@payloadcms/next/withPayload";
+import { LEGACY_REDIRECTS } from "./src/lib/site/legacy-redirects";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -44,6 +45,10 @@ const nextConfig: NextConfig = {
     "@payloadcms/richtext-lexical",
     "@payloadcms/plugin-ecommerce",
   ],
+  // Legacy SaaS surfaces are mapped to consumer-facing destinations in
+  // src/lib/site/legacy-redirects.ts so the runtime redirects share a
+  // single source of truth with the unit tests that verify the map.
+  redirects: async () => LEGACY_REDIRECTS.map((r) => ({ ...r })),
 };
 
 export default withPayload(nextConfig);

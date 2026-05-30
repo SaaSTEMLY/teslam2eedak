@@ -341,7 +341,12 @@ const MENU_IMAGE_VARIANTS = [
 
 export default async function MenuPage({ searchParams }: MenuPageProps) {
   const params = await searchParams;
-  const ctx = resolveMenuContext({ searchParams: params });
+  // Default to pickup when no QR context is present — covers the
+  // "landing → Menu CTA" path that doesn't pass a table param.
+  const ctx = resolveMenuContext({
+    searchParams: params,
+    defaultMode: "pickup",
+  });
   const payload = await getPayload();
   const locale = await getLocale();
 

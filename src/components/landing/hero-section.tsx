@@ -70,7 +70,11 @@ export function HeroSection({ messages: m }: { messages: Messages<"home"> }) {
               className="group h-12 rounded-xl px-8 text-base font-semibold"
               asChild
             >
-              <Link href="/products">
+              {/* Primary CTA — straight to the menu in pickup mode.
+                  No intermediate clicks; this is the single most
+                  common destination for a web visitor (vs a guest
+                  who scanned a table QR and already landed on /menu). */}
+              <Link href="/menu">
                 {m.heroGetStarted}
                 <ArrowRight className="ms-2 size-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </Link>
@@ -82,7 +86,12 @@ export function HeroSection({ messages: m }: { messages: Messages<"home"> }) {
               className="h-12 px-6 text-base text-muted-foreground"
               asChild
             >
-              <Link href="#features">{m.heroSeeFeatures}</Link>
+              {/* Secondary CTA also routes to /menu (same as primary),
+                  honouring the "minimum unintuitive clicks" rule — the
+                  copy implies viewing, not ordering, but the destination
+                  is the same. Guests who want to read the menu first
+                  end up on the right page either way. */}
+              <Link href="/menu">{m.heroSeeFeatures}</Link>
             </Button>
           </motion.div>
         </motion.div>

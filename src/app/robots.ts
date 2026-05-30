@@ -7,7 +7,14 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/account", "/checkout", "/delete-account"],
+        disallow: [
+          "/admin",
+          "/account",
+          "/delete-account",
+          "/orders", // per-order pay + tracker pages are private to each guest
+          "/staff",
+          "/api",
+        ],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

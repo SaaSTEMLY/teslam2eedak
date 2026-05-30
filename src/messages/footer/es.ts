@@ -3,7 +3,7 @@ import type { FooterMessages } from "./en";
 const messages: FooterMessages = {
   resources: "Recursos",
   blog: "Blog",
-  products: "Productos",
+  products: "Menú",
   faq: "Preguntas frecuentes",
   about: "Nosotros",
   legal: "Legal",

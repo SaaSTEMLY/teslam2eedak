@@ -7,15 +7,27 @@ export async function Footer() {
   const m = await getMessages("footer");
 
   const footerLinks = {
+    // Café-facing surfaces. Menu is the primary CTA and appears first
+    // so it's the easiest target alongside the header's Order CTA.
     resources: {
       title: m.resources,
       links: [
+        { label: m.products, href: "/menu" },
         { label: m.about, href: "/about" },
-        { label: m.products, href: "/products" },
         { label: m.blog, href: "/blogs" },
         { label: m.faq, href: "/faq" },
       ],
     },
+    legal: {
+      title: m.legal,
+      links: [
+        { label: m.contactUs, href: "/contact" },
+        { label: m.termsOfService, href: "/terms" },
+        { label: m.privacyPolicy, href: "/privacy" },
+      ],
+    },
+    // Developer-facing surfaces tucked at the end. Useful for the
+    // teslam2eedak template ecosystem, irrelevant to a café guest.
     developers: {
       title: m.developers,
       links: [
@@ -23,15 +35,6 @@ export async function Footer() {
         { label: m.openApiSpec, href: "/api/openapi.json" },
         { label: m.llmsTxt, href: "/llms.txt" },
         { label: m.humanDocs, href: "/to-humans.md" },
-      ],
-    },
-    legal: {
-      title: m.legal,
-      links: [
-        { label: m.termsOfService, href: "/terms" },
-        { label: m.privacyPolicy, href: "/privacy" },
-        { label: m.license, href: "/license" },
-        { label: m.contactUs, href: "/contact" },
       ],
     },
   };

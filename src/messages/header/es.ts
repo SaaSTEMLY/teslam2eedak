@@ -3,9 +3,10 @@ import type { HeaderMessages } from "./en";
 const messages: HeaderMessages = {
   skipToContent: "Saltar al contenido",
   home: "Inicio",
-  products: "Productos",
+  menu: "Menú",
+  products: "Menú",
   blog: "Blog",
-  contact: "Contacto",
+  contact: "Visítanos",
   about: "Nosotros",
   login: "Iniciar sesión",
   cart: "Carrito",
@@ -15,6 +16,7 @@ const messages: HeaderMessages = {
   closeMenu: "Cerrar menú",
   chooseColorScheme: "Elegir esquema de color",
   apiDocs: "Docs API",
+  orderNowCta: "Pedir ahora",
 };
 
 export default messages;

@@ -31,7 +31,7 @@ export function FinalCta({ messages: m, footerMessages }: FinalCtaProps) {
               className="group h-14 rounded-xl px-10 text-base font-semibold"
               asChild
             >
-              <Link href="/products">
+              <Link href="/menu">
                 {m.ctaButton}
                 <ArrowRight className="ms-2 size-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </Link>

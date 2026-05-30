@@ -1,7 +1,7 @@
 const messages = {
   resources: "Resources",
   blog: "Blog",
-  products: "Products",
+  products: "Menu",
   faq: "FAQ",
   about: "About",
   legal: "Legal",
