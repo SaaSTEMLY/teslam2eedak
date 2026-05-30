@@ -91,6 +91,8 @@ export const POST = (req: Request) =>
           kitchenStatus: "placed",
           fulfillmentStatus:
             input.fulfillmentMode === "merch" ? "pending" : "processing",
+          paymentStatus: "pending",
+          paymentMethod: provider.provider.id,
           restaurantId: "kk-main",
           location: ctx.locationId,
           table: ctx.tableId,

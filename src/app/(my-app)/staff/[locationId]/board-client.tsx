@@ -19,6 +19,8 @@ interface Ticket {
   amountQirsh: number;
   tableLabel: string | null;
   pickupTime: string | null;
+  paymentStatus: "pending" | "paid" | "refunded";
+  paymentMethod: string;
   items: ReadonlyArray<{ title: string; quantity: number }>;
 }
 
@@ -139,6 +141,37 @@ export function BoardClient({ locationId, locationName }: BoardClientProps) {
     }
   };
 
+  const markPaid = async (t: Ticket) => {
+    if (busyId !== null) return;
+    setBusyId(t.orderId);
+    try {
+      const res = await fetch(
+        `/api/orders/${t.orderId}/payment-status`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ to: "paid" }),
+        },
+      );
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as
+          | { error?: string }
+          | null;
+        setError(body?.error ?? "Failed to mark paid");
+      } else {
+        setTickets((prev) =>
+          prev.map((x) =>
+            x.orderId === t.orderId ? { ...x, paymentStatus: "paid" } : x,
+          ),
+        );
+      }
+    } catch {
+      setError("Network error.");
+    } finally {
+      setBusyId(null);
+    }
+  };
+
   return (
     <main className="min-h-[80vh] py-6 px-3" id="main-content">
       <div className="mx-auto max-w-7xl">
@@ -199,13 +232,26 @@ export function BoardClient({ locationId, locationName }: BoardClientProps) {
                             {ageLabel(t.createdAt, now)}
                           </span>
                         </div>
-                        <p className="text-xs text-muted-foreground mb-2">
-                          {t.tableLabel
-                            ? `Table ${t.tableLabel}`
-                            : t.fulfillmentMode === "pickup"
-                              ? "PICKUP"
-                              : t.fulfillmentMode.toUpperCase()}
-                        </p>
+                        <div className="flex items-center gap-1.5 mb-2 flex-wrap">
+                          <p className="text-xs text-muted-foreground">
+                            {t.tableLabel
+                              ? `Table ${t.tableLabel}`
+                              : t.fulfillmentMode === "pickup"
+                                ? "PICKUP"
+                                : t.fulfillmentMode.toUpperCase()}
+                          </p>
+                          {t.paymentMethod === "cash-on-pickup" &&
+                          t.paymentStatus === "pending" ? (
+                            <span className="inline-flex items-center rounded-full bg-accent/15 text-accent-foreground border border-accent/40 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+                              Cash pending
+                            </span>
+                          ) : null}
+                          {t.paymentStatus === "paid" ? (
+                            <span className="inline-flex items-center rounded-full bg-primary/15 text-primary border border-primary/40 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+                              Paid
+                            </span>
+                          ) : null}
+                        </div>
                         <ul className="text-sm space-y-0.5 mb-2">
                           {t.items.map((it, idx) => (
                             <li
@@ -217,11 +263,22 @@ export function BoardClient({ locationId, locationName }: BoardClientProps) {
                             </li>
                           ))}
                         </ul>
-                        <div className="flex items-center justify-between gap-2 pt-2 border-t border-border/40">
+                        <div className="flex items-center justify-between gap-2 pt-2 border-t border-border/40 flex-wrap">
                           <span className="text-xs font-semibold tabular-nums">
                             {formatLE(t.amountQirsh)}
                           </span>
-                          <div className="flex gap-1.5">
+                          <div className="flex gap-1.5 flex-wrap">
+                            {t.paymentMethod === "cash-on-pickup" &&
+                            t.paymentStatus === "pending" ? (
+                              <button
+                                type="button"
+                                disabled={busyId !== null}
+                                onClick={() => markPaid(t)}
+                                className="rounded-full bg-accent text-accent-foreground px-3 py-1 text-xs font-semibold hover:opacity-90 disabled:opacity-50"
+                              >
+                                Mark paid
+                              </button>
+                            ) : null}
                             {allowed
                               .filter((s) => s !== "cancelled")
                               .map((to) => (

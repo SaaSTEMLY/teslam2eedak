@@ -64,6 +64,8 @@ export const GET = (req: Request) =>
         items?: ReadonlyArray<LineItem>;
         table?: { id: string | number; label?: string } | string | number;
         pickupTime?: string | null;
+        paymentStatus?: string;
+        paymentMethod?: string;
       };
 
       const tickets = (docs as OrderDoc[]).map((d) => ({
@@ -78,6 +80,8 @@ export const GET = (req: Request) =>
         tableLabel:
           typeof d.table === "object" && d.table ? d.table.label : null,
         pickupTime: d.pickupTime ?? null,
+        paymentStatus: d.paymentStatus ?? "pending",
+        paymentMethod: d.paymentMethod ?? "stripe",
         items: (d.items ?? []).map((it) => ({
           title: it.title ?? "",
           quantity: it.quantity ?? 0,

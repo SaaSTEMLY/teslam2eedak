@@ -1235,6 +1235,36 @@ export default buildConfig({
               },
             },
             {
+              name: "paymentStatus",
+              type: "select",
+              defaultValue: "pending",
+              options: [
+                { label: { en: "Pending", ar: "قيد الدفع" }, value: "pending" },
+                { label: { en: "Paid", ar: "مدفوع" }, value: "paid" },
+                { label: { en: "Refunded", ar: "مسترد" }, value: "refunded" },
+              ],
+              admin: {
+                position: "sidebar",
+                description:
+                  "Tracks settlement. Cash-on-pickup orders stay pending until staff marks them paid at handover.",
+              },
+            },
+            {
+              name: "paymentMethod",
+              type: "select",
+              options: [
+                { label: "Stripe (card)", value: "stripe" },
+                { label: "Cash on pickup", value: "cash-on-pickup" },
+                { label: "Paymob", value: "paymob" },
+                { label: "Fawry", value: "fawry" },
+              ],
+              admin: {
+                position: "sidebar",
+                description:
+                  "Payment provider chosen by the guest at place-order time.",
+              },
+            },
+            {
               name: "kitchenAuditTrail",
               type: "array",
               labels: {
