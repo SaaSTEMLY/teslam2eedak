@@ -15,6 +15,11 @@ export {
   InvalidDiscountError,
   ExternalServiceError,
   RateLimitedError,
+  ItemUnavailableError,
+  ModifierConstraintViolationError,
+  BranchClosedError,
+  TableInactiveError,
+  PaymentProviderNotAllowedError,
   PayloadOperationError,
 } from "./errors";
 export type { HttpError } from "./errors";

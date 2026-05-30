@@ -13,6 +13,8 @@ import {
 import { AllergenFilter } from "./allergen-filter";
 import { MenuListView } from "./menu-list-view";
 import { ItemSheet, type ItemSheetItem, type ItemAddPayload } from "./item-sheet";
+import { CartProvider, useCart } from "./cart-context";
+import { CartDrawer } from "./cart-drawer";
 
 export interface MenuItemForClient {
   id: string | number;
@@ -59,6 +61,21 @@ interface MenuClientProps {
 }
 
 export function MenuClient(props: MenuClientProps) {
+  const scope =
+    props.fulfillmentMode === "dine-in" && props.table
+      ? `dine-in:${props.table.shortId}`
+      : props.location
+        ? `${props.fulfillmentMode}:${props.location.slug}`
+        : `${props.fulfillmentMode}:global`;
+  return (
+    <CartProvider scope={scope}>
+      <MenuBody {...props} />
+    </CartProvider>
+  );
+}
+
+function MenuBody(props: MenuClientProps) {
+  const cart = useCart();
   const [activePreferences, setActivePreferences] = useState<
     ReadonlyArray<DietaryPreference>
   >([]);
@@ -106,12 +123,7 @@ export function MenuClient(props: MenuClientProps) {
     : null;
 
   const handleAdd = (payload: ItemAddPayload) => {
-    // Cart wiring lands in chunk 5; for now stash the payload on window so
-    // the next chunk's cart store can pick it up during dev.
-    if (typeof window !== "undefined") {
-      const w = window as Window & { __kkPendingAdds?: ItemAddPayload[] };
-      w.__kkPendingAdds = [...(w.__kkPendingAdds ?? []), payload];
-    }
+    cart.add(payload);
   };
 
   const headerLabel =
@@ -172,6 +184,18 @@ export function MenuClient(props: MenuClientProps) {
         open={selectedItemId !== null}
         onClose={() => setSelectedItemId(null)}
         onAdd={handleAdd}
+      />
+
+      <CartDrawer
+        fulfillmentMode={props.fulfillmentMode}
+        vatPercent={props.location?.vatPercent ?? 14}
+        serviceChargePercent={props.location?.serviceChargePercent ?? 12}
+        context={{
+          locationId: props.location?.id ?? null,
+          tableId: props.table?.id ?? null,
+          tableShortId: props.table?.shortId ?? null,
+          locationSlug: props.location?.slug ?? null,
+        }}
       />
     </main>
   );
