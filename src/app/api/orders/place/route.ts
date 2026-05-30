@@ -3,6 +3,7 @@ import { Effect } from "effect";
 import {
   AppLive,
   Payload,
+  StripeService,
   ValidationError,
   NotFoundError,
   PaymentProviderNotAllowedError,
@@ -13,6 +14,7 @@ import {
 } from "@/lib/effect";
 import { computeCartTotals } from "@/lib/ordering/totals";
 import { pickPaymentProvider } from "@/lib/ordering/payment-provider";
+import { decidePaymentIntent } from "@/lib/ordering/payment-intent";
 
 import { placeOrderSchema } from "./schema";
 
@@ -112,10 +114,53 @@ export const POST = (req: Request) =>
       });
 
       const orderDoc = order as { id: string | number };
+
+      // Create a Stripe PaymentIntent for upfront-settling providers.
+      const decision = decidePaymentIntent({
+        providerId: provider.provider.id,
+        providerSettlesUpfront: provider.provider.settlesUpfront,
+        amountQirsh: totals.grandTotal,
+        orderId: orderDoc.id,
+        fulfillmentMode: input.fulfillmentMode as
+          | "dine-in"
+          | "pickup"
+          | "delivery"
+          | "merch",
+        locationId: ctx.locationId,
+        tableId: ctx.tableId,
+      });
+
+      let clientSecret: string | null = null;
+      let paymentIntentId: string | null = null;
+      if (decision.shouldCreate) {
+        const stripe = yield* StripeService;
+        const intent = yield* stripe.createOrderPaymentIntent({
+          amount: decision.amount,
+          currency: decision.currency,
+          metadata: decision.metadata,
+          idempotencyKey: decision.idempotencyKey,
+        });
+        clientSecret = intent.clientSecret;
+        paymentIntentId = intent.id;
+
+        yield* db.update({
+          collection: "orders",
+          id: orderDoc.id,
+          data: { paymentIntentId },
+        });
+      }
+
       const trackerUrl = `/orders/${orderDoc.id}/track`;
+      const payUrl = clientSecret
+        ? `/orders/${orderDoc.id}/pay`
+        : null;
+
       return created({
         orderId: orderDoc.id,
         trackerUrl,
+        payUrl,
+        clientSecret,
+        paymentIntentId,
         totals: {
           subtotal: totals.subtotal,
           vatAmount: totals.vatAmount,

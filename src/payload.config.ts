@@ -1225,6 +1225,16 @@ export default buildConfig({
               },
             },
             {
+              name: "paymentIntentId",
+              type: "text",
+              admin: {
+                position: "sidebar",
+                readOnly: true,
+                description:
+                  "Stripe PaymentIntent id for upfront-pay providers. Empty for cash-on-pickup orders.",
+              },
+            },
+            {
               name: "kitchenAuditTrail",
               type: "array",
               labels: {

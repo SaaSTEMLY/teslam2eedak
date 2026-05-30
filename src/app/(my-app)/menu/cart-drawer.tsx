@@ -95,9 +95,12 @@ export function CartDrawer({
         setError(body?.error ?? "Failed to place order");
         return;
       }
-      const body = (await res.json()) as { trackerUrl: string };
+      const body = (await res.json()) as {
+        trackerUrl: string;
+        payUrl: string | null;
+      };
       cart.clear();
-      router.push(body.trackerUrl);
+      router.push(body.payUrl ?? body.trackerUrl);
     } catch {
       setError("Network error. Please try again.");
     } finally {

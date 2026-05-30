@@ -13,6 +13,7 @@
     "start": "next start --webpack",
     "lint": "eslint",
     "check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "db:clear": "find ./sqlite-data -mindepth 1 -not -name '.gitkeep' -delete",
     "payload:types": "payload generate:types",

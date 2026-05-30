@@ -90,6 +90,19 @@ export interface StripeServiceInterface {
     idempotencyKey?: string,
   ) => Effect.Effect<Stripe.PaymentIntent, ExternalServiceError>;
 
+  /** Create a PaymentIntent for an anonymous restaurant order.
+   * Used by the QR-ordering flow; the SaaS checkout uses the
+   * plugin-ecommerce Stripe adapter instead. */
+  readonly createOrderPaymentIntent: (params: {
+    amount: number;
+    currency: string;
+    metadata: Record<string, string>;
+    idempotencyKey?: string;
+  }) => Effect.Effect<
+    { id: string; clientSecret: string | null },
+    ExternalServiceError
+  >;
+
   /** Look up existing Stripe customers by email. */
   readonly findCustomerByEmail: (
     email: string,
@@ -289,6 +302,26 @@ export const StripeLive = Layer.effect(
             },
             idempotencyKey ? { idempotencyKey } : undefined,
           ),
+        ),
+
+      createOrderPaymentIntent: (params) =>
+        stripeOp("paymentIntents.create", () =>
+          stripe.paymentIntents.create(
+            {
+              amount: params.amount,
+              currency: params.currency.toLowerCase(),
+              automatic_payment_methods: { enabled: true },
+              metadata: params.metadata,
+            },
+            params.idempotencyKey
+              ? { idempotencyKey: params.idempotencyKey }
+              : undefined,
+          ),
+        ).pipe(
+          Effect.map((intent) => ({
+            id: intent.id,
+            clientSecret: intent.client_secret,
+          })),
         ),
 
       findCustomerByEmail: (email) =>
