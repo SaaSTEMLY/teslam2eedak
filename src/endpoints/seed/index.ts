@@ -419,6 +419,12 @@ export const seed = async ({
           name: payloadLoc.name,
           description: payloadLoc.description,
           menuSection: payloadLoc.menuSection,
+          // Sizes need to be re-sent on each locale update because the
+          // `label` field on each size row is localized; Payload's
+          // beforeChange validation runs against the full document and
+          // refuses an empty AR label even if we only "wanted" to
+          // touch name/description/section.
+          sizes: payloadLoc.sizes,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any,
       });
